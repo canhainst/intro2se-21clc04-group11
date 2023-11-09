@@ -22,6 +22,16 @@ body {
     margin-left: 20px;
 }
 
+.LOG{
+    color: #000;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 2.88px;
+    text-transform: uppercase;
+}
+
 /* style cho thẻ link 'a'*/
 a {
     color: #173F5F;
@@ -75,9 +85,25 @@ a:hover {
     letter-spacing: 1px;
 }
 
+.header .line{
+    width: 100px;
+    transform: rotate(90deg);
+    border: 1px solid black;
+}
+
+.header .page{
+    color: #000;
+    text-align: center;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 1.28px;
+    text-transform: uppercase;
+}
 
 .sidebar{
-    width: 100%;
+    width: 250px;
 }
 
 .sidebar a{
@@ -88,16 +114,14 @@ a:hover {
     color: #fff;
     margin-bottom: 10px;
     font-size: 20px;
+    padding: 10px;
 }
 
-.sidebar i{
-    width: 35px;
-    height: 35px;
-    margin: 10px;
+.sidebar span{
+    padding: 10px;
 }
 
 #content{
-    width: 100%;
     border: 1px solid black;
 }
 
@@ -145,8 +169,16 @@ a:hover {
 
 #content .product{
     width: 1200px;
-    height: 200px;
+    height: 220px;
     background-color: #fcfafa;
+    display: flex;
+    justify-content: space-around;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+#content .item{
+    margin-bottom: 20px;
 }
 
 #content .item .info{
@@ -160,64 +192,113 @@ a:hover {
     align-items: center;
 }
 
-
 #content .item .function{
     width: 1200px;
     height: 140px;
     background-color: #e4e4e4;
-}
-
-#footer{
-    width: 100%;
-    height: 220px;
-    background:rgba(61, 89, 64, 0.85);
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-#footer .info{
-    width: 50%;
+    padding-top: 20px;
     box-sizing: border-box;
-    padding: 10px;
-    float: left;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
 }
 
-#footer img{
+#content .Book{
+    display: flex;
+    justify-content: left;
+}
+
+#content .Book img{
+    width: 105px;
+    height: 180px;
+    margin: 20px 20px 0 20px;
+}
+
+#content .infoBook{
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    width: 300px;
+}
+
+#content .product .quantity{
     width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin-left: 50px;
-    margin-top: 10px;
-}
-
-#footer .icon img{
-    width: 35px;
-    height: 35px;
-}
-
-#footer .button{
-    box-sizing: border-box;
-    padding: 10px;
+    font-size: 28px;
     display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    margin-top: 10px;
-
+    align-items: center;
 }
 
-#footer .button a{
-    margin: 2px;
-    font-size: 18px;
-    color: white;
+#content .product .discount{
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
 }
 
-#footer .links{
-    width: 50%;
-    box-sizing: border-box;
-    padding: 10px;
+.charge{
+    font-size: 32px;
+    font-weight: 700;
+    color: #d91010;
+    align-items: center;
+    margin-top: 85px;
+}
+
+#content .function .tonggia{
+    display: flex;
+    align-items: center;
+}
+
+#content .function .total{
+    color: #000;
+    text-align: right;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.64px;
+    text-transform: capitalize;
+    margin-left: 55px;
+}
+
+#content .function .button{
     float: right;
-    margin-top: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: right;
+    margin: 10px 70px 0 0;
+}
+
+#content .function .rate{
+    width: 90px;
+    height: 40px;
+    background-color: #ee440f;
+    border-color: #ee440f;
+}
+
+#content .function .norbutton{
+    height: 40px;
+    margin-left: 20px;
+    background-color: #9a9a9a;
+    border-color: #9a9a9a;
+}
+
+#content .total_discount{
+    color: #000;
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    margin-right: 70px;
+}
+
+.footer-icon-group{
+    font-size: 30px;
+    color:white;
+    margin: 0 21px 24px 0px;
+}
+.footerInf {
+    font-size: 18 px;
+    color:white;
+    line-height: 40px;
 }

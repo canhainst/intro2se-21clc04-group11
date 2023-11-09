@@ -24,32 +24,31 @@
             <hr color="black" width="95%" size="3px"/>
         </div>
         <div class="row">
-            <div class="col-2">
+            <div class="col-1" style="margin-left: 45px;">
                 <img class="logo" style="float: right" src="./image/logo.png" alt="logo">
             </div>
-            <div class="col-6 d-flex align-items-center">
-                <div class="input-group mb-3">
-                    <input type="text" class="border border-dark border-end-0 rounded-end rounded-pill form-control" placeholder="Search books" aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary rounded-start rounded-pill border border-dark border-start-0" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+            <div class="page col-6 d-flex align-items-center" style="padding: 0;">
+                <div class="line"></div>
+                <span>ACCOUNT</span>
+            </div>
+            <div class="col-4 d-flex align-items-center" style="flex-direction: column; margin: 20px 0 0 60px;">
+                <span style="margin-left: 100px;">Xin chào <a href="#" style="text-decoration: underline;">Nguyễn Lê Tấn Thành</a></span>
+                <span class="LOG" style="margin-left: 170px;"><a href="#">LOG OUT <i class="fas fa-sign-out-alt"></i></a></span>
+                <div style="align-items: center;">
+                    <a href="#" class="account icon-group">
+                        <i class="far fa-user-circle"></i>
+                        <span>account</span>
+                    </a>
+                    <a href="#" class="cart icon-group">
+                        <i class="fas fa-cart-plus"></i>
+                        <span>cart</span>
+                    </a>
+                    <a href="#" class="wishlist icon-group">
+                        <i class="far fa-heart"></i>
+                        <span>wishlist</span>
+                    </a>
                 </div>
             </div>
-            <div class="col-4 d-flex align-items-center justify-content-right">
-                <a href="#" class="account icon-group">
-                    <i class="far fa-user"></i>
-                    <span>account</span>
-                </a>
-                <a href="#" class="cart icon-group">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span>cart</span>
-                </a>
-                <a href="#" class="wishlist icon-group">
-                    <i class="far fa-heart"></i>
-                    <span>wishlist</span>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-          
         </div>
     </div>
     <div id="content">
@@ -57,20 +56,78 @@
             <div class="col-2">
                 <div class="sidebar">
                     <a href="#" class="Profile">
-                        <i class="far fa-user"></i>
+                        <i class="far fa-user-circle"></i>
                         <span>MY ACCOUNT</span>
                     </a>
                     <a href="#" class="MyPurchase">
-                        <i class="fa-solid fa-cart-shopping"></i>
+                        <i class="fas fa-cart-plus"></i>
                         <span>MY PURCHASE</span>
                     </a>
                     <a href="#" class="MyAccount">
-                        <i class="fa-solid fa-lock"></i>
+                        <i class="fas fa-unlock-alt"></i>
                         <span>PASSWORD</span>
                     </a>
                 </div>
             </div>
-            <div class="col-10 d-flex">
+            <div class="col-10 d-flex" style="flex-direction: column;">
+                <div class="item">
+                    <div class="info">
+                        <div class="nxb">
+                            <span class="mall">MALL</span>
+                            <span>NHÀ XUẤT BẢN KIM ĐỒNG</span>
+                        </div>
+                        <div class="id">
+                            <span class="oder">ODER ID: </span>
+                            <span class="code">231002A01</span>
+                        </div>
+                        <div class="status">
+                            <span>STATUS: COMPLETE</span>
+                        </div>
+                    </div>
+                    <div class="product">
+                        <div class="Book">
+                            <img src="image/NhaLanhDaoTuongLai.svg">
+                            <div class="infoBook">
+                                <a href="#">
+                                    <span style="font-size: 24px;">NHÀ LÃNH ĐẠO TƯƠNG LAI</span>
+                                </a>
+                                <span style="margin-top: 30px;">Variations: </span>
+                                <a href="#">
+                                    <span>Sách Kinh Tế</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <span>x 1</span>
+                        </div>
+                        <div class="discount">
+                            <span>DISCOUNT 10%</span>
+                        </div>
+                        <div style="flex-direction: column; align-items: center;">
+                            <div class="charge">
+                                <span>50.000 VND</span>
+                            </div>
+                            <div class="total_discount">
+                                <span>- 5.000 VND</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="function">
+                        <div class="tonggia">
+                            <div class="total col-8" style="margin-right: 100px;">
+                                <span>Oder Total:</span>
+                            </div>
+                            <div class="col-4">
+                                <span class="charge">45.000 VND</span>
+                            </div>
+                        </div>
+                        <div class="button">
+                            <input class="rate" type="button" value="RATE">
+                            <input class="norbutton" type="button" value="CONTACT US">
+                            <input class="norbutton" type="button" value="BUY AGAIN">
+                        </div>                       
+                    </div>
+                </div>
                 <div class="item">
                     <div class="info">
                         <div class="nxb">
@@ -82,68 +139,95 @@
                             <span class="code">231001A01</span>
                         </div>
                         <div class="status">
-                            <span>COMPLETE</span>
+                            <span>Status: shipping</span>
                         </div>
                     </div>
                     <div class="product">
-                        <img src="image/NhaLanhDaoTuongLai.svg">
-                        <span>NHÀ LÃNH ĐẠO TƯƠNG LAI</span>
+                        <div class="Book">
+                            <img src="image/CONTENTBACTY.SVG">
+                            <div class="infoBook">
+                                <a href="#">
+                                    <span style="font-size: 24px;">CONTENT BẠC TỶ</span>
+                                </a>
+                                <span style="margin-top: 30px;">Variations: </span>
+                                <a href="#">
+                                    <span>Sách Content</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="quantity">
+                            <span>x 2</span>
+                        </div>
+                        <div class="discount">
+                            <span>DISCOUNT 10%</span>
+                        </div>
+                        <div style="flex-direction: column; align-items: center;">
+                            <div class="charge">
+                                <span>80.000 VND</span>
+                            </div>
+                            <div class="total_discount">
+                                <span>- 8.000 VND</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="function">
-        
+                        <div class="tonggia">
+                            <div class="total col-8" style="margin-right: 100px;">
+                                <span>Oder Total:</span>
+                            </div>
+                            <div class="col-4">
+                                <span class="charge">72.000 VND</span>
+                            </div>
+                        </div>
+                        <div class="button" style="display: none;">
+                            <input class="rate" type="button" value="RATE">
+                            <input class="norbutton" type="button" value="CONTACT US">
+                            <input class="norbutton" type="button" value="BUY AGAIN">
+                        </div>                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="footer">
+    <div class="footer" style="background-color: #5A715B;">
         <div class="row">
-            <div class="col-6 d-flex align-items-left">
-                <div class="info">
-                    <img src="./image/logo.png">
-                    <div style="margin-left: 50px;">Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-                    <div class="icon">
-                        <a href="#" class="FACEBOOK">
-        
-                        </a>
-                    </div>
-                </div>
+            <div class="col-4" style="margin-top: 30px; margin-left: 69px;">
+                <img class="logo" src="./image/logo.png" alt="logo">
+                <div style="color:white; margin-top: 10px;margin-bottom: 20px;"> Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                <a href="#" class="footer-icon-group">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="#" class="footer-icon-group">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="#" class="footer-icon-group">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="footer-icon-group">
+                    <i class="fab fa-youtube"></i>
+                </a>
             </div>
-            <div class="col-2 d-flex align-items-center">
-                <div class="button">
-                    <a href="#">
-                        <span>HOME</span>
-                    </a> 
-                    <a href="#">
-                        <span>ABOUT US</span>
-                    </a> 
-                    <a href="#">
-                        <span>BOOKS</span>
-                    </a> 
-                    <a href="#">
-                        <span>NEW RELEASE</span>
-                    </a> 
-                    <a href="#">
-                        <span>CONTACT US</span>
-                    </a> 
-                    <a href="#">
-                        <span>BLOG</span>
-                    </a> 
-                </div>
+            <div class="col-3" style="margin-top: 20px; margin-left: 69px;">
+                <a href="#" class="footerInf">HOME</a>
+                <br>
+                <a href="#" class="footerInf">ABOUT US</a>
+                <br>
+                <a href="#" class="footerInf">BOOKS</a>
+                <br>
+                <a href="#" class="footerInf">NEW RELASE</a>
+                <br>
+                <a href="#" class="footerInf">CONTACT US</a>
+                <br>
+                <a href="#" class="footerInf">BLOG</a>
             </div>
-            <div class="col-4 d-flex align-items-right">
-                <div class="links">
-                    <span style="font-size: 22px; margin-bottom: 20px;">IMPORTANT LINKS</span>
-                    <a href="#">
-                        <span>Privacy Policy</span>
-                    </a> 
-                    <a href="#">
-                        <span>FAQs</span>
-                    </a> 
-                    <a href="#">
-                        <span>Terms of Service</span>
-                    </a> 
-                </div>
+            <div class="col-3" style="margin-top: 30px;">
+                <span style="line-height: 72px; color: white;font-weight: bold;"> IMPORTANT LINKS</span>
+                <br>
+                <a href="#" class="footerInf">Privacy Policy</a>
+                <br>
+                <a href="#" class="footerInf">FAQs</a>
+                <br>
+                <a href="#" class="footerInf">Terms of Service</a>
             </div>
         </div>
     </div>
