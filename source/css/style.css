@@ -46,7 +46,7 @@ a:hover {
     height: 100vh
 }
 
-.button {
+#container .button {
     color: #FFFFFF;
     background-color: #5A715B;
     width: 100px;
@@ -73,4 +73,26 @@ a:hover {
     color: #3D5940;
     font-weight: 700;
     letter-spacing: 1px;
+}
+
+
+#sidebar{
+    width: 230px;
+    height: 50px;
+}
+
+#sidebar .button{
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    background-color: #3D592C;
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+#sidebar .button img{
+    width: 35px;
+    height: 35px;
+    margin: 10px;
 }
