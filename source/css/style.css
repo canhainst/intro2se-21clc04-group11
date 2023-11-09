@@ -76,12 +76,11 @@ a:hover {
 }
 
 
-#sidebar{
-    width: 230px;
-    height: 50px;
+.sidebar{
+    width: 100%;
 }
 
-#sidebar .button{
+.sidebar a{
     display: flex;
     align-items: center;
     font-weight: 500;
@@ -91,8 +90,134 @@ a:hover {
     font-size: 20px;
 }
 
-#sidebar .button img{
+.sidebar i{
     width: 35px;
     height: 35px;
     margin: 10px;
+}
+
+#content{
+    width: 100%;
+    border: 1px solid black;
+}
+
+#content .id .oder{
+    color: #AA0808;
+    font-size: 20px; 
+    font-style: normal; 
+    line-height: normal; 
+    letter-spacing: 2.4px;
+}
+
+#content .id .code{
+    color: #000;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 2.4px;
+    text-transform: capitalize;
+}
+.mall{
+    color: #FC0000;
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.36px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+#content .status{
+    color: #C20000;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+#content .product{
+    width: 1200px;
+    height: 200px;
+    background-color: #fcfafa;
+}
+
+#content .item .info{
+    width: 1200px;
+    height: 45px;
+    border: 1px solid black;
+
+    display: flex;
+    justify-content: space-around;
+    background-color: #e4e4e4;
+    align-items: center;
+}
+
+
+#content .item .function{
+    width: 1200px;
+    height: 140px;
+    background-color: #e4e4e4;
+}
+
+#footer{
+    width: 100%;
+    height: 220px;
+    background:rgba(61, 89, 64, 0.85);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#footer .info{
+    width: 50%;
+    box-sizing: border-box;
+    padding: 10px;
+    float: left;
+}
+
+#footer img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-left: 50px;
+    margin-top: 10px;
+}
+
+#footer .icon img{
+    width: 35px;
+    height: 35px;
+}
+
+#footer .button{
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+}
+
+#footer .button a{
+    margin: 2px;
+    font-size: 18px;
+    color: white;
+}
+
+#footer .links{
+    width: 50%;
+    box-sizing: border-box;
+    padding: 10px;
+    float: right;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
 }
