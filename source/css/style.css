@@ -6,6 +6,7 @@ body {
     font-family: Arial, Helvetica, sans-serif
 }
 
+/* format cho header */
 .header{
     background-color: #F9FFF9;
     padding: 4px 48px 10px 48px;
@@ -15,6 +16,8 @@ body {
     color: #173F5F;
     font-weight: bolder;
     margin-top: 10px;
+    padding-left: 48px;
+    padding-right: 48px;
 }
 
 /* style cho thẻ span trong headerInf */
@@ -45,30 +48,6 @@ a:hover {
 /* style cho logo*/
 .logo{
     width: 120px;
-}
-
-/* style cho fieldset */
-#container { 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    width: 100vw; 
-    height: 100vh
-}
-
-#container .button {
-    color: #FFFFFF;
-    background-color: #5A715B;
-    width: 100px;
-    height: 40px;
-    font-weight: bold;
-    font-size: large;
-    font-family: Arial, Helvetica, sans-serif
-}
-
-.input_frame {
-    color: #000000;
-    background-color: #D9D9D9;
 }
 
 .icon-group{
@@ -292,6 +271,7 @@ a:hover {
     margin-right: 70px;
 }
 
+/* Format cho footer */
 .footer-icon-group{
     font-size: 30px;
     color:white;
@@ -301,4 +281,136 @@ a:hover {
     font-size: 18 px;
     color:white;
     line-height: 40px;
+}
+
+
+/* Format cho trang login (Khoa)*/
+#container { 
+    display: flex; 
+    justify-content: center; 
+    align-items:end; 
+    width: 100vw; 
+    height: 40vh;
+}
+
+#container .button {
+    color: #FFFFFF;
+    background-color: #5A715B;
+    width: 100px;
+    height: 40px;
+    font-weight: bold;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+#container .input_frame {
+    color: #000000;
+    background-color: #D9D9D9;
+}
+
+/* format cho Register (khoa)*/
+#re_container { 
+    display: flex; 
+    justify-content: center; 
+    align-items:end; 
+    width: 100vw; 
+    height: 15vh;
+    text-align: right; 
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+#re_container .required::after {
+    content: " *";
+    color: red;
+}
+
+.re_input_frame {
+    color: #000000;
+    background-color: #D9D9D9;
+    margin-left: 50px;
+}
+
+td {
+    padding: 5px;
+}
+
+#re_container_customer { 
+    margin-top: 160px;
+    display: flex; 
+    justify-content: center; 
+    align-items:center; 
+    width: 100vw; 
+    height: 15vh;
+    text-align: right; 
+    font-weight: bold;
+    margin-bottom: 200px;
+}
+
+#re_container_customer .required::after {
+    content: " *";
+    color: red;
+}
+#re_container_customer .gender_label{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    margin-right: 15px;
+    margin-left: 59px;
+}
+
+#re_container_customer .button {
+    color: #FFFFFF;
+    background-color: #5A715B;
+    width: 100px;
+    height: 40px;
+    font-weight: bold;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif
+}
+.re_title {
+    margin-left: 350px; 
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: large;
+}
+
+#re_form-birth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 39px    
+}
+#re_form-birth .form-select {
+    width: 86px;
+    height: 34px;
+    margin-left: 10px;
+}
+
+/* format cho Forgot Password (khoa)*/
+#forgot_container { 
+    display: flex; 
+    justify-content: center; 
+    align-items:end; 
+    width: 100vw; 
+    height: 40vh;
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
+#forgot_container .button {
+    color: #FFFFFF;
+    background-color: #5A715B;
+    width: 100px;
+    height: 40px;
+    font-weight: bold;
+    font-size: large;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+#forgot_container .input_frame {
+    color: #000000;
+    background-color: #D9D9D9;
+    margin-left: 20px;
 }
