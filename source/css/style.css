@@ -245,11 +245,15 @@ a:hover {
     margin: 10px 70px 0 0;
 }
 
-#content .function .rate{
-    width: 90px;
+#content .rate{
+    width: 100px;
     height: 40px;
     background-color: #ee440f;
     border-color: #ee440f;
+    color: white;
+    font-weight: 500;
+    font-size: 24px;
+    border-radius: 10px;
 }
 
 #content .function .norbutton{
@@ -257,6 +261,7 @@ a:hover {
     margin-left: 20px;
     background-color: #9a9a9a;
     border-color: #9a9a9a;
+    font-size: 24px;
 }
 
 #content .total_discount{
@@ -413,4 +418,38 @@ td {
     color: #000000;
     background-color: #D9D9D9;
     margin-left: 20px;
+}
+
+.rateBox{
+    width: 830px;
+    height: 500px;
+    border: 1px solid black;
+    position: absolute;
+    right: 50px;
+    top: 100px;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.rateStars{
+    font-size: 32px;
+    font-weight: 600;
+    margin: 33px 0 0 50px;
+}
+
+.checkedStar {
+    color: orange;
+}
+
+.rateBox .feedback{
+    font-size: 32px;
+    font-weight: 600;
+    margin: 20px 0 0 50px;
+}
+
+#textBox{
+    width: 720px;
+    height: 230px;
+    border-radius: 17px;
+    background-color: #e4e4e4;
 }
