@@ -31,7 +31,7 @@
                 <div class="line"></div>
                 <span>ACCOUNT</span>
             </div>
-            <div class="col-4 d-flex align-items-center" style="flex-direction: column; margin: 20px 0 0 60px;">
+            <div class="col-4 d-flex align-items-center" style="flex-direction: column; margin-top: 20px;">
                 <span style="margin-left: 100px;">Xin chào <a href="#" style="text-decoration: underline;">Nguyễn Lê Tấn Thành</a></span>
                 <span class="LOG" style="margin-left: 170px;"><a href="#">LOG OUT <i class="fas fa-sign-out-alt"></i></a></span>
                 <div style="align-items: center;">
@@ -85,6 +85,22 @@
                         <textarea id="textBox" placeholder="Type your feedback" style="font-size: 18px;"></textarea>
                     </div>
                     <button onclick="clickRate()" class="rate" style="position: absolute; top: 90%; left: 50%; transform: translate(-50%, -50%);">RATE</button>
+                </div>
+                <div class="contactUs" style="display: none;">
+                    <p style="font-size: 32px; margin: 10px 20px; font-weight: 600;">CONTACT US:</p>
+                    <li>
+                        <span>Store Address:</span>
+                        <a href="#">71 Tran Phu, Ward 4, District 5, HCM city</a>
+                    </li>
+                    <li>
+                        <span>Hotline: </span>
+                        <a href="#">+84 273737373</a>
+                    </li>
+                    <li>
+                        <span>Email: </span>
+                        <a href="#">xibangapdoicondiem@gmail.com</a>
+                    </li>
+                    <button onclick="contact()" class="rate" style="position: absolute; top: 85%; left: 50%; transform: translate(-50%, -50%);">OK</button>
                 </div>
                 <div class="item">
                     <div class="info">
@@ -196,7 +212,7 @@
                                 <span class="charge">72.000 VND</span>
                             </div>
                         </div>
-                        <div class="button" style="display: block;">
+                        <div class="button" style="display: none;">
                             <button onclick="clickRate(1)" class="rate">RATE</button>
                             <button onclick="contact()" class="norbutton">CONTACT US</button>
                             <button onclick="buyagain()" class="norbutton">BUY AGAIN</button>
@@ -274,6 +290,17 @@
         for(let i = 0; i < value; i++){
             x[i].classList.add("checkedStar")
         }
+    }
+
+    function contact(){
+        var elms = document.getElementsByClassName("contactUs")
+        Array.from(elms).forEach((x) => {
+            if (x.style.display === "none") {
+                x.style.display = "block"
+            } else {
+                x.style.display = "none"
+            }
+        })
     }
 </script>
 </html>

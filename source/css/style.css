@@ -82,7 +82,7 @@ a:hover {
 }
 
 .sidebar{
-    width: 250px;
+    width: 100%;
 }
 
 .sidebar a{
@@ -147,7 +147,7 @@ a:hover {
 }
 
 #content .product{
-    width: 1200px;
+    width: 100%;
     height: 220px;
     background-color: #fcfafa;
     display: flex;
@@ -158,10 +158,11 @@ a:hover {
 
 #content .item{
     margin-bottom: 20px;
+    width: 100%;
 }
 
 #content .item .info{
-    width: 1200px;
+    width: 100%;
     height: 45px;
     border: 1px solid black;
 
@@ -172,7 +173,7 @@ a:hover {
 }
 
 #content .item .function{
-    width: 1200px;
+    width: 100%;
     height: 140px;
     background-color: #e4e4e4;
     padding-top: 20px;
@@ -256,7 +257,7 @@ a:hover {
     border-radius: 10px;
 }
 
-#content .function .norbutton{
+.norbutton{
     height: 40px;
     margin-left: 20px;
     background-color: #9a9a9a;
@@ -452,4 +453,50 @@ td {
     height: 230px;
     border-radius: 17px;
     background-color: #e4e4e4;
+}
+
+.contactUs{
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    border-radius: 17px;
+    width: 550px;
+    height: 250px;
+    background-color: #e4e4e4;
+}
+
+.contactUs span{
+    font-size: 24px;
+}
+
+.contactUs li{
+    margin-left: 20px;
+}
+
+.contactUs a{
+    font-size: 18px;
+}
+
+.aboutUs{
+    width: 100%;
+    height: 450px;
+}
+
+.aboutUs span{
+    font-size: 18px;
+}
+
+.header .nav-bar{
+    background-color: #3D592C;
+    width: 100%;
+    height: 36px;
+}
+
+.header .nav-bar span,
+.header .nav-bar a{
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0 20px 0 20px;
 }
