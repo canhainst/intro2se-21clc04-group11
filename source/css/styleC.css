@@ -6,6 +6,10 @@ body {
     font-family: Arial, Helvetica, sans-serif
 }
 
+.row{
+    margin: 0;
+}
+
 /* header */
 .header{
     background-color: #F9FFF9;
@@ -132,4 +136,17 @@ a:hover {
     font-size: 18 px;
     color:white;
     line-height: 40px;
+}
+
+/* search page */
+.productsContainer .card-img-top{
+    width: 10rem; 
+    height: 12rem
+}
+.productsContainer .card{
+    width: 14rem;
+    height: 25rem;
+}
+.productsContainer .card-title{
+    height: 5rem;
 }
