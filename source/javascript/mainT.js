@@ -34,3 +34,36 @@ function contact(){
         }
     })
 }
+
+function xemchitiet(element){
+    var elms = document.getElementsByClassName("content")
+    Array.from(elms).forEach((x) => {
+        x.style.display = "none"
+    })
+    var elms = document.getElementsByClassName("details")
+    Array.from(elms).forEach((x) => {
+        x.style.display = "block"
+    })
+}
+
+function backtoorders(){
+    var elms = document.getElementsByClassName("details")
+    Array.from(elms).forEach((x) => {
+        x.style.display = "none"
+    })
+    var elms = document.getElementsByClassName("content")
+    Array.from(elms).forEach((x) => {
+        x.style.display = "block"
+    })
+}
+
+function showListStatus(){
+    var elms = document.getElementsByClassName("listStatus")
+    Array.from(elms).forEach((x) => {
+        if (x.style.display === "none") {
+            x.style.display = "block"
+        } else {
+            x.style.display = "none"
+        }
+    })
+}
