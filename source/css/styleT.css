@@ -125,7 +125,7 @@ a:hover {
     border: 1px solid #cbcbcb;
 }
 
-.container li{
+.container .order li{
     padding: 10px;
 }
 
@@ -215,6 +215,11 @@ a:hover {
     left: 2%;
     width: 200px;
     height: 40px;
+    border-radius: 10px;
+}
+
+.delivered:hover{
+    background-color: #fff4ee;
 }
 
 .content{
@@ -222,20 +227,4 @@ a:hover {
 }
 .details{
     display: none;
-}
-
-.listStatus{
-    margin-top: 8px;
-    border: 1px solid #bbb;
-    position: absolute;
-    background-color: white;
-    border-radius: 5px;
-    width: 200px;
-    height: 100px;
-    overflow-y: scroll;
-    display: none;
-}
-
-.listStatus li{
-    padding: 5px;
 }

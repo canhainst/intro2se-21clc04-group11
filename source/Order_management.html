@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/styleT.css">
 </head>
@@ -105,35 +106,25 @@
                     <div class="row">
                         <div class="col-5 d-flex">
                             <input type="text" class="form-control border border-dark border-end-0" placeholder="Tìm kiếm" aria-describedby="button-addon">
-                            <button style="width: 40px;" class="btn btn-outline-secondary rounded-start border border-dark border-start-0" type="button" id="button-addon"><i class="fas fa-search"></i></button>
+                            <button style="width: 40px;" class="btn btn-outline-secondary border border-dark border-start-0" type="button" id="button-addon"><i class="fas fa-search"></i></button>
                         </div>
-                        <div class="col-2"></div>
+                        <div class="col-4"></div>
                         <div class="col-3">
-                            <div class="status d-flex align-items-center">
-                                <div class="col-11">
-                                    <span style="margin-left: 10px;">Trạng thái</span>
-                                    <div class="align-items-center">
-                                        <div class="listStatus">
-                                            <ul>
-                                                <li><span>Đã xác nhận</span></li>
-                                                <li><span>Thất bại</span></li>
-                                                <li><span>Thành công</span></li>
-                                                <li><span>Đã huỷ</span></li>
-                                                <li><span>Không nhận hàng</span></li>
-                                                <li><span>Hoàn trả hàng</span></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-1">
-                                    <svg onclick="showListStatus()" xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
-                                        <path d="M10.1611 0.310934L5.99463 4.43546L1.82819 0.310934C1.4094 -0.103645 0.732886 -0.103645 0.314094 0.310934C-0.104698 0.725513 -0.104698 1.39522 0.314094 1.80979L5.24295 6.68907C5.66175 7.10364 6.33826 7.10364 6.75705 6.68907L11.6859 1.80979C12.1047 1.39522 12.1047 0.725513 11.6859 0.310934C11.2671 -0.0930144 10.5799 -0.103645 10.1611 0.310934Z" fill="black"/>
-                                    </svg>
-                                </div>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary btn-lg dropdown-toggle" style="background-color: white; color: black;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Trạng thái
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Đã xác nhận</a></li>
+                                    <li><a class="dropdown-item" href="#">Thành công</a></li>
+                                    <li><a class="dropdown-item" href="#">Thất bại</a></li>
+                                    <li><a class="dropdown-item" href="#">Đã huỷ</a></li>
+                                    <li><a class="dropdown-item" href="#">Không nhận hàng</a></li>
+                                    <li><a class="dropdown-item" href="#">Hoàn trả hàng</a></li>
+                                </ul>
                             </div>
-                            
                         </div>
-                        <div class="col-3"></div>
+                        <div class="col-1"></div>
                     </div>
                     <div class="line"></div>
                     <div class="row d-flex" style="padding-left: 10px; color: #8f8f8f;">
@@ -194,7 +185,7 @@
                         </div>
                     </div>
                     <div class="line"></div>
-                    <div class="row d-flex">
+                    <div class="row d-flex order">
                         <div class="col-2">
                             <ul>
                                 <li><span>Hoàng Văn Tùng</span></li>
@@ -314,16 +305,18 @@
                                 </div>
                             </div>
                             <div class="col-3">
-                                <div class="status d-flex align-items-center">
-                                    <div class="col-11">
-                                        <span style="margin-left: 10px;">Thay đổi trạng thái</span>
-                                    </div>
-                                    <div class="col-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
-                                            <path d="M10.1611 0.310934L5.99463 4.43546L1.82819 0.310934C1.4094 -0.103645 0.732886 -0.103645 0.314094 0.310934C-0.104698 0.725513 -0.104698 1.39522 0.314094 1.80979L5.24295 6.68907C5.66175 7.10364 6.33826 7.10364 6.75705 6.68907L11.6859 1.80979C12.1047 1.39522 12.1047 0.725513 11.6859 0.310934C11.2671 -0.0930144 10.5799 -0.103645 10.1611 0.310934Z" fill="black"/>
-                                        </svg>
-                                    </div>
-                                    
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary btn-lg dropdown-toggle" style="background-color: white; color: black;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Thay đổi trạng thái
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Đã xác nhận</a></li>
+                                        <li><a class="dropdown-item" href="#">Thành công</a></li>
+                                        <li><a class="dropdown-item" href="#">Thất bại</a></li>
+                                        <li><a class="dropdown-item" href="#">Đã huỷ</a></li>
+                                        <li><a class="dropdown-item" href="#">Không nhận hàng</a></li>
+                                        <li><a class="dropdown-item" href="#">Hoàn trả hàng</a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div> 
