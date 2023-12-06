@@ -136,7 +136,10 @@ a:hover {
     margin-right: 10px;
 }
 
-#content .status{
+.info .status{
+    border: 0;
+    background-color: #e4e4e4;
+    padding: 7px;
     color: #C20000;
     font-size: 20px;
     font-style: normal;
@@ -144,6 +147,12 @@ a:hover {
     line-height: normal;
     letter-spacing: 0.4px;
     text-transform: uppercase;
+}
+
+.Book{
+    display: flex;
+    justify-content: left;
+    width: 500px;
 }
 
 #content .product{
@@ -166,8 +175,9 @@ a:hover {
     height: 45px;
     border: 1px solid black;
 
+    padding: 0 60px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: #e4e4e4;
     align-items: center;
 }
@@ -181,11 +191,6 @@ a:hover {
     border-left: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
-}
-
-#content .Book{
-    display: flex;
-    justify-content: left;
 }
 
 #content .Book img{
@@ -206,13 +211,6 @@ a:hover {
     font-size: 28px;
     display: flex;
     align-items: center;
-}
-
-#content .product .discount{
-    font-size: 28px;
-    display: flex;
-    align-items: center;
-    font-weight: 500;
 }
 
 .charge{
@@ -263,18 +261,6 @@ a:hover {
     background-color: #9a9a9a;
     border-color: #9a9a9a;
     font-size: 24px;
-}
-
-#content .total_discount{
-    color: #000;
-    text-align: center;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: 0.48px;
-    text-transform: uppercase;
-    margin-right: 70px;
 }
 
 /* Format cho footer */
