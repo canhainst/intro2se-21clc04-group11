@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Management</title>
+    <title>WAREHOUSE MANAGEMENT</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="nav">
                     <ul>
-                        <li>
+                        <li style="background-color: #ffb9a4;">
                             <i class="fas fa-columns"></i>
                             <a href="#">DASHBOARD</a>
                         </li>
@@ -39,7 +39,7 @@
                             <i class="fas fa-cart-arrow-down"></i>
                             <a href="#">ADD PRODUCTS</a>
                         </li>
-                        <li style="background-color: #ffb9a4;">
+                        <li>
                             <i class="fas fa-store"></i>
                             <a href="#">ORDERS</a>
                         </li>
@@ -50,102 +50,106 @@
         <div class="col-9" style="padding: 0;">
             <div class="content">
                 <div class="title">
-                    <span style="margin-left: 45px;">Orders</span>
+                    <span style="margin-left: 45px;">Warehouse</span>
+                    <button>+ Add new book</button>
                 </div>
-                <div class="container" style="margin-top: 70px;">
-                    <div class="row">
-                        <div class="col-5 d-flex">
-                            <input type="text" class="form-control border border-dark border-end-0" placeholder="Search" aria-describedby="button-addon">
-                            <button style="width: 40px;" class="btn btn-outline-secondary border border-dark border-start-0" type="button" id="button-addon"><i class="fas fa-search"></i></button>
-                        </div>
-                        <div class="col-4"></div>
-                        <div class="col-3">
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" style="background-color: white; color: black;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Status
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Confirmed</a></li>
-                                    <li><a class="dropdown-item" href="#">Success</a></li>
-                                    <li><a class="dropdown-item" href="#">Fail</a></li>
-                                    <li><a class="dropdown-item" href="#">Cencel</a></li>
-                                    <li><a class="dropdown-item" href="#">Not Receive</a></li>
-                                    <li><a class="dropdown-item" href="#">Refund</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-1"></div>
+                <div class="row d-flex align-items-center">
+                    <div class="col-5 d-flex" style="padding: 20px 0 20px 50px;">
+                        <input type="text" class="form-control border border-dark border-end-0" placeholder="Search" aria-describedby="button-addon">
+                        <button style="width: 40px;" class="btn btn-outline-secondary border border-dark border-start-0" type="button" id="button-addon"><i class="fas fa-search"></i></button>
                     </div>
-                    <div class="line"></div>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col"> Customer's name
-                                    <i class="fas fa-sort"></i>
-                                </th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Total price
-                                    <i class="fas fa-sort"></i>
-                                </th>
-                                <th scope="col">Order Time
-                                    <i class="fas fa-sort"></i>
-                                </th>
-                                <th scope="col">Status</th>
-                                <th class="text-center" scope="col">Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Hoàng Văn Tùng</td>
-                                <td>hvtung12@gmail.com</td>
-                                <td>45.000 VNĐ</td>
-                                <td>15/06/2023</td>
-                                <td>Confirmed</td>
-                                <td class="text-center">
-                                    <button onclick="xemchitiet(0)">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M20.2674 11.4411L16.2507 7.42447L16.2229 7.45231C15.1112 6.41431 13.6196 5.77783 11.9785 5.77783C10.1355 5.77783 8.4805 6.57967 7.34122 7.85287L3.60298 11.5914L3.60586 11.5942C3.50226 11.7106 3.44481 11.8608 3.44434 12.0166C3.44458 12.1127 3.46647 12.2074 3.5084 12.2938C3.55033 12.3802 3.6112 12.456 3.6865 12.5156L7.74154 16.5704L7.74994 16.562C8.89873 17.6304 10.4099 18.2235 11.9787 18.2216C13.8195 18.2216 15.4729 17.4217 16.6119 16.1511L16.6268 16.166L20.3418 12.451C20.3573 12.437 20.3721 12.4221 20.3862 12.4066L20.3864 12.4064C20.4899 12.2922 20.5544 12.1424 20.5544 11.9763C20.5545 11.8703 20.5283 11.766 20.4782 11.6726C20.4281 11.5792 20.3557 11.4997 20.2674 11.4411ZM11.9787 16.2159C9.65026 16.2159 7.76266 14.3283 7.76266 11.9998C7.76266 9.67159 9.65026 7.78399 11.9787 7.78399C14.3072 7.78399 16.1951 9.67159 16.1951 11.9998C16.1951 14.3283 14.3072 16.2159 11.9787 16.2159Z" fill="black"/>
-                                            <path d="M11.998 14.0613C13.1262 14.0613 14.0408 13.1467 14.0408 12.0185C14.0408 10.8902 13.1262 9.97559 11.998 9.97559C10.8697 9.97559 9.95508 10.8902 9.95508 12.0185C9.95508 13.1467 10.8697 14.0613 11.998 14.0613Z" fill="black"/>
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Hoàng Văn Tùng</td>
-                                <td>hvtung12@gmail.com</td>
-                                <td>45.000 VNĐ</td>
-                                <td>15/06/2023</td>
-                                <td>Confirmed</td>
-                                <td class="text-center">
-                                    <button onclick="xemchitiet(1)">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M20.2674 11.4411L16.2507 7.42447L16.2229 7.45231C15.1112 6.41431 13.6196 5.77783 11.9785 5.77783C10.1355 5.77783 8.4805 6.57967 7.34122 7.85287L3.60298 11.5914L3.60586 11.5942C3.50226 11.7106 3.44481 11.8608 3.44434 12.0166C3.44458 12.1127 3.46647 12.2074 3.5084 12.2938C3.55033 12.3802 3.6112 12.456 3.6865 12.5156L7.74154 16.5704L7.74994 16.562C8.89873 17.6304 10.4099 18.2235 11.9787 18.2216C13.8195 18.2216 15.4729 17.4217 16.6119 16.1511L16.6268 16.166L20.3418 12.451C20.3573 12.437 20.3721 12.4221 20.3862 12.4066L20.3864 12.4064C20.4899 12.2922 20.5544 12.1424 20.5544 11.9763C20.5545 11.8703 20.5283 11.766 20.4782 11.6726C20.4281 11.5792 20.3557 11.4997 20.2674 11.4411ZM11.9787 16.2159C9.65026 16.2159 7.76266 14.3283 7.76266 11.9998C7.76266 9.67159 9.65026 7.78399 11.9787 7.78399C14.3072 7.78399 16.1951 9.67159 16.1951 11.9998C16.1951 14.3283 14.3072 16.2159 11.9787 16.2159Z" fill="black"/>
-                                            <path d="M11.998 14.0613C13.1262 14.0613 14.0408 13.1467 14.0408 12.0185C14.0408 10.8902 13.1262 9.97559 11.998 9.97559C10.8697 9.97559 9.95508 10.8902 9.95508 12.0185C9.95508 13.1467 10.8697 14.0613 11.998 14.0613Z" fill="black"/>
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Hoàng Văn Tùng</td>
-                                <td>hvtung12@gmail.com</td>
-                                <td>45.000 VNĐ</td>
-                                <td>15/06/2023</td>
-                                <td>Fail</td>
-                                <td class="text-center">
-                                    <button onclick="xemchitiet(2)">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M20.2674 11.4411L16.2507 7.42447L16.2229 7.45231C15.1112 6.41431 13.6196 5.77783 11.9785 5.77783C10.1355 5.77783 8.4805 6.57967 7.34122 7.85287L3.60298 11.5914L3.60586 11.5942C3.50226 11.7106 3.44481 11.8608 3.44434 12.0166C3.44458 12.1127 3.46647 12.2074 3.5084 12.2938C3.55033 12.3802 3.6112 12.456 3.6865 12.5156L7.74154 16.5704L7.74994 16.562C8.89873 17.6304 10.4099 18.2235 11.9787 18.2216C13.8195 18.2216 15.4729 17.4217 16.6119 16.1511L16.6268 16.166L20.3418 12.451C20.3573 12.437 20.3721 12.4221 20.3862 12.4066L20.3864 12.4064C20.4899 12.2922 20.5544 12.1424 20.5544 11.9763C20.5545 11.8703 20.5283 11.766 20.4782 11.6726C20.4281 11.5792 20.3557 11.4997 20.2674 11.4411ZM11.9787 16.2159C9.65026 16.2159 7.76266 14.3283 7.76266 11.9998C7.76266 9.67159 9.65026 7.78399 11.9787 7.78399C14.3072 7.78399 16.1951 9.67159 16.1951 11.9998C16.1951 14.3283 14.3072 16.2159 11.9787 16.2159Z" fill="black"/>
-                                            <path d="M11.998 14.0613C13.1262 14.0613 14.0408 13.1467 14.0408 12.0185C14.0408 10.8902 13.1262 9.97559 11.998 9.97559C10.8697 9.97559 9.95508 10.8902 9.95508 12.0185C9.95508 13.1467 10.8697 14.0613 11.998 14.0613Z" fill="black"/>
-                                        </svg>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="col-2"></div>
+                    <div class="col-2 d-flex align-items-center">
+                        <span>Filter: </span>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" style="background-color: white; color: black; border: 0;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Option
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Sách Content</a></li>
+                                <li><a class="dropdown-item" href="#">Sách Trinh Thám</a></li>
+                                <li><a class="dropdown-item" href="#">Sách Kinh Doanh</a></li>
+                                <li><a class="dropdown-item" href="#">Sách Tình Yêu</a></li>
+                                <li><a class="dropdown-item" href="#">Sách Người lớn</a></li>
+                                <li><a class="dropdown-item" href="#">Sách Trẻ em</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-2 d-flex align-items-center">
+                        <span>Sorted: </span>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" style="background-color: white; color: black; border: 0;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Option
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Price low to high</a></li>
+                                <li><a class="dropdown-item" href="#">Price high to low</a></li>
+                                <li><a class="dropdown-item" href="#">In stock low to high</a></li>
+                                <li><a class="dropdown-item" href="#">In stock high to low</a></li>
+                                <li><a class="dropdown-item" href="#">Name A to Z</a></li>
+                                <li><a class="dropdown-item" href="#">Name Z to A</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="product row d-flex align-items-center">
+                        <div class="col-6 d-flex">
+                            <img src="./image/dan-ong-sao-hoa-dan-ba-sao-kim-01.png">
+                            <span class="Bookname">Đàn ông sao hoả đàn bà sao kim</span>
+                        </div>
+                        <div class="col-2 text-center">
+                            <span class="ptitle">INSTOCK</span>
+                            <div class="stock">25</div>
+                        </div>
+                        <div class="col-2 text-center">
+                            <p class="ptitle">IMPORT PRICE</p>
+                            <span class="ptitle"> 40.000 VND</span>
+                        </div>
+                        <div class="col-2 button" style="display: flex; flex-direction: column;">
+                            <button><i class="far fa-paper-plane"></i></button>
+                            <button><i class="fas fa-pencil-alt"></i></button>
+                            <button><i class="far fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                    <div class="product row d-flex align-items-center">
+                        <div class="col-6 d-flex">
+                            <img src="./image/content-bạc-tỷ.jpg">
+                            <span class="Bookname">Content Bạc Tỷ</span>
+                        </div>
+                        <div class="col-2 text-center">
+                            <span class="ptitle">INSTOCK</span>
+                            <div class="stock">13</div>
+                        </div>
+                        <div class="col-2 text-center">
+                            <p class="ptitle">IMPORT PRICE</p>
+                            <span class="ptitle"> 30.000 VND</span>
+                        </div>
+                        <div class="col-2 button" style="display: flex; flex-direction: column;">
+                            <button><i class="far fa-paper-plane"></i></button>
+                            <button><i class="fas fa-pencil-alt"></i></button>
+                            <button><i class="far fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                    <div class="product row d-flex align-items-center">
+                        <div class="col-6 d-flex">
+                            <img src="./image/NhaLanhDaoTuongLai.jpeg">
+                            <span class="Bookname">Nhà Lãnh Đạo Tương Lai</span>
+                        </div>
+                        <div class="col-2 text-center">
+                            <span class="ptitle">INSTOCK</span>
+                            <div class="stock">15</div>
+                        </div>
+                        <div class="col-2 text-center">
+                            <p class="ptitle">IMPORT PRICE</p>
+                            <span class="ptitle"> 50.000 VND</span>
+                        </div>
+                        <div class="col-2 button" style="display: flex; flex-direction: column;">
+                            <button><i class="far fa-paper-plane"></i></button>
+                            <button><i class="fas fa-pencil-alt"></i></button>
+                            <button><i class="far fa-trash-alt"></i></button>
+                        </div>
+                    </div>
                     <div class="pageInfo">
                         <span>Showing 1 - 8 results of </span>
                         <span>298</span>
