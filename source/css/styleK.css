@@ -32,9 +32,6 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    opacity: 0.7; /* hỗ trợ độ trong suốt cho hình ảnh*/
-}
 
 /* style cho logo*/
 .logo{
@@ -85,19 +82,66 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    opacity: 0.7; /* hỗ trợ độ trong suốt cho hình ảnh*/
+}
+
 ul{
     list-style-type: none;
     padding: 0;
 }
 
-.p-0{
-    padding: 0;
+/*My account*/
+.account-side-bar li {
+    height: 10vh;
+    width: 100%;
+    background-color: #3D5940;
+    border: 2px solid black;
+    border-right:none;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    padding: 0 1em;
 }
 
-a:hover {
-    opacity: 0.7; /* hỗ trợ độ trong suốt cho hình ảnh*/
+.account-ava {
+    height: 75vh;
+    width: 20%;
+    border: 2px solid black;
 }
-/**/
+.account-ava .logo{
+    overflow: hidden;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.account-ava .upload-button {
+    background-color: #D9D9D9;
+    border-radius: 5px;
+    color: black;
+    border: 1px solid black;
+}
+
+.account-ava .upload-button:hover {
+    background-color: #b3a6a686;
+}
+
+.account-profile {
+    height: 75vh;
+    width: 883px;
+    border: 2px solid black;
+    border-left: none;
+}
+.account-profile .ps-0 {
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    width: 882px;
+}
+/*Dashboard*/
 .sidebar{
     height: 100vh;
     width: 100%;
