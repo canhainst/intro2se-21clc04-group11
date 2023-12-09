@@ -198,14 +198,8 @@ ul{
 
 .linechart {
     width: 90%;
-    height: 400px;
+    height: 500px;
     border: 1px solid #C6C6C6;
     margin: 20px 0 0 70px;
-    border-radius: 10px;
-}
-
-.titlechart {
-    height: 50px;
-    background-color: #E7E7E7;
     border-radius: 10px;
 }
