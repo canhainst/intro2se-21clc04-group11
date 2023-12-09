@@ -56,7 +56,7 @@
                 </div>
             </div>
             <div class="linechart">
-                <div class="titlechart d-flex align-items-center" style="padding-left: 10px;">
+                <div class="d-flex align-items-center" style="padding-left: 10px;height: 50px;background-color: #E7E7E7;border-radius: 10px;">
                     <span>DAILY REVENUE STATISTICS IN MONTH: </span>
                     <select class= "rounded-3 btn btn-light btn-sm ms-2" name="month" id="monthSelect">
                         <option value="" disabled selected>month</option>
@@ -71,9 +71,51 @@
                         }
                     </script>
                 </div>
+                <div class="d-flex align-items-center" style="height: 80%;width: 75%;margin-left: 120px; margin-top: 3%;">
+                    <canvas id="myLineChart0"></canvas>
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        // Sample data
+                        var data = {
+                            labels: ['January', 'February', 'March', 'April', 'May'],
+                            datasets: [{
+                                label: 'Monthly Sales',
+                                borderColor: 'rgb(75, 192, 192)',
+                                data: [65, 59, 80, 81, 56],
+                                fill: false
+                            }]
+                        };
+            
+                        // Configuration options
+                        var options = {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                x: {
+                                    type: 'category',
+                                    labels: data.labels
+                                },
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        };
+            
+                        // Get the canvas element
+                        var ctx = document.getElementById('myLineChart0').getContext('2d');
+            
+                        // Create the line chart
+                        var myLineChart = new Chart(ctx, {
+                            type: 'line',
+                            data: data,
+                            options: options
+                        });
+                    });
+                </script>
             </div>
             <div class="linechart">
-                <div class="titlechart d-flex align-items-center" style="padding-left: 10px;">
+                <div class="d-flex align-items-center" style="padding-left: 10px;height: 50px;background-color: #E7E7E7;border-radius: 10px;">
                     <span> MONTHLY REVENUE STATISTICS IN YEAR: </span>
                     <select class= "rounded-3 btn btn-light btn-sm ms-2" name="year" id="yearSelect">
                         <option value="" disabled selected>year</option>
@@ -88,36 +130,48 @@
                         }
                     </script>
                 </div>
-            <canvas id="myLineChart" width="2" height="1"></canvas>
-            <script>
-                // Dữ liệu biểu đồ đường
-                var data = {
-                    labels: ["January", "February", "March", "April", "May"],
-                    datasets: [{
-                        label: 'Monthly Data',
-                        data: [12, 19, 3, 5, 2],
-                        fill: false,
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        borderWidth: 2,
-                        pointRadius: 5,
-                        pointHoverRadius: 7,
-                    }]
-                };
-        
-                // Tạo biểu đồ đường
-                var ctx = document.getElementById('myLineChart').getContext('2d');
-                var myLineChart = new Chart(ctx, {
-                    type: 'line',
-                    data: data,
-                    options: {
-                        scales: {
-                            y: {
-                                beginAtZero: true
+                <div class="d-flex align-items-center" style="height: 80%;width: 75%;margin-left: 120px; margin-top: 3%;">
+                    <canvas id="myLineChart"></canvas>
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        // Sample data
+                        var data = {
+                            labels: ['January', 'February', 'March', 'April', 'May'],
+                            datasets: [{
+                                label: 'Monthly Sales',
+                                borderColor: 'rgb(75, 192, 192)',
+                                data: [65, 59, 80, 81, 56],
+                                fill: false
+                            }]
+                        };
+            
+                        // Configuration options
+                        var options = {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                x: {
+                                    type: 'category',
+                                    labels: data.labels
+                                },
+                                y: {
+                                    beginAtZero: true
+                                }
                             }
-                        }
-                    }
-                });
-            </script>
+                        };
+            
+                        // Get the canvas element
+                        var ctx = document.getElementById('myLineChart').getContext('2d');
+            
+                        // Create the line chart
+                        var myLineChart = new Chart(ctx, {
+                            type: 'line',
+                            data: data,
+                            options: options
+                        });
+                    });
+                </script>
             </div>
         </div>
     </div>
