@@ -21,6 +21,7 @@ app.set('views', './views');
 app.set('view engine', 'hbs');
 
 app.use('/', require('./routes_controller/index-r'));
+app.use('/account', require('./routes_controller/account-r'));
 
 app.get('favorite.ico', (req, res) => {
     res.status(404).send();
