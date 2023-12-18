@@ -1,184 +1,170 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="./css/styleK.css">
-</head>
-<body>
-    <div class="row">
-        <div class="col-3" style="padding: 0;">
-            <div class="sidebar">
-                <div class="box_logo d-flex align-items-center">
-                    <div class="logo col-3">
-                        <i class="far fa-user" style="padding: 0 1em; scale: 9%; margin-bottom: 45px; margin-left: 20px;"></i>
-                    </div>
-                    <div class="admin col-8">
-                        <ul>
-                            <li class="d-flex align-items-center">
-                                <span style="font-size: 24px; font-weight: 500;">ADMIN</span>
-                            </li>
-                        </ul>
-                    </div> 
+<div class="row">
+    <div class="col-3" style="padding: 0;">
+        <div class="sidebar">
+            <div class="box_logo d-flex align-items-center">
+                <div class="logo col-3">
+                    <i class="far fa-user"
+                        style="padding: 0 1em; scale: 9%; margin-bottom: 45px; margin-left: 20px;"></i>
                 </div>
-                <div class="nav">
+                <div class="admin col-8">
                     <ul>
-                        <li>
-                            <i class="fas fa-columns"></i>
-                            <a href="#">DASHBOARD</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-warehouse"></i>
-                            <a href="#">WAREHOUSE</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-cart-arrow-down"></i>
-                            <a href="#">ADD PRODUCTS</a>
-                        </li>
-                        <li style="background-color: #ffb9a4;">
-                            <i class="fas fa-store"></i>
-                            <a href="#">ORDERS</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-comment-dots"></i>
-                            <a href="#">CHAT</a>
+                        <li class="d-flex align-items-center">
+                            <span style="font-size: 24px; font-weight: 500;">ADMIN</span>
                         </li>
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class="col-9 border-start border-black" style="padding: 0;">
-            <div class="content">
-                <div class="title">
-                    <span style="margin-left: 45px;">Dashboard</span>
-                </div>
-            </div>
-            <div class="linechart">
-                <div class="d-flex align-items-center" style="padding-left: 10px;height: 50px;background-color: #E7E7E7;border-radius: 10px;">
-                    <span>DAILY REVENUE STATISTICS IN MONTH: </span>
-                    <select class= "rounded-3 btn btn-light btn-sm ms-2" name="month" id="monthSelect">
-                        <option value="" disabled selected>month</option>
-                    </select>
-                    <script>
-                        var monthSelect = document.getElementById('monthSelect');
-                        for (var month = 1; month <= 12; month++) {
-                            var option = document.createElement('option');
-                            option.value = month;
-                            option.text = month;
-                            monthSelect.add(option);
-                        }
-                    </script>
-                </div>
-                <div class="d-flex align-items-center" style="height: 80%;width: 75%;margin-left: 120px; margin-top: 3%;">
-                    <canvas id="myLineChart0"></canvas>
-                </div>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        // Sample data
-                        var data = {
-                            labels: ['January', 'February', 'March', 'April', 'May'],
-                            datasets: [{
-                                label: 'Monthly Sales',
-                                borderColor: 'rgb(75, 192, 192)',
-                                data: [65, 59, 80, 81, 56],
-                                fill: false
-                            }]
-                        };
-            
-                        // Configuration options
-                        var options = {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                x: {
-                                    type: 'category',
-                                    labels: data.labels
-                                },
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
-                        };
-            
-                        // Get the canvas element
-                        var ctx = document.getElementById('myLineChart0').getContext('2d');
-            
-                        // Create the line chart
-                        var myLineChart = new Chart(ctx, {
-                            type: 'line',
-                            data: data,
-                            options: options
-                        });
-                    });
-                </script>
-            </div>
-            <div class="linechart">
-                <div class="d-flex align-items-center" style="padding-left: 10px;height: 50px;background-color: #E7E7E7;border-radius: 10px;">
-                    <span> MONTHLY REVENUE STATISTICS IN YEAR: </span>
-                    <select class= "rounded-3 btn btn-light btn-sm ms-2" name="year" id="yearSelect">
-                        <option value="" disabled selected>year</option>
-                    </select>
-                    <script>
-                        var yearSelect = document.getElementById('yearSelect');
-                        for (var year = 2000; year <= 2023; year++) {
-                            var option = document.createElement('option');
-                            option.value = year;
-                            option.text = year;
-                            yearSelect.add(option);
-                        }
-                    </script>
-                </div>
-                <div class="d-flex align-items-center" style="height: 80%;width: 75%;margin-left: 120px; margin-top: 3%;">
-                    <canvas id="myLineChart"></canvas>
-                </div>
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        // Sample data
-                        var data = {
-                            labels: ['January', 'February', 'March', 'April', 'May'],
-                            datasets: [{
-                                label: 'Monthly Sales',
-                                borderColor: 'rgb(75, 192, 192)',
-                                data: [65, 59, 80, 81, 56],
-                                fill: false
-                            }]
-                        };
-            
-                        // Configuration options
-                        var options = {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                x: {
-                                    type: 'category',
-                                    labels: data.labels
-                                },
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
-                        };
-            
-                        // Get the canvas element
-                        var ctx = document.getElementById('myLineChart').getContext('2d');
-            
-                        // Create the line chart
-                        var myLineChart = new Chart(ctx, {
-                            type: 'line',
-                            data: data,
-                            options: options
-                        });
-                    });
-                </script>
+            <div class="nav">
+                <ul>
+                    <li style="background-color: #ffb9a4;">
+                        <i class="fas fa-columns"></i>
+                        <a href="#">DASHBOARD</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-warehouse"></i>
+                        <a href="#">WAREHOUSE</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-cart-arrow-down"></i>
+                        <a href="#">ADD PRODUCTS</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-store"></i>
+                        <a href="#">ORDERS</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-comment-dots"></i>
+                        <a href="#">CHAT</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-    
-</body>
-</html>
+    <div class="col-9 border-start border-black" style="padding: 0;">
+        <div class="content">
+            <div class="title">
+                <span style="margin-left: 45px;">Dashboard</span>
+            </div>
+        </div>
+        <div class="linechart">
+            <div class="d-flex align-items-center"
+                style="padding-left: 10px;height: 50px;background-color: #E7E7E7;border-radius: 10px;">
+                <span>DAILY REVENUE STATISTICS IN MONTH: </span>
+                <select class="rounded-3 btn btn-light btn-sm ms-2" name="month" id="monthSelect">
+                    <option value="" disabled selected>month</option>
+                </select>
+                <script>
+                    var monthSelect = document.getElementById('monthSelect');
+                    for (var month = 1; month <= 12; month++) {
+                        var option = document.createElement('option');
+                        option.value = month;
+                        option.text = month;
+                        monthSelect.add(option);
+                    }
+                </script>
+            </div>
+            <div class="d-flex align-items-center" style="height: 80%;width: 75%;margin-left: 120px; margin-top: 3%;">
+                <canvas id="myLineChart0"></canvas>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    // Sample data
+                    var data = {
+                        labels: ['January', 'February', 'March', 'April', 'May'],
+                        datasets: [{
+                            label: 'Monthly Sales',
+                            borderColor: 'rgb(75, 192, 192)',
+                            data: [65, 59, 80, 81, 56],
+                            fill: false
+                        }]
+                    };
+
+                    // Configuration options
+                    var options = {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                type: 'category',
+                                labels: data.labels
+                            },
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    };
+
+                    // Get the canvas element
+                    var ctx = document.getElementById('myLineChart0').getContext('2d');
+
+                    // Create the line chart
+                    var myLineChart = new Chart(ctx, {
+                        type: 'line',
+                        data: data,
+                        options: options
+                    });
+                });
+            </script>
+        </div>
+        <div class="linechart">
+            <div class="d-flex align-items-center"
+                style="padding-left: 10px;height: 50px;background-color: #E7E7E7;border-radius: 10px;">
+                <span> MONTHLY REVENUE STATISTICS IN YEAR: </span>
+                <select class="rounded-3 btn btn-light btn-sm ms-2" name="year" id="yearSelect">
+                    <option value="" disabled selected>year</option>
+                </select>
+                <script>
+                    var yearSelect = document.getElementById('yearSelect');
+                    for (var year = 2000; year <= 2023; year++) {
+                        var option = document.createElement('option');
+                        option.value = year;
+                        option.text = year;
+                        yearSelect.add(option);
+                    }
+                </script>
+            </div>
+            <div class="d-flex align-items-center" style="height: 80%;width: 75%;margin-left: 120px; margin-top: 3%;">
+                <canvas id="myLineChart"></canvas>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    // Sample data
+                    var data = {
+                        labels: ['January', 'February', 'March', 'April', 'May'],
+                        datasets: [{
+                            label: 'Monthly Sales',
+                            borderColor: 'rgb(75, 192, 192)',
+                            data: [65, 59, 80, 81, 56],
+                            fill: false
+                        }]
+                    };
+
+                    // Configuration options
+                    var options = {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                type: 'category',
+                                labels: data.labels
+                            },
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    };
+
+                    // Get the canvas element
+                    var ctx = document.getElementById('myLineChart').getContext('2d');
+
+                    // Create the line chart
+                    var myLineChart = new Chart(ctx, {
+                        type: 'line',
+                        data: data,
+                        options: options
+                    });
+                });
+            </script>
+        </div>
+    </div>
+</div>

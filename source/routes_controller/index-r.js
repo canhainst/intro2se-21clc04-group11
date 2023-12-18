@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.render('customers/HomePage',{
+    res.render('customers/Checkout',{
         title: 'Home Page',
-        mainCss: () => '_css/styleC',
+        mainJs: () => 'empty',
+        navbar:()=>'navbar',
+        header: () => 'header_search',
     })
 });
 
