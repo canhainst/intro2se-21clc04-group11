@@ -1,18 +1,17 @@
-
-
-const sql = require('mssql')
-
 var config = {
-  server: "127.0.0.1", 
-  database: "book_house", 
-  user: 'sa',
-  password: "123",
+  server: "localhost",
+  port : 1433,
+  database: process.env.DB_NAME, 
+  user: process.env.DB_USER,
+  password: process.env.DB_PWD,
   options: {
-    trustedconnection: true,
     enableArithAbort : true, 
-    instancename :'SQLEXPRESS'
+    trustServerCertificate: true,
   },
-  port : 1433
+  connectionTimeout: 150000, 
+  pool: 
+  { max : 10, min : 0, idleTimeoutMillis : 30000, },
+  
 };
 
 module.exports = config; 
