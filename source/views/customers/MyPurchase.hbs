@@ -1,167 +1,166 @@
-
-    <div id="content">
-        <div class="row">
-            <div class="col-2" style="padding-right: 0;">
-                <div class="account-side-bar">
-                    <ul>
-                        <li class="mb-1">
-                            <a href="#" style="color: #fff;font-size: 18px;">
-                                <i class="fas fa-user-circle" style="width: 20px;height: 20px;"></i>
-                                <span style="padding: 0 1em; text-align: justify; font-weight: 900;">MY ACCOUNT</span> 
-                            </a>
-                        </li>
-                        <li class="mb-1">
-                            <a href="#" style="color: #fff;font-size: 18px;">
-                                <i class="fas fa-cart-plus" style="width: 20px;height: 20px;"></i>
-                                <span style="padding: 0 1em; text-align: justify;">MY PURCHASE</span> 
-                            </a>
-                        </li>
-                        <li class="mb-1">
-                            <a href="#" style="color: #fff;font-size: 18px;">
-                                <i class="fas fa-unlock-alt" style="width: 20px;height: 20px;"></i>
-                                <span style="padding: 0 1em; text-align: justify;">MY PASSWORD</span> 
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+<div id="content">
+    <div class="row">
+        <div class="col-2" style="padding-right: 0;">
+            <div class="account-side-bar">
+                <ul>
+                    <li class="mb-1">
+                        <a href="#" style="color: #fff;font-size: 18px;">
+                            <i class="fas fa-user-circle" style="width: 20px;height: 20px;"></i>
+                            <span style="padding: 0 1em; text-align: justify; font-weight: 900;">MY ACCOUNT</span> 
+                        </a>
+                    </li>
+                    <li class="mb-1">
+                        <a href="#" style="color: #fff;font-size: 18px;">
+                            <i class="fas fa-cart-plus" style="width: 20px;height: 20px;"></i>
+                            <span style="padding: 0 1em; text-align: justify;">MY PURCHASE</span> 
+                        </a>
+                    </li>
+                    <li class="mb-1">
+                        <a href="#" style="color: #fff;font-size: 18px;">
+                            <i class="fas fa-unlock-alt" style="width: 20px;height: 20px;"></i>
+                            <span style="padding: 0 1em; text-align: justify;">MY PASSWORD</span> 
+                        </a>
+                    </li>
+                </ul>
             </div>
-            <div class="col-10 d-flex" style="flex-direction: column; position: relative; padding-left: 0;">
-                <div class="rateBox" style="display: none;">
-                    <div class="row">
-                        <div class="rateStars col-6">
-                            <span style="margin-right: 20px;">Rate Us</span>
-                            <span onclick="rateStars(1)" class="fa fa-star"></span>
-                            <span onclick="rateStars(2)" class="fa fa-star"></span>
-                            <span onclick="rateStars(3)" class="fa fa-star"></span>
-                            <span onclick="rateStars(4)" class="fa fa-star"></span>
-                            <span onclick="rateStars(5)" class="fa fa-star"></span>
-                        </div>
-                        <div class="col-4"></div>
-                        <div class="col-1">
-                            <button class="out" onclick="clickRate()">X</button>
-                        </div>
+        </div>
+        <div class="col-10 d-flex" style="flex-direction: column; position: relative; padding-left: 0;">
+            <div class="rateBox" style="display: none;">
+                <div class="row">
+                    <div class="rateStars col-6">
+                        <span style="margin-right: 20px;">Rate Us</span>
+                        <span onclick="rateStars(1)" class="fa fa-star"></span>
+                        <span onclick="rateStars(2)" class="fa fa-star"></span>
+                        <span onclick="rateStars(3)" class="fa fa-star"></span>
+                        <span onclick="rateStars(4)" class="fa fa-star"></span>
+                        <span onclick="rateStars(5)" class="fa fa-star"></span>
                     </div>
-                    <div class="feedback">
-                        <span>Leave Feedback</span>
-                        <br>
-                        <textarea id="textBox" placeholder="Type your feedback" style="font-size: 18px;"></textarea>
+                    <div class="col-4"></div>
+                    <div class="col-1">
+                        <button class="out" onclick="clickRate()">X</button>
                     </div>
-                    <button onclick="clickRate()" class="rate" style="position: absolute; top: 90%; left: 50%; transform: translate(-50%, -50%);">RATE</button>
                 </div>
-                <div class="contactUs" style="display: none;">
-                    <p style="font-size: 32px; margin: 10px 20px; font-weight: 600;">CONTACT US:</p>
-                    <li>
-                        <span>Store Address:</span>
-                        <a href="#">71 Tran Phu, Ward 4, District 5, HCM city</a>
-                    </li>
-                    <li>
-                        <span>Hotline: </span>
-                        <a href="#">+84 273737373</a>
-                    </li>
-                    <li>
-                        <span>Email: </span>
-                        <a href="#">xibangapdoicondiem@gmail.com</a>
-                    </li>
-                    <button onclick="contact()" class="rate" style="position: absolute; top: 85%; left: 50%; transform: translate(-50%, -50%);">OK</button>
+                <div class="feedback">
+                    <span>Leave Feedback</span>
+                    <br>
+                    <textarea id="textBox" placeholder="Type your feedback" style="font-size: 18px;"></textarea>
                 </div>
-                <div class="item">
-                    <div class="info">
-                        <div class="id">
-                            <span class="oder">ORDER ID: </span>
-                            <span class="code">231002A01</span>
-                        </div>
-                        <div class="status">
-                            <span>COMPLETED</span>
-                        </div>
+                <button onclick="clickRate()" class="rate" style="position: absolute; top: 90%; left: 50%; transform: translate(-50%, -50%);">RATE</button>
+            </div>
+            <div class="contactUs" style="display: none;">
+                <p style="font-size: 32px; margin: 10px 20px; font-weight: 600;">CONTACT US:</p>
+                <li>
+                    <span>Store Address:</span>
+                    <a href="#">71 Tran Phu, Ward 4, District 5, HCM city</a>
+                </li>
+                <li>
+                    <span>Hotline: </span>
+                    <a href="#">+84 273737373</a>
+                </li>
+                <li>
+                    <span>Email: </span>
+                    <a href="#">xibangapdoicondiem@gmail.com</a>
+                </li>
+                <button onclick="contact()" class="rate" style="position: absolute; top: 85%; left: 50%; transform: translate(-50%, -50%);">OK</button>
+            </div>
+            <div class="item">
+                <div class="info">
+                    <div class="id">
+                        <span class="oder">ORDER ID: </span>
+                        <span class="code">231002A01</span>
                     </div>
-                    <div class="product">
-                        <div class="Book">
-                            <img src="image/NhaLanhDaoTuongLai.svg">
-                            <div class="infoBook">
-                                <a href="#">
-                                    <span style="font-size: 24px;">NHÀ LÃNH ĐẠO TƯƠNG LAI</span>
-                                </a>
-                                <span style="margin-top: 30px;">Category: </span>
-                                <a href="#">
-                                    <span>Sách Kinh Tế</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="quantity">
-                            <span>x 1</span>
-                        </div>
-                        <div style="flex-direction: column; align-items: center;">
-                            <div class="charge">
-                                <span>50.000 VND</span>
-                            </div>
-                        </div>
+                    <div class="status">
+                        <span>COMPLETED</span>
                     </div>
-                    <div class="function">
-                        <div class="tonggia">
-                            <div class="total col-8" style="margin-right: 100px;">
-                                <span>Oder Total:</span>
-                            </div>
-                            <div class="col-4">
-                                <span class="charge">50.000 VND</span>
-                            </div>
-                        </div>
-                        <div class="button">
-                            <button onclick="clickRate(0)" class="rate">RATE</button>
-                            <button onclick="contact()" class="norbutton">CONTACT US</button>
-                            <button onclick="buyagain()" class="norbutton">BUY AGAIN</button>
-                        </div>                       
-                    </div>
-                    
                 </div>
-                <div class="item">
-                    <div class="info">
-                        <div class="id">
-                            <span class="oder">ORDER ID: </span>
-                            <span class="code">231001A01</span>
-                        </div>
-                        <div class="status">
-                            <span>shipping</span>
-                        </div>
-                    </div>
-                    <div class="product">
-                        <div class="Book">
-                            <img src="image/CONTENTBACTY.SVG">
-                            <div class="infoBook">
-                                <a href="#">
-                                    <span style="font-size: 24px;">CONTENT BẠC TỶ</span>
-                                </a>
-                                <span style="margin-top: 30px;">Category: </span>
-                                <a href="#">
-                                    <span>Sách Content</span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="quantity">
-                            <span>x 2</span>
-                        </div>
-                        <div style="flex-direction: column; align-items: center;">
-                            <div class="charge">
-                                <span>80.000 VND</span>
-                            </div>
+                <div class="product">
+                    <div class="Book">
+                        <img src="image/NhaLanhDaoTuongLai.svg">
+                        <div class="infoBook">
+                            <a href="#">
+                                <span style="font-size: 24px;">NHÀ LÃNH ĐẠO TƯƠNG LAI</span>
+                            </a>
+                            <span style="margin-top: 30px;">Category: </span>
+                            <a href="#">
+                                <span>Sách Kinh Tế</span>
+                            </a>
                         </div>
                     </div>
-                    <div class="function">
-                        <div class="tonggia">
-                            <div class="total col-8" style="margin-right: 100px;">
-                                <span>Oder Total:</span>
-                            </div>
-                            <div class="col-4">
-                                <span class="charge">160.000 VND</span>
-                            </div>
-                        </div>
-                        <div class="button" style="display: none;">
-                            <button onclick="clickRate(1)" class="rate">RATE</button>
-                            <button onclick="contact()" class="norbutton">CONTACT US</button>
-                            <button onclick="buyagain()" class="norbutton">BUY AGAIN</button>
-                        </div>                        
+                    <div class="quantity">
+                        <span>x 1</span>
                     </div>
+                    <div style="flex-direction: column; align-items: center;">
+                        <div class="charge">
+                            <span>50.000 VND</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="function">
+                    <div class="tonggia">
+                        <div class="total col-8" style="margin-right: 100px;">
+                            <span>Oder Total:</span>
+                        </div>
+                        <div class="col-4">
+                            <span class="charge">50.000 VND</span>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <button onclick="clickRate(0)" class="rate">RATE</button>
+                        <button onclick="contact()" class="norbutton">CONTACT US</button>
+                        <button onclick="buyagain()" class="norbutton">BUY AGAIN</button>
+                    </div>                       
+                </div>
+                
+            </div>
+            <div class="item">
+                <div class="info">
+                    <div class="id">
+                        <span class="oder">ORDER ID: </span>
+                        <span class="code">231001A01</span>
+                    </div>
+                    <div class="status">
+                        <span>shipping</span>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="Book">
+                        <img src="image/CONTENTBACTY.SVG">
+                        <div class="infoBook">
+                            <a href="#">
+                                <span style="font-size: 24px;">CONTENT BẠC TỶ</span>
+                            </a>
+                            <span style="margin-top: 30px;">Category: </span>
+                            <a href="#">
+                                <span>Sách Content</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="quantity">
+                        <span>x 2</span>
+                    </div>
+                    <div style="flex-direction: column; align-items: center;">
+                        <div class="charge">
+                            <span>80.000 VND</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="function">
+                    <div class="tonggia">
+                        <div class="total col-8" style="margin-right: 100px;">
+                            <span>Oder Total:</span>
+                        </div>
+                        <div class="col-4">
+                            <span class="charge">160.000 VND</span>
+                        </div>
+                    </div>
+                    <div class="button" style="display: none;">
+                        <button onclick="clickRate(1)" class="rate">RATE</button>
+                        <button onclick="contact()" class="norbutton">CONTACT US</button>
+                        <button onclick="buyagain()" class="norbutton">BUY AGAIN</button>
+                    </div>                        
                 </div>
             </div>
         </div>
     </div>
-<script src="./javascript/mainT.js"></script>
+</div>
+<script src="./_js/mainT.js"></script>

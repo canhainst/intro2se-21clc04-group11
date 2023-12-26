@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const {create} = require('express-handlebars');
+var bodyParser = require('body-parser');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -11,13 +12,14 @@ const hbs = create({
     helpers: {
         add: (v1, v2) => (v1 + v2),
         sub: (v1, v2) => (v1 - v2),
+        multi: (v1, v2) => (v1 * v2),
         eq: (v1, v2) => (v1 == v2),
         in: (x, v1, v2) => (x >= v1 && x <= v2),
         generateArr: (v) => Array.from({ length: v }, (_, index) => index), //sinh mảng 0 -> v-1
     }
 })
 
-
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/image', express.static('./image'));
 app.engine('hbs', hbs.engine);
@@ -26,6 +28,7 @@ app.set('view engine', 'hbs');
 
 app.use('/', require('./routes_controller/index-r'));
 app.use('/account', require('./routes_controller/account-r'));
+app.use('/Cart', require('./routes_controller/cart-r'));
 
 app.get('favorite.ico', (req, res) => {
     res.status(404).send();

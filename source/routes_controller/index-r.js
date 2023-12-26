@@ -22,6 +22,7 @@ router.get("/", async (req, res, next) => {
     let commingSoonPrds = await productsM.getDeactiveBooks(4);
     for (let i = 0; i < commingSoonPrds.length; i++) {
       commingSoonPrds[i].Rating = await productsM.getStars(commingSoonPrds[i].ProductID);
+      commingSoonPrds[i].Descrip = commingSoonPrds[i].Descrip.split('\n')[0];
     }
   
     res.render("customers/HomePage", {

@@ -113,4 +113,33 @@ module.exports = class Product {
       throw err;
     }
   }  
+
+  static async getBook(ID) {
+    try {
+      let pool = await sql.connect(config);
+      let rs = await pool.query(
+        `SELECT * FROM products WHERE ProductID = ${ID}`
+      );
+      // console.log(rs);
+      await sql.close();
+      return rs.recordset[0];
+    } catch (err) {
+      console.error("Error:", 0);
+      throw err;
+    }
+  }
+
+  static async getQuantity(ProductID){
+    try{
+        let pool = await sql.connect(config);
+        let rs = await pool.query(
+            `SELECT c.Quantity FROM products c WHERE c.ProductID = ${ProductID}`
+        );
+        await sql.close();
+        return rs.recordset[0];
+    } catch (err) {
+        console.error("Error:", 0);
+        throw err;
+    }
+  }
 };
