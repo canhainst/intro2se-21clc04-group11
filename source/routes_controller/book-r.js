@@ -11,11 +11,11 @@ router.get('/:bookID', async (req, res) => {
     Book.Total = Ratings[0].TotalNum;
     //Feedback
     let Feedbacks = await feedbacksM.getFeedbacks(bookID);
-
+    
     //Format Price
     Book.PriceOut = new Intl.NumberFormat().format(Book.PriceOut);
     res.render('customers/Item.hbs', {
-        title: bookID,
+        title: Book.ProductName,
         login: true, Book, Ratings, Feedbacks,
         mainJs: () => "empty",
         navbar: () => "navbar",
