@@ -13,6 +13,7 @@ const hbs = create({
         add: (v1, v2) => (v1 + v2),
         sub: (v1, v2) => (v1 - v2),
         multi: (v1, v2) => (v1 * v2),
+        div: (v1, v2) => (v1 / v2),
         eq: (v1, v2) => (v1 == v2),
         in: (x, v1, v2) => (x >= v1 && x <= v2),
         generateArr: (v) => Array.from({ length: v }, (_, index) => index), //sinh mảng 0 -> v-1
