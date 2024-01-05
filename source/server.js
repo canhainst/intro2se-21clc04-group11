@@ -17,6 +17,7 @@ const hbs = create({
         eq: (v1, v2) => (v1 == v2),
         in: (x, v1, v2) => (x >= v1 && x <= v2),
         generateArr: (v) => Array.from({ length: v }, (_, index) => index), //sinh mảng 0 -> v-1
+        generateArr1: (v, v2) => Array.from({ length: v }, (_, index) => {index, v2}),
     }
 })
 
@@ -29,6 +30,7 @@ app.set('view engine', 'hbs');
 
 app.use('/', require('./routes_controller/index-r'));
 app.use('/account', require('./routes_controller/account-r'));
+app.use('/products', require('./routes_controller/products-r'));
 app.use('/Cart', require('./routes_controller/cart-r'));
 app.use('/book', require('./routes_controller/book-r'));
 
