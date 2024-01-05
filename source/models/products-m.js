@@ -74,7 +74,55 @@ module.exports = class Product {
               WHERE ProductName LIKE '${bookName}%' AND Status = 'active' 
               ORDER BY PriceOut DESC`;
       }
-
+      let rs = await pool.query(query);
+      // console.log(rs);
+      await sql.close();
+      return rs.recordset;
+    } catch (err){
+      console.error("Error:", err);
+      throw err;
+    }
+  }
+  static async getBookByCate(cate, filter){
+    try{
+      let pool = await sql.connect(config);
+      let query;
+      if (filter == "All"){
+        query = `SELECT * FROM products WHERE CateID = ${cate} AND Status = 'active'`;
+      }
+      else if (filter == "Latest"){
+        query = `SELECT * FROM products 
+              WHERE CateID = ${CateID} AND Status = 'active' 
+              ORDER BY PublishingYear DESC;`;
+      }
+      else if (filter == "Best Seller"){
+        query = `SELECT p.ProductID, p.ProductName, p.Author, p.Photo, COALESCE(SUM(od.quantity), 0) AS totalQuantity
+                FROM products p
+                LEFT JOIN orderdetails od ON od.ProductID = p.ProductID
+                WHERE p.CateID = ${cate} AND p.Status = 'active'
+                GROUP BY p.ProductID, p.ProductName, p.Author, p.Photo
+                ORDER BY totalQuantity DESC`
+      }
+      else if (filter == "Tittle (A to Z)"){
+        query = `SELECT * FROM products 
+              WHERE CateID = ${cate} AND Status = 'active' 
+              ORDER BY ProductName`;
+      }
+      else if (filter == "Tittle (Z to A)"){
+        query = `SELECT * FROM products 
+              WHERE CateID = ${cate} AND Status = 'active' 
+              ORDER BY ProductName DESC`;
+      }
+      else if (filter == "Price (Low to High)"){
+        query = `SELECT * FROM products 
+              WHERE CateID = ${cate} AND Status = 'active' 
+              ORDER BY PriceOut`;
+      }
+      else if (filter == "Price (High to Low)"){
+        query = `SELECT * FROM products 
+              WHERE CateID = ${cate} AND Status = 'active' 
+              ORDER BY PriceOut DESC`;
+      }
       let rs = await pool.query(query);
       // console.log(rs);
       await sql.close();

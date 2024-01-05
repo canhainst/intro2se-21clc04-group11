@@ -9,12 +9,12 @@
         {{filter}}
       </button>
       <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="/products/search?inputBook={{book}}&filter=Latest">Latest</a></li>
-        <li><a class="dropdown-item" href="/products/search?inputBook={{book}}&filter=Best Seller">Best Seller</a></li>
-        <li><a class="dropdown-item" href="/products/search?inputBook={{book}}&filter=Tittle (A to Z)">Title (A to Z)</a></li>
-        <li><a class="dropdown-item" href="/products/search?inputBook={{book}}&filter=Tittle (Z to A)">Title (Z to A)</a></li>
-        <li><a class="dropdown-item" href="/products/search?inputBook={{book}}&filter=Price (Low to High)">Price (Low to High)</a></li>
-        <li><a class="dropdown-item" href="/products/search?inputBook={{book}}&filter=Price (High to Low)">Price (High to Low)</a></li>
+        <li><a class="dropdown-item" href="/products/search?inputBook={{book}}&filter=Latest&cate={{cate}}">Latest</a></li>
+        <li><a class="dropdown-item" href="/products/search?inputBook={{book}}&filter=Best Seller&cate={{cate}}">Best Seller</a></li>
+        <li><a class="dropdown-item" href="/products/search?inputBook={{book}}&filter=Tittle (A to Z)&cate={{cate}}">Title (A to Z)</a></li>
+        <li><a class="dropdown-item" href="/products/search?inputBook={{book}}&filter=Tittle (Z to A)&cate={{cate}}">Title (Z to A)</a></li>
+        <li><a class="dropdown-item" href="/products/search?inputBook={{book}}&filter=Price (Low to High)&cate={{cate}}">Price (Low to High)</a></li>
+        <li><a class="dropdown-item" href="/products/search?inputBook={{book}}&filter=Price (High to Low)&cate={{cate}}">Price (High to Low)</a></li>
       </ul>
     </div>
   </div>
@@ -128,20 +128,20 @@
     let tmp = page;
     if (page == 1) tmp = 2;
     let raw = `<li class="page-item">
-                  <a class="page-link" href="/products/search?inputBook={{book}}&filter={{filter}}&page=${tmp - 1}">Previous</a>
+                  <a class="page-link" href="/products/search?inputBook={{book}}&filter={{filter}}&cate={{cate}}&page=${tmp - 1}">Previous</a>
                 </li>`;
     for (let i = 0; i < total; i++) {
       if (i + 1 == page) {
         raw += `<li class="page-item active"><span class="page-link">${i + 1}</span></li>`;
       }
       else {
-        raw += `<li class="page-item"><a class="page-link" href="/products/search?inputBook={{book}}&filter={{filter}}&page=${i + 1}">${i + 1}</a></li>`;
+        raw += `<li class="page-item"><a class="page-link" href="/products/search?inputBook={{book}}&cate={{cate}}&filter={{filter}}&page=${i + 1}">${i + 1}</a></li>`;
       }
     }
     tmp = page;
     if (page == total) tmp = total - 1;
     raw += `<li class="page-item">
-        <a class="page-link" href="/products/search?inputBook={{book}}&filter={{filter}}&page=${tmp + 1}">Next</a>
+        <a class="page-link" href="/products/search?inputBook={{book}}&filter={{filter}}&&cate={{cate}}&page=${tmp + 1}">Next</a>
       </li>`
     $('.pagination').html(raw);
   })
