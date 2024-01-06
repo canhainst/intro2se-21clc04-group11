@@ -1,0 +1,131 @@
+<div class="container-fluid p-0">
+    {{!-- navbar --}}
+    <div class="row nav-bar d-flex align-items-center">
+        <!-- <div class="col-1"></div> -->
+        <div class="col-1 offset-1">
+            <a href="#" class="">Product</a>
+        </div>
+        <div class="col-2 offset-3">
+            <a href="#">unit price</a>
+        </div>
+        <div class="col-1 me-5">
+            <a href="#">quantity</a>
+        </div>
+        <div class="col-2 offset-0">
+            <a href="#">total price</a>
+        </div>
+        <div class="col-1 m-0">
+            <a href="#">actions</a>
+        </div>
+    </div>
+
+    <!-- content -->
+    <div class="itemContainer">
+
+        <!-- 1 -->
+        <div class="row d-flex align-items-center pb-2 mb-3" style="background-color: #F4F1F1;">
+            <div class="col-1 ps-5 ms-3 form-check">
+                <input class="form-check-input border-black" type="checkbox" value="" id="flexCheckDefault">
+            </div>
+            <!-- product -->
+            <div class="col-1">
+                <img src="./image/bia-3d 1.png" alt="" class="mt-1" style="width: 8rem; height: 11rem;">
+            </div>
+            <div class="col-2 ms-5">
+                <span class="text-uppercase fw-bold greenTitle ls-wide">content bạc tỷ</span>
+                <p class="">
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="far fa-star star"></i>
+                </p>
+                <p class="mb-0">Category:</p>
+                <p class="mt-0">Sách Content</p>
+            </div>
+            <!-- unit price -->
+            <div class="col-2 ms-2 text-center">
+                <p class="fw-bold fs-5">40.000 VNĐ</p>
+            </div>
+            <!-- quantity -->
+            <div class="col-2 ps-4">
+                <button type="button" id="item1-sub" class="btn border-dark" style="background-color: #D9D9D9;"><span
+                        class="fw-bold">-</span></button>
+                <button type="button" id="item1-quant" class="btn border-dark w-25"
+                    style="background-color: #D9D9D9;"><span class="small">2</span></button>
+                <button type="button" id="item1-plus" class="btn border-dark" style="background-color: #D9D9D9;"><span
+                        class="fw-bold">+</span></button>
+            </div>
+            <!-- total price -->
+            <div class="col-2 text-start">
+                <p class="fw-bold fs-4 text-danger mt-3">80.000 VNĐ</p>
+            </div>
+            <!-- action -->
+            <div class="col-1">
+                <button type="button" class="btn p-2" style="background-color: #3D592C; color: #FFF;"><span
+                        class="small">DELETE</span></button>
+            </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="row d-flex align-items-center pb-2 mb-1" style="background-color: #F4F1F1;">
+            <div class="col-1 ps-5 ms-3 form-check">
+                <input class="form-check-input border-black" type="checkbox" value="" id="flexCheckDefault">
+            </div>
+            <!-- product -->
+            <div class="col-1">
+                <img src="./image/bia-3d 1.png" alt="" class="mt-1" style="width: 8rem; height: 11rem;">
+            </div>
+            <div class="col-2 ms-5">
+                <span class="text-uppercase fw-bold greenTitle ls-wide">vầng trăng máu</span>
+                <p class="">
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="fas fa-star star"></i>
+                    <i class="far fa-star star"></i>
+                </p>
+                <p class="mb-0">Category:</p>
+                <p class="mt-0">Sách Trinh Thám</p>
+            </div>
+            <!-- unit price -->
+            <div class="col-2 ms-2 text-center">
+                <p class="fw-bold fs-5">50.000 VNĐ</p>
+            </div>
+            <!-- quantity -->
+            <div class="col-2 ps-4">
+                <button type="button" id="item2-sub" class="btn border-dark" style="background-color: #D9D9D9;"><span
+                        class="fw-bold">-</span></button>
+                <button type="button" id="item2-quant" class="btn border-dark w-25"
+                    style="background-color: #D9D9D9;"><span class="small">1</span></button>
+                <button type="button" id="item2-plus" class="btn border-dark" style="background-color: #D9D9D9;"><span
+                        class="fw-bold">+</span></button>
+            </div>
+            <!-- total price -->
+            <div class="col-2 text-start">
+                <p class="fw-bold fs-4 text-danger mt-3">50.000 VNĐ</p>
+            </div>
+            <!-- action -->
+            <div class="col-1">
+                <button type="button" class="btn p-2" style="background-color: #3D592C; color: #FFF;"><span
+                        class="small">DELETE</span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- bill calc -->
+    <div id="billCalc" class="row mb-5">
+        <div class="row d-flex align-items-center pt-3 pb-3" style="background-color: #D7BEBE;">
+            <div class="col-1 ps-5 ms-3 form-check">
+                <input class="form-check-input border-black" type="checkbox" value="" id="flexCheckDefault">
+            </div>
+            <div class="col-2">Select All (2)</div>
+            <div class="col-2 fs-5 fw-bolder offset-2 text-end">Total Price</div>
+            <div class="col-2 text-danger fs-4 fw-bold"> 50.000 VNĐ</div>
+            <div class="col-2">
+                <button type="button" class="btn p-2" style="background-color: #EE440F; color: #FFF;"><span
+                        class="small fw-bold">CHECK OUT</span></button>
+            </div>
+        </div>
+    </div>
+</div>
