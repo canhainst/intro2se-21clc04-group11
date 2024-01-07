@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const productsM = require("../models/products-m");
+const checkoutM = require("../models/checkout-m");
 
 //get HomePage
 router.get("/", async (req, res, next) => {
@@ -33,7 +34,40 @@ router.get("/", async (req, res, next) => {
       navbar: () => "navbar",
       header: () => "header_search",
     });
-  
+});
+
+router.get('/checkout', async (req, res, next) => {
+  let OrderID = await checkoutM.getID() + 1;
+  let today = new Date();
+  let day = today.getDate();
+  let month = today.getMonth() + 1; // Tháng bắt đầu từ 0, nên cộng thêm 1
+  let year = today.getFullYear();
+
+  checkoutM.CreateNewOrder(51);
+
+  res.render('customers/Checkout',{
+      day: day,
+      month: month,
+      year: year,
+      OrderID: OrderID,
+      title: 'Checkout',
+      text: 'Check Out',
+      login: true,
+      mainJs: () => 'empty',
+      navbar:()=>'empty',
+      header: () => 'header_text',
+  })
+});
+
+router.get('/done', async (req, res, next) => {
+  res.render('customers/Done' ,{
+      title: 'Done',
+      text: 'Done',
+      login: true,
+      mainJs: () => 'empty',
+      navbar:()=>'empty',
+      header: () => 'header_text',
+  })
 });
 
 module.exports = router;

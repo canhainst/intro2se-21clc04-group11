@@ -3,116 +3,219 @@
         font-size: 16px;
         font-weight: 600;
     }
-
-    .checkedStar {
+    .messedStar {
         color: orange;
     }
 </style>
-<table style="width: 100%;">
-    <tr style="background-color: #3D5940; color: #FFFFFF;">
-        <th></th>
-        <th>Product Ordered</th>
-        <th>UNIT PRICE</th>
-        <th>AMOUNT</th>
-        <th>ITEM SUBTOTAL</th>
-    </tr>
-    <tr style="background-color: #F4F1F1;">
-        <td>1</td>
-        <td>
-            <div class="d-flex align-items-center">
-                <img src="./image/NhaLanhDaoTuongLai.jpeg" style="width: 110px; padding: 20px;">
-                <div>
-                    <div style="color: #173F5F;">NHÀ LÃNH ĐẠO TƯƠNG LAI</div>
-                    <div class="rateStars">
-                        <span class="fa fa-star checkedStar"></span>
-                        <span class="fa fa-star checkedStar"></span>
-                        <span class="fa fa-star checkedStar"></span>
-                        <span class="fa fa-star checkedStar"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                    <div>Category</div>
-                    <div>Sách Kinh Tế</div>
-                </div>
-            </div>
-        </td>
-        <td>50.000VNĐ</td>
-        <td>1</td>
-        <td style="color: #D91010;">50.000VNĐ</td>
-    </tr>
+<table id="productListContainer" style="width: 100%;">
 </table>
-<br>
 <table style="width: 100%;">
     <tr style="background-color: #3D5940; color: #FFFFFF;">
-        <th colspan="2" style="padding-left: 33px;">Order Confirmation</th>
+        <th colspan="2" style="font-size: 20px; padding-left: 5%;">Order Confirmation</th>
     </tr>
     <tr>
         <td style="width: 50%;">
-            <div style="color: #AA0808; padding-left: 33px;">Delivery Address</div>
-            <div class="row">
+            <div style="color: #AA0808; padding-left: 10%; font-size: 30px;">Delivery Address</div>
+            <div class="row" style="font-size: 20px;">
                 <div class="col-1"></div>
-                <div class="col-2">
+                <div class="col-3">
                     <div>Name</div>
                 </div>
-                <div class="col-5">Doan Khoa</div>
+                <div class="col-5" id="CustomerName">Doan Khoa</div>
             </div>
-            <div class="row">
+            <div class="row" style="font-size: 20px;">
                 <div class="col-1"></div>
-                <div class="col-2">
+                <div class="col-3">
                     <div>Phone Number</div>
                 </div>
-                <div class="col-4">0123456789</div>
+                <div class="col-4" id="CustomerNumber">0123456789</div>
             </div>
-            <div class="row">
+            <div class="row" style="font-size: 20px;">
                 <div class="col-1"></div>
-                <div class="col-2">
+                <div class="col-3">
                     <div>Address</div>
                 </div>
 
-                <div class="col-5">123 Thai Tue, W4, D5, HCM city</div>
+                <div class="col-5" id="CustomerAddress">123 Thai Tue, W4, D5, HCM city</div>
             </div>
-            <div class="col-6 mx-auto">
-                <button type="button" class="btn btn-success rounded-0"
-                    style="width: 322px; background-color: #3D592C;">Choose Another Address</button>
+            <div class="col-6 mx-auto mt-3">
+                <button type="button" onclick="TypeAddress()" class="btn btn-success rounded-0" id="ChooseAddress"
+                    style="width: 322px; background-color: #3D592C; font-size: 20px; margin-bottom: 10px;">Choose Another Address</button>
+                <button type="button" onclick="ConfirmAddress()" class="btn btn-success rounded-0" id="ConfirmAddress"
+                    style="width: 322px; background-color: #3D592C; display: none; font-size: 20px; margin-bottom: 10px;">Confirm this address</button>
             </div>
 
 
         </td>
-        <td style="vertical-align: top;">
-            <span style="color: #AA0808;">ORDER ID:</span>
-            <span>231001A01</span>
-        </td>
-    </tr>
-    <tr>
-        <td></td>
-        <td><span style="color: #AA0808;">Total Payment</span>
-            <div class="row">
-                <div class="col-3">Merchandise Subtotal:</div>
-                <div class="col-1">50.000VNĐ</div>
+        <td style="vertical-align: top; font-size: 30px;">
+            <div style="margin-bottom: 30px;">
+                <span style="color: #AA0808;">ORDER ID:</span>
+                <span>{{year}}{{month}}{{day}}A</span>
+                <span id="OrderID">{{OrderID}}</span>
             </div>
-            <div class="row">
-                <div class="col-3">Shipping Total:</div>
-                <div class="col-1">10.000VNĐ</div>
+
+            <span style="color: #AA0808; font-size: 30px;">Total Payment</span>
+            <div class="row" style="font-size: 20px;">
+                <div class="col-5">Merchandise Subtotal:</div>
+                <div class="col-3" id="MerchandiseSubtotal"></div>
+                <div class="col-1">VNĐ</div>
             </div>
-            <div class="row">
-                <div class="col-3">Total Payment:</div>
-                <div class="col-1">60.000VNĐ</div>
+            <div class="row" style="font-size: 20px;">
+                <div class="col-5">Shipping Total:</div>
+                <div class="col-3">10000</div>
+                <div class="col-1">VNĐ</div>
             </div>
         </td>
-        </div>
     </tr>
-    <tr style="background-color: #D7BEBE; height: 60px;">
+    <tr style="background-color: #D7BEBE; height: 100px; margin-top: 30px;">
         <td></td>
         <td>
-            <div class="row">
-                <div class="col-2" style="vertical-align: bottom; line-height: 38px"><span
-                        class="align-middle">Total(1)</span></div>
-                <div class="col-2" style="color: #AA0808; vertical-align: bottom; line-height: 38px"><span
-                        class="align-middle">60.000VNĐ</span></div>
-                <div class="col-2" style="vertical-align: bottom; line-height: 38px">
-                    <button type="button" class="btn btn-danger rounded-0 border"
+            <div class="row" style="font-size: 25px;">
+                <div class="col-5" style="vertical-align: bottom; line-height: 38px"><span
+                        class="align-middle" id="TotalQuantity"></span></div>
+                <div class="col-3" style="color: #AA0808; vertical-align: bottom; line-height: 38px; font-weight: 600;"><span
+                        class="align-middle" id="TotalPayment"></span></div>
+                <div class="col-1" style="color: #AA0808; font-weight: 600;">VNĐ</div>
+            </div>
+            <div class="row" style="font-size: 25px;">
+                <div class="col-5"></div>
+                <div class="col-4 row">
+                    <button type="button" class="btn btn-danger rounded-0 border" onclick="Purchase(51)"
                         style="background-color: #EE440F;">PURCHASE</button>
                 </div>
             </div>
         </td>
     </tr>
 </table>
+<script>
+    window.onload = function() {
+        var selectedItems = JSON.parse(localStorage.getItem("selectedItems"));
+        let MerchandiseSubtotal = parseInt(JSON.parse(localStorage.getItem("MerchandiseSubtotal")));
+        let TotalPayment = MerchandiseSubtotal + 10000;
+
+        var productListContainer = document.getElementById('productListContainer');
+        var productListHTML = `<tr style="background-color: #3D5940; color: #FFFFFF; text-align: center; font-size: 20px;">
+                                <th></th>
+                                <th style="text-align: start;">Product Ordered</th>
+                                <th>UNIT PRICE</th>
+                                <th>AMOUNT</th>
+                                <th>ITEM SUBTOTAL</th>
+                            </tr>`;
+        
+        let index = 1;
+        selectedItems.forEach(function(product) {
+            productListHTML += `<tr  style="background-color: #F4F1F1; text-align: center;">`
+                productListHTML += `<td style="padding-left: 30px">`+ index +`</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="`+ product.img +`" style="width: 110px; padding: 20px;">
+                                            <div style="text-align: start;">
+                                                <div style="color: #173F5F; font-size: 20px; color: black;">`+ product.ProductName +`</div>
+                                                <div>Category: `+ product.Category +` </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="font-size: 20px;">`+ product.UnitPrice +`VNĐ</td>
+                                    <td style="font-size: 20px;">`+ product.Quantity +`</td>
+                                    <td style="color: #D91010; font-size: 25px; font-weight: 600;">`+ product.TotalPrice + ` VNĐ</td>`;
+            productListHTML += `</tr>`
+            index += 1;
+        });
+        productListHTML += '</tr>';
+        productListContainer.innerHTML = productListHTML;
+        document.getElementById("TotalQuantity").innerHTML = `Total Payment (${index-1})`
+        document.getElementById("MerchandiseSubtotal").innerHTML = `${MerchandiseSubtotal}`
+        document.getElementById("TotalPayment").innerHTML = `${TotalPayment}`
+    };
+    
+    function TypeAddress(){
+        document.getElementById("CustomerName").innerHTML = 
+            `<div class="input-group mb-3">
+                <input type="text" class="form-control" id="CustomerNameInput" placeholder="Type consignee name" aria-label="consignee name">
+            </div>`    
+        document.getElementById("CustomerNumber").innerHTML = 
+            `<div class="input-group mb-3">
+                <input type="text" class="form-control" id="CustomerNumberInput" placeholder="Type your number" aria-label="Number phone">
+            </div>`    
+        document.getElementById("CustomerAddress").innerHTML = 
+            `<div class="input-group mb-3">
+                <input type="text" class="form-control" id="CustomerAddressInput" placeholder="Type your address" aria-label="Address">
+            </div>`
+
+        document.getElementById("ChooseAddress").style.display = "none"    
+        document.getElementById("ConfirmAddress").style.display = "block"                      
+    }
+
+    function ConfirmAddress(){
+        let ConsigneeName = document.getElementById('CustomerNameInput').value;
+        let CustomerNumber = document.getElementById('CustomerNumberInput').value;
+        let CustomerAddress = document.getElementById('CustomerAddressInput').value;
+
+        if(ConsigneeName != "" & CustomerNumber != "" & CustomerAddress != ""){
+            console.log(ConsigneeName);
+            document.getElementById("CustomerName").innerHTML = `${ConsigneeName}`;
+            document.getElementById("CustomerNumber").innerHTML = `${CustomerNumber}`;
+            document.getElementById("CustomerAddress").innerHTML = `${CustomerAddress}`;
+
+            document.getElementById("ChooseAddress").style.display = "block";   
+            document.getElementById("ConfirmAddress").style.display = "none";
+        }
+        else{
+            let mess = [];
+            if (ConsigneeName === "") {
+                mess.push('Recipient name is required');
+            }
+            if (CustomerNumber === "") {
+                mess.push('Recipient phone number is required');
+            }
+            if (CustomerAddress === "") {
+                mess.push('Recipient address is required');
+            }
+            if (mess.length > 0) {
+                // Có lỗi, thực hiện các hành động, ví dụ: hiển thị thông báo lỗi
+                alert("Please provide the following information:\n" + mess.join('\n'));
+            }
+        }
+    }
+
+    function deletePrd(CustomerID, ProductID){
+        $.post('/Cart', {CustomerID: CustomerID, ProductID: ProductID, quantity: 0})
+        .done((rs) => {
+            console.log(rs);
+        })
+        .fail((rs) => console.log(rs))
+    }
+
+    function Purchase(BuyerID){
+        let BookArray = [];
+        let selectedItems = JSON.parse(localStorage.getItem("selectedItems"));
+        selectedItems.forEach(function(product) {
+            BookArray.push({ProductID: product.ProductID, Quantity: product.Quantity, Instock: product.Instock});
+        });
+        let TotalPayment = parseInt(document.getElementById("TotalPayment").innerHTML);
+        let OrderID = parseInt(document.getElementById("OrderID").innerHTML);
+        const currentDate = new Date();
+
+        // Lấy các thành phần của ngày và giờ
+        const year = currentDate.getFullYear();
+        const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+        const day = currentDate.getDate().toString().padStart(2, '0');
+        const hours = currentDate.getHours().toString().padStart(2, '0');
+        const minutes = currentDate.getMinutes().toString().padStart(2, '0');
+        const seconds = currentDate.getSeconds().toString().padStart(2, '0');
+
+        // Tạo chuỗi theo định dạng mong muốn
+        const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+
+        const bookArrayJSON = JSON.stringify(BookArray);
+
+        // Cập nhật đơn đơn xuống database
+        $.post('/checkout/purchase', {OrderID, BuyerID, BookArray: bookArrayJSON, TotalPayment, formattedDate})
+        .done((rs) => {
+            console.log(rs);
+        })
+        .fail((rs) => console.log("err1", rs));
+
+        window.location.href = "/done";
+    }
+</script>

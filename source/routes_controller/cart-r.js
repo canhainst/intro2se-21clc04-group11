@@ -13,6 +13,7 @@ router.get('/', async (req, res, next) => {
         prds[i].Rating = await productsM.getStars(prds[i].ProductID);
         prds[i].Cate = (await cart.getCategory(prds[i].CateID)).CateName;
         prds[i].CartQuantity = await CartQuantity[i];
+        prds[i].Instock = (await productsM.getQuantity(prds[i].ProductID)).Quantity;
     }
     res.render('customers/Cart' ,{
         prds,

@@ -29,6 +29,7 @@ app.set('view engine', 'hbs');
 app.use('/', require('./routes_controller/index-r'));
 app.use('/account', require('./routes_controller/account-r'));
 app.use('/Cart', require('./routes_controller/cart-r'));
+app.use('/checkout', require('./routes_controller/checkout-r'))
 
 app.get('favorite.ico', (req, res) => {
     res.status(404).send();

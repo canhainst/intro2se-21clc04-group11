@@ -275,3 +275,69 @@
         </div>
       </div>
     </div>
+
+  {{!-- Chat box --}}
+  <div class="CustomerChat">
+    <div id="CustomerFrameChat" class="d-flex align-items-center">
+      <img src="https://robohash.org/idlaudantiumdeserunt.png?size=50x50&set=set1" style="scale: 120%; border-radius: 50%; border: 1px solid black; background-color: green;">
+      <div style="margin-left: 15px;">
+        <div style="background-color: #f4fbf3; width: 290px; border-radius: 20px 20px 20px 0; padding: 20px; border: 1px solid gray;">
+          <p style="font-size: 18px; font-weight: 600;">Welcome to our website</p>
+          <p>Nice to meet you! If you have any question about our services, feel free to contact us.</p>
+        </div>
+        <button style="width: 290px;" class="ButtonCustomerChat" onclick="CustomerChat()">Chat with us</button>
+      </div>
+    </div>
+    <div id="CustomerChatBox" class="d-none">
+      <div class="row align-items-center" style="background-color: burlywood; width: 290px; border-radius: 10px 10px 0 0; border: 1px solid gray; border-bottom: 0;">
+        <div class="col-2">
+          <img src="https://robohash.org/idlaudantiumdeserunt.png?size=50x50&set=set1" style="scale: 80%; border-radius: 50%; border: 1px solid black; background-color: green;">
+        </div>
+        <div class="col-8">
+          <p style="margin-left: 10px; font-size: 20px; margin-top: 10px;">ADMIN</p>
+        </div>
+        <div class="col-1">
+          <button style="border: 0; background-color: burlywood" onclick="CustomerCloseChat()">X</button>
+        </div>
+        
+      </div>
+      <div id="CustomerBoxChat">
+        <span class="CustomerBoxChatMess AdminMess">Chào bạn</span>
+        <span class="CustomerBoxChatMess AdminMess">Bạn có phải là người đăng cái tus này không ạ?</span>
+        <p class="CustomerBoxChatMess CustomerMess">Bạn nói gì ạ?</p>
+        <p class="CustomerBoxChatMess CustomerMess">Cái đó là cái chuyện của người ta ha.</p>
+      </div>
+      <div class="input-group">
+        <input id="message" type="text" class="form-control" placeholder="What do you need?" aria-describedby="button-addon2" style="border-radius: 0 0 0 10px; border: 1px solid gray">
+        <button onclick="sendMess()" class="btn btn-outline-secondary" type="button" id="button-addon2" style="background-color: white; border-radius: 0 0 10px 0;"><i class="far fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+
+<script>
+  function CustomerChat(){
+    let a = document.getElementById("CustomerFrameChat");
+      a.classList.add("d-none");
+    let b = document.getElementById("CustomerChatBox");
+      b.classList.remove("d-none");
+  }
+  function CustomerCloseChat(){
+    let a = document.getElementById("CustomerChatBox");
+      a.classList.add("d-none");
+    let b = document.getElementById("CustomerFrameChat");
+      b.classList.remove("d-none");
+  }
+  function sendMess(){
+    let a = document.getElementById("message");
+    let b = document.getElementById("CustomerBoxChat").innerHTML;
+    b += `<p class="CustomerBoxChatMess CustomerMess">`+ a.value +`</p>`;
+    document.getElementById("CustomerBoxChat").innerHTML = b;
+    a.value = "";
+  }
+  $('#message').keypress(function(event){
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if (keycode == '13') {
+      sendMess();
+    }
+  });
+</script>
