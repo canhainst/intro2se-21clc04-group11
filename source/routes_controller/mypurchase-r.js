@@ -33,7 +33,11 @@ router.post('/', async (req, res) => {
     let proList = await ordersM.getProductList(OrderID);
     let Rating = star;
     let Feedback = Description;
+    // USERID INCOMPLETED DFASKJFSAJFDHASD
+    // FDASJFLKASFASFASDF
     let UserID = '3';
+    //FDASFASFASF
+    // FDASKLFAJSFLASFD ÁLGNA
     for(let i = 0; i < proList.length; i++){
         feedbacksM.addFeedback('1', proList[i].ProductID, UserID, Feedback, Rating);
     }
