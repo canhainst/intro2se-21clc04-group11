@@ -2,10 +2,14 @@ require('dotenv').config();
 const express = require('express');
 const {create} = require('express-handlebars');
 var bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const flash = require('connect-flash');
 
 const app = express();
 const port = process.env.PORT || 3000;
 const CustomError = require('./modules/customerr');
+const secret = 'mysecretkey';
 
 const hbs = create({
     extname: '.hbs',
@@ -28,6 +32,19 @@ app.engine('hbs', hbs.engine);
 app.set('views', './views');
 app.set('view engine', 'hbs');
 
+app.use(session({
+    secret: secret,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
+
+app.use(cookieParser(secret));
+app.use(express.urlencoded({extended: true}));
+app.use(flash());
+require('./modules/passport')(app);
+
+app.use('/admin',require('./routes_controller/admin-r'));
 app.use('/', require('./routes_controller/index-r'));
 app.use('/account', require('./routes_controller/account-r'));
 app.use('/products', require('./routes_controller/products-r'));
