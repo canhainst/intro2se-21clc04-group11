@@ -41,67 +41,73 @@
             <div class="title">
                 <span style="margin-left: 45px;">Add Product</span>
             </div>
-            <div class="container text-end mt-5">
-                <form action="" method="post">
+            <div class="container-fluid text-end mt-5">
+                <form action="/admin/warehouse/addProduct" method="post" enctype="multipart/form-data"> 
                     <div class="mb-3 row offset-1">
                         <label for="inputBookName" class="col-sm-3 col-form-label ps-5">BOOK NAME</label>
                         <div class="col-sm-3">
-                            <input type="text" class="form-control" id="inputBookName" placeholder="Enter name"
+                            <input type="text" name="bookName" class="form-control" id="inputBookName" placeholder="Enter name"
                                 required>
                         </div>
                     </div>
                     <div class="mb-3 row offset-1">
                         <label for="inputAuthor" class="col-sm-3 col-form-label ps-5">AUTHORS</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" id="inputAuthor" placeholder="Enter name" require>
+                            <input type="text" name="author" class="form-control" id="inputAuthor" placeholder="Enter name" require>
                         </div>
                     </div>
                     <div class="mb-3 row offset-1">
                         <label for="inputCategories" class="col-sm-3 col-form-label ps-5">CATEGORY</label>
                         <div class="col-sm-7">
-                            <select name="inputCategories" class="form-select form-control" required>
+                            <select name="category" class="form-select form-control" required>
                                 <option value="">Choose category</option>
-                                <option value="content">Sách Content</option>
-                                <option value="detective">Sách Trinh thám</option>
-                                <option value="education">Sách Giáo dục</option>
-                                <option value="business">Sách Kinh doanh</option>
-                                <option value="other">Sách Khác</option>
+                                <option value="1">Novel</option>
+                                <option value="2">Economics</option>
+                                <option value="3">Science</option>
+                                <option value="5">History</option>
+                                <option value="7">Detective</option>                                
                             </select>
                         </div>
                     </div>
                     <div class="mb-3 row offset-1">
                         <label for="inputPubCompany" class="col-sm-3 col-form-label">PUBLISHING COMPANY</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" id="inputPubCompany" placeholder="Enter name"
+                            <input type="text" name="pubCompany" class="form-control" id="inputPubCompany" placeholder="Enter name"
                                 required>
                         </div>
                     </div>
                     <div class="mb-3 row offset-1">
                         <label for="inputPubYear" class="col-sm-3 col-form-label">PUBLISHING YEAR</label>
                         <div class="col-sm-7">
-                            <input type="number" class="form-control" id="inputPubYear" placeholder="Enter year"
+                            <input type="number" name="pubYear" class="form-control" id="inputPubYear" placeholder="Enter year"
                                 required>
                         </div>
                     </div>
                     <div class="mb-3 row offset-1">
                         <label for="inputImPrice" class="col-sm-3 col-form-label ps-5">IMPORT PRICE</label>
                         <div class="col-sm-7">
-                            <input type="number" class="form-control" id="inputImPrice" placeholder="Enter price"
+                            <input type="number" name="inPrice" class="form-control" id="inputImPrice" placeholder="Enter price"
                                 required>
                         </div>
                     </div>
                     <div class="mb-3 row offset-1">
                         <label for="inputQuant" class="col-sm-3 col-form-label ps-5">QUANTITIES</label>
                         <div class="col-sm-7">
-                            <input type="number" class="form-control" id="inputQuant" placeholder="Enter quantities"
+                            <input type="number" name="quantity" class="form-control" id="inputQuant" placeholder="Enter quantities"
                                 required>
                         </div>
                     </div>
                     <div class="mb-3 row offset-1">
                         <label for="inputDesc" class="col-sm-3 col-form-label ps-5">DESCRIPTION</label>
                         <div class="col-sm-7">
-                            <textarea class="form-control" id="inputDesc" rows="3"
+                            <textarea class="form-control" name="des" id="inputDesc" rows="3"
                                 placeholder="Enter description"></textarea>
+                        </div>
+                    </div>
+                    <div class="mb-3 row offset-1">
+                        <label for="inputImg" class="col-sm-3 col-form-label ps-5">IMAGE</label>
+                        <div class="col-sm-7">
+                            <input name="img" class="form-control" type="file" id="inputImg">
                         </div>
                     </div>
                     <div class="col-12 text-center mt-4">
@@ -113,3 +119,11 @@
         </div>
     </div>
 </div>
+<script>
+     $(()=>{
+        $("#inputImg").fileinput({theme: 'fa5', showUpload: false, previewFileType: 'any'});
+        if (`{{nofi}}`){
+        alert(`{{nofi}}`);
+    }
+    })
+</script>

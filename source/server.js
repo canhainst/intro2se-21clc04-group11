@@ -34,6 +34,7 @@ app.use('/products', require('./routes_controller/products-r'));
 app.use('/Cart', require('./routes_controller/cart-r'));
 app.use('/book', require('./routes_controller/book-r'));
 app.use('/mypurchase', require('./routes_controller/mypurchase-r.js'));
+app.use('/admin/warehouse', require('./routes_controller/admin-warehouse-r'));
 
 app.get('favorite.ico', (req, res) => {
     res.status(404).send();
