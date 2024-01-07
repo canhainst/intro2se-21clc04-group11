@@ -6,10 +6,9 @@ const WarehouseModel = require('../models/WarehouseModel');
 router.get('/', async (req, res) => {
     console.log('Route /warehouse is called');
     res.render('admin/Warehouse', {
-        title: 'Warehouse',
-        mainCss: () => '_css/styleT',
+        layout: 'admin',
         mainJs: () => '_js/mainT',
-        footer: () => 'empty'
+        title: 'Warehouse',
     });
 });
 
@@ -17,9 +16,8 @@ router.get('/edit', async (req, res) => {
     console.log('Route /editproduct is called');
     res.render('admin/EditProduct', {
         title: 'EditProduct',
-        mainCss: () => '_css/styleE',
+        layout: 'admin',
         mainJs: () => '_js/mainT',
-        footer: () => 'empty'
     });
 });
 

@@ -6,9 +6,8 @@ router.get('/', async (req, res) => {
     console.log('Route /management is called');
     res.render('admin/chatbox', {
         title: 'Chatbox Admin',
-        mainCss: () => '_css/styleChatBox',
-        mainJs: () => 'empty',
-        footer: () => 'empty'
+        layout: 'admin',
+        mainJs: () => '_js/mainT',
     });
 });
 
