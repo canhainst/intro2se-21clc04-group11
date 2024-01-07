@@ -64,7 +64,7 @@
                 style="padding-left: 10px;height: 50px;background-color: #E7E7E7;border-radius: 10px;">
                 <span>DAILY REVENUE STATISTICS IN MONTH: </span>
                 <select class="rounded-3 btn btn-light btn-sm ms-2" name="month" id="monthSelect">
-                    <option id="monthOption"value="{{Month}}" selected>{{Month}}</option>
+                    <option id="monthOption" value="{{Month}}" selected>{{Month}}</option>
                 </select>
             </div>
             <div class="d-flex align-items-center" style="height: 80%;width: 75%;margin-left: 120px; margin-top: 3%;">
@@ -76,7 +76,7 @@
 <script>
     const today = new Date();
     let yearSelect = document.getElementById('yearSelect');
-    for (let year = 2000; year <= today.getFullYear(); year++) {
+    for (let year = 2010; year <= today.getFullYear(); year++) {
         let option = document.createElement('option');
         option.text = year;
         option.value = year;
@@ -97,7 +97,7 @@
             let month = document.getElementById('monthOption').value;
             if (year == today.getFullYear()) {
                 if (month > (today.getMonth() + 1)) {
-                    month = today.getMonth() + 1; 
+                    month = today.getMonth() + 1;
                 }
             }
             window.location.href = `/admin?year=${year}&month=${month}`;
@@ -118,13 +118,24 @@
 <script>
     // draw chart
     document.addEventListener('DOMContentLoaded', function () {
-        // Sample data
+        const monthName = ['January','February','March','April','May','June',
+                            'July','August','September','October','November','December'];
+
+        let MonthlyList = JSON.parse(`{{{MonthlyList}}}`.replace(/(&quot\;)/g,"\""));
+        let MonthlyLabels = new Array();
+        let MonthlyValues = new Array();
+
+        for (let index = 0; index < MonthlyList.length; index++) {
+            MonthlyLabels.push(monthName[MonthlyList[index].month - 1]);
+            MonthlyValues.push(MonthlyList[index].price);
+        }
+
         let data = {
-            labels: ['January', 'February', 'March', 'April', 'May'],
+            labels: MonthlyLabels,
             datasets: [{
                 label: 'Monthly Sales',
                 borderColor: 'rgb(75, 192, 192)',
-                data: [65, 59, 80, 81, 56],
+                data: MonthlyValues,
                 fill: false
             }]
         };
@@ -154,14 +165,22 @@
             options: options
         });
     });
-        document.addEventListener('DOMContentLoaded', function () {
-        // Sample data
+    document.addEventListener('DOMContentLoaded', function () {
+        let DailyList = JSON.parse(`{{{DailyList}}}`.replace(/(&quot\;)/g,"\""));
+        let DailyLabels = new Array();
+        let DailyValues = new Array();
+
+        for (let index = 0; index < DailyList.length; index++) {
+            DailyLabels.push(DailyList[index].day);
+            DailyValues.push(DailyList[index].price);
+        }
+
         let data = {
-            labels: ['January', 'February', 'March', 'April', 'May'],
+            labels: DailyLabels,
             datasets: [{
                 label: 'Daily Sales',
                 borderColor: 'rgb(75, 192, 192)',
-                data: [65, 59, 80, 81, 56],
+                data: DailyValues,
                 fill: false
             }]
         };
