@@ -34,7 +34,8 @@
             <div style="color: #173F5F;
             font-size: 60px;
             font-style: normal;
-            font-weight: 600;">
+            font-weight: 600;"
+            id="ProductName">
             {{Book.ProductName}}
         </div>
             <div style="color: #000;
@@ -46,7 +47,7 @@
                 <br>
                 <span>Publisher: {{Book.PublishingCompany}}</span>
                 <br>
-                <span style="color: #EE4E4E;  font-size: 60px;">{{Book.PriceOut}} VNĐ</span>
+                <span style="color: #EE4E4E;  font-size: 60px;" id="PriceOut">{{Book.PriceOut}}</span><span style="color: #EE4E4E;  font-size: 60px;"> VNĐ</span>
                 <div class="rateStars" style="font-size: 32px;">
                     {{#each (generateArr Book.Rating)}}
                     <i class="fas fa-star star"></i>
@@ -59,9 +60,9 @@
                 <div class="d-flex">
                     <span style="margin-right: 30px;">Quantity</span>
                     <div class="w-50">
-                        <button type="button" id="item1-sub" class="btn border-dark" style="background-color: #D9D9D9;"><span class="fw-bold">-</span></button>
-                        <button type="button" id="item1-quant" class="btn border-dark" style="background-color: #D9D9D9;"><span class="small">1</span></button>
-                        <button type="button" id="item1-plus" class="btn border-dark" style="background-color: #D9D9D9;"><span class="fw-bold">+</span></button>
+                        <button type="button" id="item1-sub" class="btn border-dark" style="background-color: #D9D9D9;" onclick="sub()"><span class="fw-bold">-</span></button>
+                        <button type="button" class="btn border-dark" style="background-color: #D9D9D9;"><span class="small" id="item1-quant" >1</span></button>
+                        <button type="button" id="item1-plus" class="btn border-dark" style="background-color: #D9D9D9;"><span class="fw-bold" onclick="plus()">+</span></button>
                     </div>
                 </div>
                 <div style="padding: 10px; padding-left: 0px;">
@@ -72,7 +73,8 @@
                     border: 3px solid #000;
                     background: #3D5940;
                     width: 300px;
-                    height: 50px;">
+                    height: 50px;"
+                    onclick="buyNow()">
                     BUY NOW
                     </button>
                 </div>
@@ -204,4 +206,52 @@
         </div>
     </div>
     {{/each}}
+    {{!-- Hidden --}}
+    <div id="Instock" style="display: none;">{{Book.Quantity}}</div>
+    <div id="Category" style="display: none;">{{Book.CateName}}</div>
+    <div id="ProductID" style="display: none;">{{Book.ProductID}}</div>
+    <div id="img" style="display: none;">{{Book.Photo}}</div>
 </body>
+<script>
+    function sub() {
+        let quantity = parseInt(document.querySelector(`#item1-quant`).innerHTML) - 1;
+        if (quantity > 0) {
+            document.querySelector(`#item1-quant`).innerHTML = quantity;
+        } 
+    }
+    function plus() {
+        let quantity = parseInt(document.querySelector(`#item1-quant`).innerHTML) + 1;
+        if (quantity > 0) {
+            document.querySelector(`#item1-quant`).innerHTML = quantity;
+        } 
+    }
+    function buyNow() {
+        const selectedItems = [];
+        let ProductName = document.getElementById("ProductName").innerHTML;
+        ProductName = ProductName.trim();
+        let Category = document.getElementById("Category").innerHTML;
+        let ProductID = document.getElementById("ProductID").innerHTML;
+        let img = document.getElementById("img").innerHTML;
+        let PriceOut = document.getElementById("PriceOut").innerHTML;
+        let quantity = document.getElementById("item1-quant").innerHTML;
+        let TotalPrice = parseInt(quantity) * parseInt(PriceOut) + 10000;
+        let Instock = document.getElementById("Instock").innerHTML;
+        selectedItems.push({ProductName: ProductName,
+                                        Category: Category,
+                                        ProductID: ProductID,
+                                        img: img,
+                                        UnitPrice: PriceOut,
+                                        Quantity: quantity,
+                                        TotalPrice: TotalPrice,
+                                        Instock: Instock
+                                    });
+                                    
+        localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
+        let MerchandiseSubtotal = TotalPrice;
+        localStorage.setItem("MerchandiseSubtotal", JSON.stringify(MerchandiseSubtotal));
+        window.location.href = "/checkout";
+    }
+    function addToCart() {
+        
+    }
+</script>

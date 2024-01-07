@@ -168,11 +168,15 @@ module.exports = class Product {
     try {
       let pool = await sql.connect(config);
       let rs = await pool.query(
-        `SELECT * FROM products WHERE ProductID = ${ID}`
+        ` SELECT * 
+          FROM products p, category c 
+          WHERE ProductID = ${ID} AND
+          p.CateID = c.CateID
+        `
       );
       // console.log(rs);
       await sql.close();
-      return rs.recordset[0];
+      return rs.recordset[0]; 
     } catch (err) {
       console.error("Error:", 0);
       throw err;
