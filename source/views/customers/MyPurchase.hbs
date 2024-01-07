@@ -6,47 +6,57 @@
                     <li class="mb-1">
                         <a href="#" style="color: #fff;font-size: 18px;">
                             <i class="fas fa-user-circle" style="width: 20px;height: 20px;"></i>
-                            <span style="padding: 0 1em; text-align: justify; font-weight: 900;">MY ACCOUNT</span> 
+                            <span style="padding: 0 1em; text-align: justify; font-weight: 900;">MY ACCOUNT</span>
                         </a>
                     </li>
                     <li class="mb-1">
                         <a href="#" style="color: #fff;font-size: 18px;">
                             <i class="fas fa-cart-plus" style="width: 20px;height: 20px;"></i>
-                            <span style="padding: 0 1em; text-align: justify;">MY PURCHASE</span> 
+                            <span style="padding: 0 1em; text-align: justify;">MY PURCHASE</span>
                         </a>
                     </li>
                     <li class="mb-1">
                         <a href="#" style="color: #fff;font-size: 18px;">
                             <i class="fas fa-unlock-alt" style="width: 20px;height: 20px;"></i>
-                            <span style="padding: 0 1em; text-align: justify;">MY PASSWORD</span> 
+                            <span style="padding: 0 1em; text-align: justify;">MY PASSWORD</span>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="col-10 d-flex" style="flex-direction: column; position: relative; padding-left: 0;">
-            <div class="rateBox" style="display: none;">
-                <div class="row">
-                    <div class="rateStars col-6">
-                        <span style="margin-right: 20px;">Rate Us</span>
-                        <span onclick="rateStars(1)" class="fa fa-star"></span>
-                        <span onclick="rateStars(2)" class="fa fa-star"></span>
-                        <span onclick="rateStars(3)" class="fa fa-star"></span>
-                        <span onclick="rateStars(4)" class="fa fa-star"></span>
-                        <span onclick="rateStars(5)" class="fa fa-star"></span>
+            
+            
+            {{!-- <div class="rateBox" style="display: none;">
+                <form action="/mypurchase" method="POST">
+                    <input type="hidden" name="BookList" value="{{BookList}}">
+                    <div class="row">
+                        <div class="rateStars col-6">
+                            <span style="margin-right: 20px;">Rate Us</span>
+                            <span onclick="rateStars(1)" class="fa fa-star"></span>
+                            <span onclick="rateStars(2)" class="fa fa-star"></span>
+                            <span onclick="rateStars(3)" class="fa fa-star"></span>
+                            <span onclick="rateStars(4)" class="fa fa-star"></span>
+                            <span onclick="rateStars(5)" class="fa fa-star"></span>
+                            <input id="input_star" type="hidden" name="star" value="">
+                        </div>
+                        <div class="col-4"></div>
+                        <div class="col-1">
+                            <button class="out" onclick="clickRate()">X</button>
+                        </div>
                     </div>
-                    <div class="col-4"></div>
-                    <div class="col-1">
-                        <button class="out" onclick="clickRate()">X</button>
+                    <div class="feedback">
+                        <span>Leave Feedback</span>
+                        <br>
+                        <textarea name="Description" id="textBox" placeholder="Type your feedback"
+                            style="font-size: 18px;"></textarea>
                     </div>
-                </div>
-                <div class="feedback">
-                    <span>Leave Feedback</span>
-                    <br>
-                    <textarea id="textBox" placeholder="Type your feedback" style="font-size: 18px;"></textarea>
-                </div>
-                <button onclick="clickRate()" class="rate" style="position: absolute; top: 90%; left: 50%; transform: translate(-50%, -50%);">RATE</button>
-            </div>
+                    <button type="submit" class="rate" onclick="clickRate()"
+                        style="position: absolute; top: 90%; left: 50%; transform: translate(-50%, -50%);">RATE</button>
+                </form>
+            </div> --}}
+
+
             <div class="contactUs" style="display: none;">
                 <p style="font-size: 32px; margin: 10px 20px; font-weight: 600;">CONTACT US:</p>
                 <li>
@@ -61,7 +71,8 @@
                     <span>Email: </span>
                     <a href="#">xibangapdoicondiem@gmail.com</a>
                 </li>
-                <button onclick="contact()" class="rate" style="position: absolute; top: 85%; left: 50%; transform: translate(-50%, -50%);">OK</button>
+                <button onclick="contact()" class="rate"
+                    style="position: absolute; top: 85%; left: 50%; transform: translate(-50%, -50%);">OK</button>
             </div>
             {{!-- Order ID --}}
             {{#each orders}}
@@ -75,6 +86,35 @@
                         <span style="text-transform: uppercase;">{{Status}}</span>
                     </div>
                 </div>
+
+                <div class="rateBox" style="display: none;" id={{OrderID}}>
+                <form action="/mypurchase" method="POST">
+                    <input type="hidden" name="Order" value="{{OrderID}}">
+                    <div class="row">
+                        <div class="rateStars col-6">
+                            <span style="margin-right: 20px;">Rate Us</span>
+                            <span onclick="rateStars(1, {{OrderID}})" class="fa fa-star {{OrderID}}"></span>
+                            <span onclick="rateStars(2, {{OrderID}})" class="fa fa-star {{OrderID}}"></span>
+                            <span onclick="rateStars(3, {{OrderID}})" class="fa fa-star {{OrderID}}"></span>
+                            <span onclick="rateStars(4, {{OrderID}})" class="fa fa-star {{OrderID}}"></span>
+                            <span onclick="rateStars(5, {{OrderID}})" class="fa fa-star {{OrderID}}"></span>
+                            <input id="input_star{{OrderID}}" type="hidden" name="star" value="">
+                        </div>
+                        <div class="col-4"></div>
+                        <div class="col-1">
+                            <button type="button" class="out" onclick="clickRate(1, 1)">X</button>
+                        </div>
+                    </div>
+                    <div class="feedback">
+                        <span>Leave Feedback</span>
+                        <br>
+                        <textarea name="Description" id="textBox" placeholder="Type your feedback"
+                            style="font-size: 18px;"></textarea>
+                    </div>
+                    <button type="submit" onclick="clickRate()" class="rate"
+                        style="position: absolute; top: 90%; left: 50%; transform: translate(-50%, -50%);">RATE</button>
+                </form>
+            </div>
                 {{#each proList}}
                 <div class="product">
                     <div class="Book">
@@ -99,7 +139,6 @@
                     </div>
                 </div>
                 {{/each}}
-
                 {{#if (eq Status "Delivered")}}
                 <div class="function">
                     <div class="tonggia">
@@ -111,10 +150,10 @@
                         </div>
                     </div>
                     <div class="button">
-                        <button onclick="clickRate(0)" class="rate">RATE</button>
+                        <button onclick="clickRate({{@index}}, {{OrderID}})" class="rate">RATE</button>
                         <button onclick="contact()" class="norbutton">CONTACT US</button>
                         <button onclick="buyagain()" class="norbutton">BUY AGAIN</button>
-                    </div>                       
+                    </div>
                 </div>
                 {{else}}
                 <div class="function">
@@ -126,11 +165,11 @@
                             <span class="charge">{{TotalPrice}} VND</span>
                         </div>
                     </div>
-                    <div class="button" style="display: none;">
-                        <button onclick="clickRate(1)" class="rate">RATE</button>
-                        <button onclick="contact()" class="norbutton">CONTACT US</button>
-                        <button onclick="buyagain()" class="norbutton">BUY AGAIN</button>
-                    </div>                        
+                    {{!-- <div class="button" style="display: none;"> --}}
+                        {{!-- <button onclick="clickRate({{@index}})" class="rate">RATE</button> --}}
+                        {{!-- <button onclick="contact()" class="norbutton">CONTACT US</button> --}}
+                        {{!-- <button onclick="buyagain()" class="norbutton">BUY AGAIN</button> --}}
+                        {{!-- </div> --}}
                 </div>
                 {{/if}}
             </div>
@@ -139,3 +178,94 @@
     </div>
 </div>
 <script src="./_js/mainT.js"></script>
+<script>
+    function submitRating(event) {
+        event.preventDefault(); 
+        $.post('/mypurchase', $('#ratingForm').serialize())
+            .done(function(response) {
+                // Handle the success response
+                console.log(response);
+                // Optionally display a success message or update the page content
+            })
+            .fail(function(error) {
+                // Handle the error response
+                console.error(error);
+                // Optionally show an error message to the user
+                alert('Failed to submit rating. Please try again.');
+            });
+    }
+
+    function clickRate(element, OrderID) {
+        var x = document.getElementsByClassName("fa-star")
+        for (let i = 0; i < 5; i++) {
+            x[i].classList.remove("checkedStar")
+        }
+        var elms = document.getElementsByClassName("rateBox")
+        if(OrderID){
+            Array.from(elms).forEach((x) => {
+                console.log('1')
+                if(OrderID) {
+                    if (x.style.display === "none" && x.id === OrderID.toString()) {
+                        x.style.display = "block"
+                        x.style.marginTop = String(500 * element - 70 * element + "px")
+                    } else {
+                        x.style.display = "none"
+                    }
+                } else {
+                        x.style.display = "none"
+                }
+            })
+        } else {
+            alert("Feedback Submitted!");
+        }
+        
+    }
+
+    function rateStars(values, OrderID) {
+        console.log('you are clicking on the star')
+        var x = document.getElementsByClassName(`fa-star ${OrderID}`)
+        for (let i = 0; i < 5; i++) {
+            x[i].classList.remove("checkedStar")
+        }
+        for (let i = 0; i < values; i++) {
+            x[i].classList.add("checkedStar")
+        }
+        let input_star = document.getElementById(`input_star${OrderID}`);
+        input_star.value = values;
+        console.log(values);
+    }
+
+    function contact() {
+        var elms = document.getElementsByClassName("contactUs")
+        Array.from(elms).forEach((x) => {
+            if (x.style.display === "none") {
+                x.style.display = "block"
+            } else {
+                x.style.display = "none"
+            }
+        })
+    }
+
+    function xemchitiet(element) {
+        var elms = document.getElementsByClassName("content")
+        Array.from(elms).forEach((x) => {
+            x.style.display = "none"
+        })
+        var elms = document.getElementsByClassName("details")
+        Array.from(elms).forEach((x) => {
+            x.style.display = "block"
+        })
+    }
+
+    function backtoorders() {
+        var elms = document.getElementsByClassName("details")
+        Array.from(elms).forEach((x) => {
+            x.style.display = "none"
+        })
+        var elms = document.getElementsByClassName("content")
+        Array.from(elms).forEach((x) => {
+            x.style.display = "block"
+        })
+    }
+</script>
+

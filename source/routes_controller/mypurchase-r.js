@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const ordersM = require("../models/orders-m");
-
+const feedbacksM = require("../models/feedbacks-m"); 
 
 router.get('/', async (req, res) => {
     //Buyer ID ID ID ID ID ID ?????????????????????????????????????????????????????????????????????????????????
-    let BuyerID = '3';
+    let BuyerID = '2';
     //SDFASFASKJFSDAKAS
     // FileSystemWritableFileStream;SAJFSAFSALFDF
     // FJSAFSAFSAFASFAS
@@ -16,6 +16,8 @@ router.get('/', async (req, res) => {
     for(let i = 0; i < orders.length; i++) {
         orders[i].proList = await ordersM.getProductList(orders[i].OrderID);
     }
+    
+
     res.render('customers/MyPurchase.hbs', {
         title: "My Purchase",
         login: true, orders,
@@ -24,5 +26,19 @@ router.get('/', async (req, res) => {
         header: () => "header_text",
     });
 })
+
+router.post('/', async (req, res) => {
+    const { Order, star, Description } = req.body;
+    let OrderID = Order;
+    let proList = await ordersM.getProductList(OrderID);
+    let Rating = star;
+    let Feedback = Description;
+    let UserID = '3';
+    for(let i = 0; i < proList.length; i++){
+        feedbacksM.addFeedback('1', proList[i].ProductID, UserID, Feedback, Rating);
+    }
+    res.redirect('/mypurchase');
+}
+);
 
 module.exports = router;

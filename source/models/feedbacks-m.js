@@ -60,4 +60,17 @@ module.exports = class Feedback {
             throw err;
         }
     }
+    static async addFeedback(FeedbackID, ProductID, UserID, Feedback, Rating) {
+        try {
+            let pool = await sql.connect(config);
+            await pool.query(`
+                INSERT INTO productfeedbacks (ProductID, UserID, Feedback, Rating)
+                VALUES (${ProductID}, '${UserID}', '${Feedback}', '${Rating}');
+            `);
+            await sql.close();
+        } catch (err) {
+            console.error("Error:", 0);
+            throw err;
+        }
+    }
 };

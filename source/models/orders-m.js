@@ -39,7 +39,7 @@ module.exports = class Order {
         try {
             let pool = await sql.connect(config);
             let rs = await pool.query(`
-            SELECT  SUM(od.Quantity) as Quantity, c.CateName, p.ProductName, p.PriceOut, p.Photo 
+            SELECT  SUM(od.Quantity) as Quantity, c.CateName, p.ProductName, p.PriceOut, p.Photo, p.ProductID 
             FROM    orderdetails od, products p, category c
             WHERE   od.OrderID = ${OrderID} AND
                     od.ProductID = p.ProductID AND
