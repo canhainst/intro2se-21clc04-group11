@@ -5,7 +5,7 @@ const cart = require("../models/cart-m")
 
 
 router.get('/', async (req, res, next) => {
-    let prds = await cart.getCart(51);
+    let prds = await cart.getCart(5);
     let CartQuantity = prds.map(item => item.Quantity);
 
     for (let i = 0; i < prds.length; i++) {
