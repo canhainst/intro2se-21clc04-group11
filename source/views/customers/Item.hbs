@@ -47,7 +47,7 @@
                 <span>Publisher: {{Book.PublishingCompany}}</span>
                 <br>
                 <span style="color: #EE4E4E;  font-size: 60px;">{{Book.PriceOut}} VNĐ</span>
-                <div class="rateStars" style="font-size: 32px; margin-top: 33px">
+                <div class="rateStars" style="font-size: 32px;">
                     {{#each (generateArr Book.Rating)}}
                     <i class="fas fa-star star"></i>
                     {{/each}}
@@ -55,7 +55,6 @@
                     <i class="far fa-star star"></i>
                     {{/each}}
                 </div>
-                <br>
                 <!-- quantity -->
                 <div class="d-flex">
                     <span style="margin-right: 30px;">Quantity</span>
@@ -65,27 +64,27 @@
                         <button type="button" id="item1-plus" class="btn border-dark" style="background-color: #D9D9D9;"><span class="fw-bold">+</span></button>
                     </div>
                 </div>
-                <div style="padding: 30px; padding-left: 0px;">
+                <div style="padding: 10px; padding-left: 0px;">
                     <button type="button" class="btn btn-success" style="color: #FFF;
                     text-align: center;
-                    font-size: 40px;
-                    border-radius: 30px;
+                    font-size: 20px;
+                    border-radius: 15px;
                     border: 3px solid #000;
                     background: #3D5940;
-                    width: 642px;
-                    height: 106px;">
+                    width: 300px;
+                    height: 50px;">
                     BUY NOW
                     </button>
                 </div>
                 <div>
                     <button type="button" class="btn btn-outline-secondary" style="color: #000;
                     text-align: center;
-                    font-size: 40px;
-                    border-radius: 30px;
+                    font-size: 20px;
+                    border-radius: 15px;
                     border: 3px solid #000;
                     background: #FFF;
-                    width: 642px;
-                    height: 106px;">
+                    width: 300px;
+                    height: 50px;">
                     ADD TO CART
                     </button>
                 </div>
