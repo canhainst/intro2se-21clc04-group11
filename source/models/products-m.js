@@ -123,9 +123,7 @@ module.exports = class Product {
   static async getActiveBooks(Quantity) {
     try {
       let pool = await sql.connect(config);
-      let rs = await pool.query(
-        `SELECT TOP ${Quantity} * FROM products WHERE Status = 'active'`
-      );
+      let rs = await pool.query(`select top ${Quantity} * from products where Status = 'active'`);
       // console.log(rs);
       await sql.close();
       return rs.recordset;
@@ -137,9 +135,7 @@ module.exports = class Product {
   static async getNewReleaseBooks(Quantity) {
     try {
       let pool = await sql.connect(config);
-      let rs = await pool.query(
-        `SELECT TOP ${Quantity} * FROM products ORDER BY PublishingYear DESC`
-      );
+      let rs = await pool.query(`SELECT TOP ${Quantity} * FROM products ORDER BY PublishingYear DESC`);
       // console.log(rs);
       await sql.close();
       return rs.recordset;

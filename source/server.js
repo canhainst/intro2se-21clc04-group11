@@ -3,10 +3,14 @@ const express = require('express');
 const {create} = require('express-handlebars');
 var bodyParser = require('body-parser');
 const socketIo = require('socket.io');
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const flash = require('connect-flash');
 
 const app = express();
 const port = process.env.PORT || 3000;
 const CustomError = require('./modules/customerr');
+const secret = 'mysecretkey';
 
 const hbs = create({
     extname: '.hbs',
@@ -34,6 +38,17 @@ app.use('/image', express.static('./image'));
 app.engine('hbs', hbs.engine);
 app.set('views', './views');
 app.set('view engine', 'hbs');
+app.use(session({
+    secret: secret,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
+
+app.use(cookieParser(secret));
+app.use(express.urlencoded({extended: true}));
+app.use(flash());
+require('./modules/passport')(app);
 
 app.use('/', require('./routes_controller/index-r'));
 app.use('/account', require('./routes_controller/account-r'));
@@ -46,6 +61,7 @@ app.use('/order', require('./routes_controller/order-r'));
 app.use('/login', require('./routes_controller/login-r'));
 app.use('/warehouse', require('./routes_controller/warehouse-r'));
 app.use('/chat', require('./routes_controller/chatbox-r'));
+app.use('/admin',require('./routes_controller/admin-r'))
 
 app.get('favorite.ico', (req, res) => {
     res.status(404).send();
