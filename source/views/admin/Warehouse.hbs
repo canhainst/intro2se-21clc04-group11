@@ -1,3 +1,146 @@
+<script>
+
+    const itemsPerPage = 15;
+    let currentPage = 1;
+
+    function fetchAndDisplayProducts() {
+        fetch('http://localhost:5000/warehouse/all')
+            .then(response => response.json())
+            .then(products => {
+                document.querySelector('.container').innerHTML = '';
+
+                const startIndex = (currentPage - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+
+                // Hiển thị sản phẩm mới
+                products.slice(startIndex, endIndex).forEach(product => {
+                    const productElement = document.createElement('div');
+                    productElement.classList.add('product', 'row', 'd-flex', 'align-items-center');
+                    productElement.innerHTML = `
+            <div class="col-5 d-flex">
+                <img src="${product.Photo}">
+                <span class="Bookname">${product.ProductName}</span>
+            </div>
+            <div class="col-2 text-center">
+                <span class="ptitle">INSTOCK</span>
+                <div class="stock">${product.Quantity}</div>
+            </div>
+            <div class="col-3 text-center">
+                <p class="ptitle">IMPORT PRICE</p>
+                <span class="ptitle">${product.PriceIn} VND</span>
+            </div>
+            <div class="col-2 button" style="display: flex; flex-direction: column;">
+    <button onclick="exportProduct('${product.ProductID}')">
+        <i class="far fa-paper-plane"></i>
+    </button>
+     <button onclick="editProduct('${product.ProductID}')"><i class="fas fa-pencil-alt"></i></button>
+   <button onclick="deleteProduct('${product.ProductID}')"><i class="far fa-trash-alt"></i></button>
+</div>
+            <div>
+                
+  <div class="pageInfo">
+    <span>Showing ${(currentPage - 1) * itemsPerPage + 1} - ${(currentPage - 1) * itemsPerPage + itemsPerPage} results of </span>
+    <span>298</span>
+  </div>
+  <!-- Nút chuyển trang -->
+  <div class="pagebutton d-flex align-items-center">
+    <button class="page" onclick="changePage('prev')"><i class="fas fa-chevron-left"></i></button>
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle no-border"
+        style="background-color: white; color: black;" type="button" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Page ${currentPage}
+      </button>
+    </div>
+    <button class="page" onclick="changePage('next')"><i class="fas fa-chevron-right"></i></button>
+  </div>
+          `;
+
+                    document.querySelector('.container').appendChild(productElement);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }
+
+    function changePage(direction) {
+        if (direction === 'prev') {
+            currentPage = Math.max(1, currentPage - 1);
+        } else {
+            currentPage += 1;
+        }
+
+        fetchAndDisplayProducts();
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        fetchAndDisplayProducts();
+    });
+
+    function exportProduct(productID) {
+        fetch(`http://localhost:5000/warehouse/exportProduct?productID=${productID}`, {
+            method: 'PUT'
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log('Export result:', result);
+                alert('Export successful');
+                fetchAndDisplayProducts();
+
+            })
+            .catch(error => {
+                console.error('Error exporting product:', error);
+                alert('Export failed');
+                 });
+    }
+
+function deleteProduct(productID) {
+        if (confirm('Are you sure you want to delete this product?')) {
+            fetch(`http://localhost:5000/warehouse/deleteProduct?productID=${productID}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log('Delete result:', result);
+                alert('Product deleted successfully');
+                fetchAndDisplayProducts();
+            })
+            .catch(error => {
+                console.error('Error deleting product:', error);
+                alert('Failed to delete product');
+            });
+        }
+    }
+    function editProduct(productID) {
+    window.location.href = `warehouse/edit?productID=${productID}`;
+}
+
+const searchInput = document.querySelector('.col-5 input');
+const searchButton = document.querySelector('.col-5 button');
+searchButton.addEventListener('click', function () {
+    const searchValue = searchInput.value;
+    fetchAndDisplayProducts({ search: searchValue });
+});
+
+// Đoạn mã xử lý filter và sorted
+const filterDropdown = document.querySelector('.col-2 .dropdown');
+const sortedDropdown = document.querySelector('.col-2:last-child .dropdown');
+
+filterDropdown.addEventListener('click', function () {
+    const filterValue = filterDropdown.querySelector('.dropdown-toggle').textContent.trim();
+    // Gọi hàm fetchAndDisplayProducts với tham số filter
+    fetchAndDisplayProducts({ filter: filterValue });
+});
+
+sortedDropdown.addEventListener('click', function () {
+    const sortedValue = sortedDropdown.querySelector('.dropdown-toggle').textContent.trim();
+    console.log(sortedValue);
+    fetchAndDisplayProducts({ sort: sortedValue });
+});
+
+
+</script>
+
+
 <div class="row">
     <div class="col-3" style="padding: 0;">
         <div class="sidebar">
@@ -30,7 +173,7 @@
                     </li>
                     <li>
                         <i class="fas fa-store"></i>
-                        <a href="Order_management.html">ORDERS</a>
+                        <a href="Order">ORDERS</a>
                     </li>
                 </ul>
             </div>
@@ -88,85 +231,8 @@
                 </div>
             </div>
             <div class="container">
-                <div class="product row d-flex align-items-center">
-                    <div class="col-5 d-flex">
-                        <img src="./image/dan-ong-sao-hoa-dan-ba-sao-kim-01.png">
-                        <span class="Bookname">Đàn ông sao hoả đàn bà sao kim</span>
-                    </div>
-                    <div class="col-2 text-center">
-                        <span class="ptitle">INSTOCK</span>
-                        <div class="stock">25</div>
-                    </div>
-                    <div class="col-3 text-center">
-                        <p class="ptitle">IMPORT PRICE</p>
-                        <span class="ptitle"> 40.000 VND</span>
-                    </div>
-                    <div class="col-2 button" style="display: flex; flex-direction: column;">
-                        <button><i class="far fa-paper-plane"></i></button>
-                        <button><i class="fas fa-pencil-alt"></i></button>
-                        <button><i class="far fa-trash-alt"></i></button>
-                    </div>
-                </div>
-                <div class="product row d-flex align-items-center">
-                    <div class="col-5 d-flex">
-                        <img src="./image/content-bạc-tỷ.jpg">
-                        <span class="Bookname">Content Bạc Tỷ</span>
-                    </div>
-                    <div class="col-2 text-center">
-                        <span class="ptitle">INSTOCK</span>
-                        <div class="stock">13</div>
-                    </div>
-                    <div class="col-3 text-center">
-                        <p class="ptitle">IMPORT PRICE</p>
-                        <span class="ptitle"> 30.000 VND</span>
-                    </div>
-                    <div class="col-2 button" style="display: flex; flex-direction: column;">
-                        <button><i class="far fa-paper-plane"></i></button>
-                        <button><i class="fas fa-pencil-alt"></i></button>
-                        <button><i class="far fa-trash-alt"></i></button>
-                    </div>
-                </div>
-                <div class="product row d-flex align-items-center">
-                    <div class="col-5 d-flex">
-                        <img src="./image/NhaLanhDaoTuongLai.jpeg">
-                        <span class="Bookname">Nhà Lãnh Đạo Tương Lai</span>
-                    </div>
-                    <div class="col-2 text-center">
-                        <span class="ptitle">INSTOCK</span>
-                        <div class="stock">15</div>
-                    </div>
-                    <div class="col-3 text-center">
-                        <p class="ptitle">IMPORT PRICE</p>
-                        <span class="ptitle"> 50.000 VND</span>
-                    </div>
-                    <div class="col-2 button" style="display: flex; flex-direction: column;">
-                        <button><i class="far fa-paper-plane"></i></button>
-                        <button><i class="fas fa-pencil-alt"></i></button>
-                        <button><i class="far fa-trash-alt"></i></button>
-                    </div>
-                </div>
-                <div class="pageInfo">
-                    <span>Showing 1 - 8 results of </span>
-                    <span>298</span>
-                </div>
-                <div class="pagebutton d-flex align-items-center">
-                    <button class="page"><i class="fas fa-chevron-left"></i></button>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle no-border"
-                            style="background-color: white; color: black;" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Page 01
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Page 02</a></li>
-                            <li><a class="dropdown-item" href="#">Page 03</a></li>
-                            <li><a class="dropdown-item" href="#">Page 04</a></li>
-                            <li><a class="dropdown-item" href="#">Page 05</a></li>
-                        </ul>
-                    </div>
-                    <button class="page"><i class="fas fa-chevron-right"></i></button>
-                </div>
             </div>
         </div>
+
     </div>
 </div>

@@ -190,11 +190,9 @@ module.exports = class Product {
         GROUP BY ProductID
         `
       );
-      // console.log('rs: ',rs.recordset[0]);
+        // console.log('rs: ',rs.recordset[0]);
       await sql.close();
-      return typeof rs.recordset[0] == "undefined"
-        ? 0
-        : Math.ceil(rs.recordset[0].Rating);
+      return (typeof rs.recordset[0] == 'undefined' ? 0 : Math.ceil(rs.recordset[0].Rating));
     } catch (err) {
       console.error("Error:", err);
       throw err;

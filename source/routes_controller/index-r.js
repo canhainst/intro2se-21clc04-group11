@@ -42,6 +42,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+//get About Us page
 router.get("/about", async (req, res, next) => {
   try {
     res.render("customers/AboutUs", {
@@ -56,5 +57,4 @@ router.get("/about", async (req, res, next) => {
   }
 });
 
-//get About Us page
 module.exports = router;

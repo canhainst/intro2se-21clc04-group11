@@ -1,0 +1,107 @@
+  <div class="container">
+        <h2>Edit Product</h2>
+        <form id="editProductForm">
+            <!-- Thêm các trường nhập liệu để chỉnh sửa thông tin sản phẩm -->
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" name="productName" required>
+
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author">
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4"></textarea>
+
+            <label for="photo">Photo URL:</label>
+            <input type="text" id="photo" name="photo">
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="0" required>
+
+            <label for="priceIn">Import Price (VND):</label>
+            <input type="number" id="priceIn" name="priceIn" min="0" required>
+
+            <label for="priceOut">Selling Price (VND):</label>
+            <input type="number" id="priceOut" name="priceOut" min="0" required>
+
+            <label for="publishingCompany">Publishing Company:</label>
+            <input type="text" id="publishingCompany" name="publishingCompany">
+
+            <label for="publishingYear">Publishing Year:</label>
+            <input type="number" id="publishingYear" name="publishingYear" min="0">
+
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="Active">Active</option>
+                <option value="Deactive" selected>Deactive</option>
+            </select>
+            
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const productID = new URLSearchParams(window.location.search).get('productID');
+            fetch(`http://localhost:5000/warehouse/product/${productID}`)
+                .then(response => response.json())
+                .then(products => {
+
+                     const product = products[0];
+                    // Điền thông tin sản phẩm vào các trường nhập liệu
+                    document.getElementById('productName').value = product.ProductName;
+                    document.getElementById('author').value = product.Author;
+                    document.getElementById('description').value = product.Descrip;
+                    document.getElementById('photo').value = product.Photo;
+                    document.getElementById('quantity').value = product.Quantity;
+                    document.getElementById('priceIn').value = product.PriceIn;
+                    document.getElementById('priceOut').value = product.PriceOut;
+                    document.getElementById('publishingCompany').value = product.PublishingCompany;
+                    document.getElementById('publishingYear').value = product.PublishingYear;
+                    const statusSelect = document.getElementById('status');
+                    if (product.Status === 'Active') {
+                        statusSelect.value = 'Active';
+                    } else {
+                        statusSelect.value = 'Deactive';
+                    }
+                })
+                .catch(error => console.error('Error fetching product details:', error));
+        });
+
+        document.getElementById('editProductForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+             const productID = new URLSearchParams(window.location.search).get('productID');
+         
+            const updatedProduct = {
+                ProductName: document.getElementById('productName').value,
+                Author: document.getElementById('author').value,
+                Descrip: document.getElementById('description').value,
+                Photo: document.getElementById('photo').value,
+                Quantity: document.getElementById('quantity').value,
+                PriceIn: document.getElementById('priceIn').value,
+                PriceOut: document.getElementById('priceOut').value,
+                PublishingCompany: document.getElementById('publishingCompany').value,
+                PublishingYear: document.getElementById('publishingYear').value,
+                Status: document.getElementById('status').value,
+            };
+
+            fetch(`http://localhost:5000/warehouse/updateProduct/${productID}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedProduct),
+            })
+                .then(response => response.json())
+                .then(result => {
+                    console.log('Update result:', result);
+                    alert('Product updated successfully');
+                    window.location.href = '/Warehouse';
+                })
+                .catch(error => {
+                    console.error('Error updating product:', error);
+                    alert('Failed to update product');
+                });
+        });
+    </script>

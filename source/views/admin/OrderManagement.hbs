@@ -1,3 +1,190 @@
+
+<script>
+
+
+    let allData = [];
+    let currentPage = 1;
+    const resultsPerPage = 8;
+
+    function formatOrderTime(orderTime) {
+        return moment(orderTime).format(' HH : mm : ss [ngày] DD [tháng] MM [năm] YYYY');
+    }
+
+    function fetchDataAndUpdateTable() {
+        fetch('http://localhost:5000/order/all')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                allData = data;
+                updateTable();
+                updatePagination();
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    }
+
+    function updateTable() {
+        const start = (currentPage - 1) * resultsPerPage;
+        const end = start + resultsPerPage;
+        const data = allData.slice(start, end);
+
+        // Clear existing table rows
+        const tbody = document.getElementById('orderTable').getElementsByTagName('tbody')[0];
+        tbody.innerHTML = '';
+
+        // Iterate through the data and append rows to the table
+        data.forEach((order, index) => {
+            const row = `<tr>
+                            <th scope="row">${index + 1}</th>
+                            <td>${order.Name}</td>
+                            <td>${order.Email}</td>
+                            <td>${order.TotalPrice}</td>
+                            <td>${formatOrderTime(order.CreateTime)}</td>
+                            <td>${order.Status}</td>
+                            <td class="text-center">
+                                <a href="/order/detail/${order.OrderID}">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>`;
+            tbody.insertAdjacentHTML('beforeend', row);
+        });
+    }
+
+    function updatePagination() {
+          const totalPage = Math.ceil(allData.length / resultsPerPage);
+    const start = (currentPage - 1) * resultsPerPage + 1;
+    const end = Math.min(currentPage * resultsPerPage, allData.length);
+
+    // Update the page info
+    const pageInfo = document.querySelector('.pageInfo');
+    pageInfo.innerHTML = `Showing ${start} - ${end} of ${allData.length} results`;
+
+    // Disable or enable the "Previous" button
+    const prevPageButton = document.getElementById('prevPage');
+    prevPageButton.disabled = (currentPage === 1);
+
+    // Disable or enable the "Next" button
+    const nextPageButton = document.getElementById('nextPage');
+    nextPageButton.disabled = (currentPage === totalPage);
+
+    // Update the page number display
+    const pageNumberDisplay = document.getElementById('currentPage');
+    pageNumberDisplay.textContent = currentPage.toString().padStart(2, '0');
+    }
+
+    window.onload = function () {
+        document.getElementById('prevPage').addEventListener('click', function () {
+            if (currentPage > 1) {
+                currentPage--;
+                updateTable();
+                updatePagination();
+            }
+        });
+
+        document.getElementById('nextPage').addEventListener('click', function () {
+            const totalPage = Math.ceil(allData.length / resultsPerPage);
+
+            if (currentPage < totalPage) {
+                currentPage++;
+                updateTable();
+                updatePagination();
+            }
+        });
+
+        fetchDataAndUpdateTable();
+    }
+
+
+/*function filterOrders() {
+
+    const selectedStatus = document.getElementById('statusFilterBtn').innerText.trim();
+
+    
+    fetch(`http://localhost:5000/order/filter?status=${encodeURIComponent(selectedStatus)}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Clear existing table rows
+            var tbody = document.getElementById('orderTable').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = '';
+
+            // Iterate through the filtered data and append rows to the table
+            data.forEach((order, index) => {
+                const row = `<tr>
+                            <th scope="row">${index + 1}</th>
+                            <td>${order.Name}</td>
+                            <td>${order.Email}</td>
+                            <td>${order.TotalPrice}</td>
+                            <td>${formatOrderTime(order.CreateTime)}</td>
+                            <td>${order.Status}</td>
+                            <td class="text-center">
+                                <a href="/order/detail/${order.OrderID}">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                            </td>
+                        </tr>`;
+                tbody.insertAdjacentHTML('beforeend', row);
+            });
+        })
+        .catch(error => console.error('Error fetching filtered data:', error));
+}
+
+
+    function filterOrdersByStatus(status) {
+    document.getElementById('statusFilterBtn').innerText = status;
+    filterOrders();
+}
+
+ document.getElementById('button-addon').addEventListener('click', function () {
+        const searchInput = document.querySelector('.form-control').value.trim();
+        filterOrdersBySearch(searchInput);
+    });
+
+    function filterOrdersBySearch(searchInput) {
+        fetch(`http://localhost:5000/order/search?query=${encodeURIComponent(searchInput)}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Clear existing table rows
+                var tbody = document.getElementById('orderTable').getElementsByTagName('tbody')[0];
+                tbody.innerHTML = '';
+
+                // Iterate through the filtered data and append rows to the table
+                data.forEach((order, index) => {
+                    const row = `<tr>
+                                <th scope="row">${index + 1}</th>
+                                <td>${order.Name}</td>
+                                <td>${order.Email}</td>
+                                <td>${order.TotalPrice}</td>
+                                <td>${formatOrderTime(order.CreateTime)}</td>
+                                <td>${order.Status}</td>
+                                <td class="text-center">
+                                    <a href="/order/detail/${order.OrderID}">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </td>
+                            </tr>`;
+                    tbody.insertAdjacentHTML('beforeend', row);
+                });
+            })
+            .catch(error => console.error('Error fetching filtered data:', error));
+    }*/
+    
+    
+
+</script>
 <div class="row">
     <div class="col-3" style="padding: 0;">
         <div class="sidebar">
@@ -22,7 +209,7 @@
                     </li>
                     <li>
                         <i class="fas fa-warehouse"></i>
-                        <a href="#">WAREHOUSE</a>
+                        <a href="warehouse">WAREHOUSE</a>
                     </li>
                     <li>
                         <i class="fas fa-cart-arrow-down"></i>
@@ -30,11 +217,7 @@
                     </li>
                     <li style="background-color: #ffb9a4;">
                         <i class="fas fa-store"></i>
-                        <a href="#">ORDERS</a>
-                    </li>
-                    <li>
-                        <i class="fas fa-comment-dots"></i>
-                        <a href="#">CHAT</a>
+                        <a href="/">ORDERS</a>
                     </li>
                 </ul>
             </div>
@@ -56,25 +239,28 @@
                     <div class="col-4"></div>
                     <div class="col-3">
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle"
+                            <button id="statusFilterBtn" class="btn btn-secondary dropdown-toggle"
                                 style="background-color: white; color: black;" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Status
-                            </button>
+                                aria-expanded="false" onchange="filterOrders()">Status</button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Confirmed</a></li>
-                                <li><a class="dropdown-item" href="#">Success</a></li>
-                                <li><a class="dropdown-item" href="#">Fail</a></li>
-                                <li><a class="dropdown-item" href="#">Cencel</a></li>
-                                <li><a class="dropdown-item" href="#">Not Receive</a></li>
-                                <li><a class="dropdown-item" href="#">Refund</a></li>
+                                <li><a class="dropdown-item" href="#"
+                                        onclick="filterOrdersByStatus('Processing')">Processing</a></li>
+                                <li><a class="dropdown-item" href="#"
+                                        onclick="filterOrdersByStatus('Shipping')">Shipping</a></li>
+                                <li><a class="dropdown-item" href="#" onclick="filterOrdersByStatus('Delivered')">Delivered</a>
+                                </li>
+                                <li><a class="dropdown-item" href="#"
+                                        onclick="filterOrdersByStatus('Cancel')">Cancel</a></li>
                             </ul>
+
                         </div>
                     </div>
                     <div class="col-1"></div>
                 </div>
                 <div class="line"></div>
-                <table class="table">
+                <div id="orderList">
+                </div>
+                <table id="orderTable" class="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -93,208 +279,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Hoàng Văn Tùng</td>
-                            <td>hvtung12@gmail.com</td>
-                            <td>45.000 VNĐ</td>
-                            <td>15/06/2023</td>
-                            <td>Confirmed</td>
-                            <td class="text-center">
-                                <button onclick="xemchitiet(0)">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Hoàng Văn Tùng</td>
-                            <td>hvtung12@gmail.com</td>
-                            <td>45.000 VNĐ</td>
-                            <td>15/06/2023</td>
-                            <td>Confirmed</td>
-                            <td class="text-center">
-                                <button onclick="xemchitiet(1)">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Hoàng Văn Tùng</td>
-                            <td>hvtung12@gmail.com</td>
-                            <td>45.000 VNĐ</td>
-                            <td>15/06/2023</td>
-                            <td>Fail</td>
-                            <td class="text-center">
-                                <button onclick="xemchitiet(2)">
-                                    <i class="fas fa-eye"></i>
-                                </button>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
-                <div class="pageInfo">
-                    <span>Showing 1 - 8 results of </span>
-                    <span>298</span>
-                </div>
-                <div class="pagebutton d-flex align-items-center">
-                    <button class="page"><i class="fas fa-chevron-left"></i></button>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle no-border"
-                            style="background-color: white; color: black;" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Page 01
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Page 02</a></li>
-                            <li><a class="dropdown-item" href="#">Page 03</a></li>
-                            <li><a class="dropdown-item" href="#">Page 04</a></li>
-                            <li><a class="dropdown-item" href="#">Page 05</a></li>
-                        </ul>
-                    </div>
-                    <button class="page"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
+            <div class="pagination">
+    <div class="pageInfo">
+        <span>Showing 1 - 8 results of </span>
+        <span id="totalResults">298</span>
+    </div>
+    <div class="pagebutton d-flex align-items-center">
+        <i class="fas fa-arrow-left" id="prevPage"></i>
+        <div style="padding: 0 20px;">
+            <span>page </span>
+            <span id="currentPage">01</span>
         </div>
-        <div class="details">
-            <div class="title">
-                <span style="margin-left: 45px;">Orders Details</span>
-            </div>
-            <button onclick="backtoorders()" class="back">BACK TO ORDERS</button>
-            <div class="container" style="padding: 0;">
-                <div class="orderInfo">
-                    <div class="row">
-                        <div class="col-1">
-                            <i class="far fa-calendar-alt" style="scale: 250%; margin: 15px 0 0 30px;"></i>
-                        </div>
-                        <div class="col-8">
-                            <div class="time d-flex">
-
-                                <span>Date: 06/12/2023</span>
-                            </div>
-                            <div class="orderID">
-                                <span>Order ID: </span>
-                                <span>DH0030</span>
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle"
-                                    style="background-color: white; color: black;" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Status
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Confirmed</a></li>
-                                    <li><a class="dropdown-item" href="#">In Transit</a></li>
-                                    <li><a class="dropdown-item" href="#">Completed</a></li>
-                                    <li><a class="dropdown-item" href="#">Not Confirm</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="customerInfo">
-                    <div class="row">
-                        <div class="col-1 d-flex jcr" style="margin-top: 5px;">
-                            <i class="fas fa-user-circle" style="scale: 170%; color: red;"></i>
-                        </div>
-                        <div class="col-3">
-                            <span class="titleInfo">Customer</span>
-                            <br>
-                            <span>Thanh Tú</span>
-                            <br>
-                            <span>htttu0803@gmail.com</span>
-                        </div>
-                        <div class="col-1 d-flex jcr" style="margin-top: 5px" ;>
-                            <i class="fas fa-truck" style="scale: 170%; color: red;"></i>
-                        </div>
-                        <div class="col-3">
-                            <span class="titleInfo">Shipping information</span>
-                            <br>
-                            <span>Transport Unit: </span>
-                            <span>Giao hàng nhanh</span>
-                        </div>
-                        <div class="col-1 d-flex jcr" style="margin-top: 5px;">
-                            <i class="fas fa-map-marker-alt" style="scale: 170%; color: red;"></i>
-                        </div>
-                        <div class="col-3">
-                            <span class="titleInfo">Address</span>
-                            <br>
-                            <span>235b, Đường Trần Hưng Đạo, Phường Cầu Ông Lãnh, TP HCM</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="boxDescription">
-                    <div class="boxTitle">
-                        <div class="row">
-                            <div class="col-5">
-                                <span>Book name</span>
-                            </div>
-                            <div class="col-2">
-                                <span>Price</span>
-                            </div>
-                            <div class="col-2">
-                                <span>Quantities</span>
-                            </div>
-                            <div class="col-3">
-                                <span>Total price</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="line"></div>
-                    <div class="order">
-                        <div class="row d-flex align-items-center">
-                            <div class="col-5 d-flex">
-                                <img src="./image/CONTENTBACTY.SVG" alt="CONTENTBACTY">
-                                <div>
-                                    <span class="Ordername">CONTENT BẠC TỶ</span>
-                                    <br>
-                                    <span>Bản bìa cứng</span>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <span>180.000 VNĐ</span>
-                            </div>
-                            <div class="col-2 d-flex justify-content-center">
-                                <span>2</span>
-                            </div>
-                            <div class="col-3">
-                                <span>360.000 VNĐ</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="line"></div>
-                    <button onclick="" class="delivered">Completed</button>
-                    <div class="orderTotal">
-                        <div class="row">
-                            <div class="col-5">
-                                <span>Price: </span>
-                            </div>
-                            <div class="col-7 d-flex jcr">
-                                <span>360.000 VNĐ</span>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <span>Delivery Cost: </span>
-                            </div>
-                            <div class="col-6 d-flex jcr">
-                                <span>10.000 VNĐ</span>
-                            </div>
-                        </div>
-                        <div class="row" style="margin-top: 20px;">
-                            <div class="col-5">
-                                <span>Total price: </span>
-                            </div>
-                            <div class="col-7 d-flex jcr">
-                                <span>370.000 VNĐ</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <i class="fas fa-arrow-right" id="nextPage"></i>
     </div>
 </div>
+            </div>
+        </div>
