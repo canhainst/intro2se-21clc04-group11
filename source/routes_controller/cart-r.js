@@ -7,10 +7,9 @@ const cart = require("../models/cart-m");
 router.get('/', async (req, res, next) => {
     let prds = await cart.getCart(req.user.UserID);
     let CartQuantity = prds.map(item => item.Quantity);
-
     for (let i = 0; i < prds.length; i++) {
         prds[i] = await productsM.getBook(prds[i].ProductID);
-        //console.log(prds[i]);
+        prds[i].Instock = prds[i].Quantity;
         prds[i].Rating = await productsM.getStars(prds[i].ProductID);
         prds[i].Cate = (await cart.getCategory(prds[i].CateID)).CateName;
         prds[i].CartQuantity = await CartQuantity[i];
@@ -40,4 +39,13 @@ router.post('/', async(req, res, next) => {
         next(err);
     }
 });
+router.post('/add', async(req, res, next) => {
+    try{
+        let {CustomerID, ProductID, quantity} = req.body;
+        cart.addProduct(CustomerID, ProductID, quantity);
+        res.send(req.body);
+    } catch(err){
+        next(err);
+    }
+})
 module.exports = router;

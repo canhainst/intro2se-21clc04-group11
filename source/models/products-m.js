@@ -205,7 +205,7 @@ module.exports = class Product {
     try {
       let pool = await sql.connect(config);
       let rs = await pool.query(
-        `SELECT * 
+        `SELECT p.*, c.CateName 
         FROM products p, category c 
         WHERE ProductID = ${ID} AND
         p.CateID = c.CateID`
