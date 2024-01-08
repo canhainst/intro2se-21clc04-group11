@@ -3,28 +3,35 @@ const config = require('../dbconfig');
 
 
 class OrderModel {
-  static async getAllOrders() {
-    try {
-      await sql.connect(config);
-      const result = await sql.query`SELECT 
-      o.OrderID,
-      u.Name,
-      u.Email,
-      o.TotalPrice,
-      o.CreateTime,
-      o.Status
-  FROM 
-      orders o
-  JOIN 
-      users u ON o.BuyerID = u.UserID;`;
-      return result.recordset;
-    } catch (error) {
-      console.error(error);
-      throw error;
-    } finally {
-      await sql.close();
-    }
-  }
+    static async getAllOrders(status, search) {
+        try {
+          await sql.connect(config);
+          const request = new sql.Request();
+      
+          let query = 'SELECT o.OrderID, u.Name, u.Email, o.TotalPrice, o.CreateTime, o.Status FROM orders o JOIN users u ON o.BuyerID = u.UserID';
+      
+          if (status) {
+            query += ' WHERE o.Status = @status'; 
+            request.input('status', sql.NVarChar, status);
+          }
+
+          if (search) {
+            query += (status ? ' AND ' : ' WHERE ') + '(u.Name LIKE @search OR u.Email LIKE @search)';
+            request.input('search', sql.NVarChar, `%${search}%`);
+        }
+        
+      
+          
+          const result = await request.query(query);
+          return result.recordset;
+        } catch (error) {
+          console.error(error);
+          throw error;
+        } finally {
+          await sql.close();
+        }
+      }
+      
 
   static async getOrderByID(OrderID) {
    try {
@@ -34,6 +41,7 @@ class OrderModel {
       o.CreateTime,
       u.Name AS BuyerName,
       u.Email AS BuyerEmail,
+      o.Status,
       sh.ShipmentDetail,
       u.Address AS BuyerAddress,
       p.ProductName,
@@ -67,11 +75,11 @@ class OrderModel {
     }
   }
 
-  static async updateOrderStatus(orderId, newStatus) {
+  static async updateOrderStatus(orderId, selectedStatus) {
     try {
         await sql.connect(config);
 
-        const result = await sql.query`UPDATE orders SET Status = ${newStatus} WHERE OrderID = ${orderId}`;
+        const result = await sql.query`UPDATE orders SET Status = ${selectedStatus} WHERE OrderID = ${orderId}`;
 
         return result.rowsAffected;
     } catch (error) {

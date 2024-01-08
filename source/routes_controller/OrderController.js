@@ -4,13 +4,15 @@ const OrderModel = require('../models/OrderModel');
 
 router.get('/all', async (req, res, next) => {
   try {
-    const orders = await OrderModel.getAllOrders();
+    const { status, search } = req.query;
+    const orders = await OrderModel.getAllOrders(status, search);
     res.json(orders);
   } catch (error) {
     console.error(error);
     next(error);
   }
 });
+
 
 router.get('/:OrderID', async (req, res, next) => {
     try {
@@ -64,12 +66,12 @@ router.get('/search', async (req, res, next) => {
   }
 });
 
-router.put('/update-status', async (req, res) => {
+router.put('/updateStatus', async (req, res) => {
   try {
       const orderId = req.body.orderId;
-      const newStatus = req.body.newStatus;
+      const selectedStatus = req.body.selectedStatus;
 
-      const rowsAffected = await OrderModel.updateOrderStatus(orderId, newStatus);
+      const rowsAffected = await OrderModel.updateOrderStatus(orderId, selectedStatus);
 
       if (rowsAffected > 0) {
           res.status(200).json({ success: true, message: 'Order status updated successfully.' });

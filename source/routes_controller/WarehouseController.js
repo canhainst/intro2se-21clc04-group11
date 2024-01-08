@@ -3,19 +3,26 @@ const router = express.Router();
 const WarehouseModel = require('../models/WarehouseModel');
 
 router.get('/all', async (req, res, next) => {
-    try {
-
+  try {
       const { search, filter, sort } = req.query;
-  
-
       const Warehouse = await WarehouseModel.getAllProduct({ search, filter, sort });
-  
       res.json(Warehouse);
-    } catch (error) {
+  } catch (error) {
       console.error(error);
       next(error);
-    }
-  });
+  }
+});
+
+router.get('/filter', async (req, res, next) => {
+  try {
+      const {filter} = req.query;
+      const Warehouse = await WarehouseModel.getProduct(filter);
+      res.json(Warehouse);
+  } catch (error) {
+      console.error(error);
+      next(error);
+  }
+});
 
   router.get('/product/:productID', async (req, res) => {
     const productID = req.params.productID;

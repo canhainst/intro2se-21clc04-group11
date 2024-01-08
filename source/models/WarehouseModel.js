@@ -16,14 +16,30 @@ static async getAllProduct({ search, filter, sort }) {
   
       // Thêm điều kiện lọc nếu có
       if (filter) {
-        query += ` AND Category = '${filter}'`;
-      }
-  
+        query += ` JOIN category AS c ON products.CateID = c.CateID WHERE c.CateName = N'${filter}'`;
+    }
       // Thêm điều kiện sắp xếp nếu có
       if (sort) {
         query += ` ORDER BY ${sort}`;
       }
   
+      const result = await sql.query(query);
+      return result.recordset;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    } finally {
+      await sql.close();
+    }
+  }
+
+
+  static async getProduct(filter) {
+    try {
+    await sql.connect(config);
+      let query = `SELECT * FROM dbo.products AS p JOIN dbo.category AS c ON p.CateID = c.CateID WHERE CateName = N'${filter}'`;
+      
+ 
       const result = await sql.query(query);
       return result.recordset;
     } catch (error) {

@@ -27,7 +27,6 @@ router.get("/", async (req, res, next) => {
     }
 
     res.render("customers/HomePage", {
-      layout: 'admin',
       title: "Home Page",
       login: true,
       prds,

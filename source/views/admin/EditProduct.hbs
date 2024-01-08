@@ -43,7 +43,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             
             const productID = new URLSearchParams(window.location.search).get('productID');
-            fetch(`http://localhost:5000/warehouse/product/${productID}`)
+            fetch(`http://localhost:3000/warehouse/product/${productID}`)
                 .then(response => response.json())
                 .then(products => {
 
@@ -86,7 +86,7 @@
                 Status: document.getElementById('status').value,
             };
 
-            fetch(`http://localhost:5000/warehouse/updateProduct/${productID}`, {
+            fetch(`http://localhost:3000/warehouse/updateProduct/${productID}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
