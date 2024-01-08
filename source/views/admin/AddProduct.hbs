@@ -42,14 +42,17 @@
                 <span style="margin-left: 45px;">Add Product</span>
             </div>
             <div class="container-fluid text-end mt-5">
-                <form action="/admin/warehouse/addProduct" method="post" enctype="multipart/form-data"> 
+                <form id="postForm" action="/admin/warehouse/addProduct" method="post" enctype="multipart/form-data"> 
+                    <div class="row">
+                         <small id="nameErr" class="text-danger col-sm-3 offset-2"></small> 
+                    </div>    
                     <div class="mb-3 row offset-1">
                         <label for="inputBookName" class="col-sm-3 col-form-label ps-5">BOOK NAME</label>
                         <div class="col-sm-3">
                             <input type="text" name="bookName" class="form-control" id="inputBookName" placeholder="Enter name"
-                                required>
+                                required> 
                         </div>
-                    </div>
+                    </div>           
                     <div class="mb-3 row offset-1">
                         <label for="inputAuthor" class="col-sm-3 col-form-label ps-5">AUTHORS</label>
                         <div class="col-sm-7">
@@ -76,6 +79,9 @@
                                 required>
                         </div>
                     </div>
+                    <div class="row">
+                         <small id="pubYearErr" class="text-danger col-sm-6 offset-1" style="margin-left: 121px"></small> 
+                    </div> 
                     <div class="mb-3 row offset-1">
                         <label for="inputPubYear" class="col-sm-3 col-form-label">PUBLISHING YEAR</label>
                         <div class="col-sm-7">
@@ -90,6 +96,9 @@
                                 required>
                         </div>
                     </div>
+                    <div class="row ps-4">
+                         <small id="quantityErr" class="text-danger col-sm-4 offset-2"></small> 
+                    </div> 
                     <div class="mb-3 row offset-1">
                         <label for="inputQuant" class="col-sm-3 col-form-label ps-5">QUANTITIES</label>
                         <div class="col-sm-7">
@@ -107,7 +116,7 @@
                     <div class="mb-3 row offset-1">
                         <label for="inputImg" class="col-sm-3 col-form-label ps-5">IMAGE</label>
                         <div class="col-sm-7">
-                            <input name="img" class="form-control" type="file" id="inputImg">
+                            <input name="img" class="form-control" type="file" id="inputImg" required> 
                         </div>
                     </div>
                     <div class="col-12 text-center mt-4">
@@ -123,7 +132,19 @@
      $(()=>{
         $("#inputImg").fileinput({theme: 'fa5', showUpload: false, previewFileType: 'any'});
         if (`{{nofi}}`){
-        alert(`{{nofi}}`);
-    }
+            alert(`{{nofi}}`);
+        }
+        $("#postForm").submit(e => {
+            let regex = /^\s/;
+            $("#nameErr").html(regex.test($("#inputBookName").val()) ? "Book name is invalid!" : "");
+            $('#quantityErr').html($('#inputQuant').val() <= 0 ? "Book quantity must be greater than 0" : "");
+            $('#pubYearErr').html($('#inputPubYear').val() > new Date().getFullYear() ? "Book publish year mustn't be greater than current year" : "");
+            if ($("#nameErr").html() == "" && $('#quantityErr').html() == "" && $('#pubYearErr').html() == ""){
+                $('#postForm').submit();
+            }
+            else{
+                e.preventDefault();
+            }
+        })
     })
 </script>
