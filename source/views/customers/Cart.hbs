@@ -164,7 +164,7 @@
             }
 
             // Update database
-            UpdateCartData(51, ProductID, quantity);
+            UpdateCartData(5, ProductID, quantity);
         }
         else{
             deletePrd(index);
@@ -188,7 +188,7 @@
             }
 
             // Update database
-            UpdateCartData(51, ProductID, quantity);
+            UpdateCartData(5, ProductID, quantity);
         }
         else{
             alert("Out of stock?");
@@ -201,10 +201,10 @@
             let ProductID = parseInt(document.querySelector(`#ProductID ._${index}`).innerHTML);
 
             // Update database
-            $.post('/Cart', {CustomerID: 51, ProductID: ProductID, quantity: 0})
+            $.post('/Cart', {CustomerID: 5, ProductID: ProductID, quantity: 0})
             .done((rs) => {
                 console.log(rs);
-                window.location.href = '/cart'
+                window.location.href = '/cart';
             })
             .fail((rs) => console.log(rs))
         }

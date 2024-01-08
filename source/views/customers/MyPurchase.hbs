@@ -63,45 +63,51 @@
                 </li>
                 <button onclick="contact()" class="rate" style="position: absolute; top: 85%; left: 50%; transform: translate(-50%, -50%);">OK</button>
             </div>
+            {{!-- Order ID --}}
+            {{#each orders}}
             <div class="item">
                 <div class="info">
                     <div class="id">
                         <span class="oder">ORDER ID: </span>
-                        <span class="code">231002A01</span>
+                        <span class="code">{{OrderID}}</span>
                     </div>
                     <div class="status">
-                        <span>COMPLETED</span>
+                        <span style="text-transform: uppercase;">{{Status}}</span>
                     </div>
                 </div>
+                {{#each proList}}
                 <div class="product">
                     <div class="Book">
-                        <img src="image/NhaLanhDaoTuongLai.svg">
+                        <img src={{Photo}}>
                         <div class="infoBook">
                             <a href="#">
-                                <span style="font-size: 24px;">NHÀ LÃNH ĐẠO TƯƠNG LAI</span>
+                                <span style="font-size: 24px; text-transform: uppercase;">{{ProductName}}</span>
                             </a>
                             <span style="margin-top: 30px;">Category: </span>
                             <a href="#">
-                                <span>Sách Kinh Tế</span>
+                                <span>{{CateName}}</span>
                             </a>
                         </div>
                     </div>
                     <div class="quantity">
-                        <span>x 1</span>
+                        <span>x{{Quantity}}</span>
                     </div>
                     <div style="flex-direction: column; align-items: center;">
                         <div class="charge">
-                            <span>50.000 VND</span>
+                            <span>{{PriceOut}} VND</span>
                         </div>
                     </div>
                 </div>
+                {{/each}}
+
+                {{#if (eq Status "Delivered")}}
                 <div class="function">
                     <div class="tonggia">
                         <div class="total col-8" style="margin-right: 100px;">
-                            <span>Oder Total:</span>
+                            <span>Order Total:</span>
                         </div>
                         <div class="col-4">
-                            <span class="charge">50.000 VND</span>
+                            <span class="charge">{{TotalPrice}} VND</span>
                         </div>
                     </div>
                     <div class="button">
@@ -110,47 +116,14 @@
                         <button onclick="buyagain()" class="norbutton">BUY AGAIN</button>
                     </div>                       
                 </div>
-                
-            </div>
-            <div class="item">
-                <div class="info">
-                    <div class="id">
-                        <span class="oder">ORDER ID: </span>
-                        <span class="code">231001A01</span>
-                    </div>
-                    <div class="status">
-                        <span>shipping</span>
-                    </div>
-                </div>
-                <div class="product">
-                    <div class="Book">
-                        <img src="image/CONTENTBACTY.SVG">
-                        <div class="infoBook">
-                            <a href="#">
-                                <span style="font-size: 24px;">CONTENT BẠC TỶ</span>
-                            </a>
-                            <span style="margin-top: 30px;">Category: </span>
-                            <a href="#">
-                                <span>Sách Content</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="quantity">
-                        <span>x 2</span>
-                    </div>
-                    <div style="flex-direction: column; align-items: center;">
-                        <div class="charge">
-                            <span>80.000 VND</span>
-                        </div>
-                    </div>
-                </div>
+                {{else}}
                 <div class="function">
                     <div class="tonggia">
                         <div class="total col-8" style="margin-right: 100px;">
-                            <span>Oder Total:</span>
+                            <span>Order Total:</span>
                         </div>
                         <div class="col-4">
-                            <span class="charge">160.000 VND</span>
+                            <span class="charge">{{TotalPrice}} VND</span>
                         </div>
                     </div>
                     <div class="button" style="display: none;">
@@ -159,7 +132,9 @@
                         <button onclick="buyagain()" class="norbutton">BUY AGAIN</button>
                     </div>                        
                 </div>
+                {{/if}}
             </div>
+            {{/each}}
         </div>
     </div>
 </div>

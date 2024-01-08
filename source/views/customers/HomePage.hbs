@@ -25,7 +25,7 @@
                   <div>
                     <h5 class="card-title fs-2 fw-bold">{{ProductName}} </h5>
                     <p class="card-text mt-4 mb-4">{{Descrip}}</p>
-                    <a class="btn btn-lg btn-outline-success greenButton" href="#" role="button"><span
+                    <a class="btn btn-lg btn-outline-success greenButton" href="/book/{{ProductID}}" role="button"><span
                         class="p-3 fw-light fs-6">READ MORE &nbsp; &rarr; </span></a></a></a>
                   </div>
 
@@ -55,7 +55,7 @@
   <!-- top categories -->
   <div class="row m-0 mt-5 d-flex  align-items-center justify-content-center">
     <div class="offset-1 col-3 card topCategogriesCard">
-      <a href=""><img
+      <a href="/products/search?cate=1"><img
           src="https://images.unsplash.com/photo-1599495054627-35ad07218a46?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxOTA3MDh8MHwxfHNlYXJjaHw0fHxub3ZlbHxlbnwwfHx8fDE2NTIwNzk3NjY&ixlib=rb-1.2.1&q=85"
           class="card-img" style="height:45vh" alt="..."> </a>
       <h3 class="card-title fw-bold col-11" style="background-color: #75757575;">Novels</h3>
@@ -63,11 +63,11 @@
     <div class="card col-3 m-3 topCategogriesCardTitle">
       <div class="card-body p-0">
         <h3 class="card-title fw-bold mt-5 mb-5">Explore our books</h3>
-        <a href="#" class="btn btn-primary">Explore</a>
+        <a href="/products/search?inputBook=" class="btn btn-primary">Explore</a>
       </div>
     </div>
     <div class="col-3 card topCategogriesCard">
-      <a href=""><img
+      <a href="/products/search?cate=2"><img
           src="https://franchiseindia.s3.ap-south-1.amazonaws.com/uploads/content/edu/art/5cc2f86cf0d42.jpeg"
           class="card-img" style="height:45vh" alt="..."> </a>
       <h5 class="card-title fw-bold col-11" style="background-color: #75757575;">Economic Books</h5>
@@ -76,19 +76,19 @@
 
   <div class="row m-0 mb-5 d-flex align-items-center justify-content-center">
     <div class="offset-1 col-3 card topCategogriesCard">
-      <a href=""><img
+      <a href="/products/search?cate=3"><img
           src="https://image.slidesdocs.com/responsive-images/background/blackboard-with-chalk-drawn-science-drawing-using-glass-beakers-and-trays-isolated-photo-copy-space-powerpoint-background_0805baa708__960_540.jpg"
           class="card-img" style="height:45vh" alt="..."> </a>
       <h5 class="card-title fw-bold col-11" style="background-color: #75757575;">Science Books</h5>
     </div>
     <div class="col-3 m-3 card topCategogriesCard">
-      <a href=""><img
+      <a href="/products/search?cate=5"><img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrVtTU4f3uhqZA_mqThRHusY9Xu6jqzlBVog&usqp=CAU"
           class="card-img" style="height:45vh; " alt="..."> </a>
       <h5 class="card-title fw-bold col-11" style="background-color: #75757575;">History Book</h5>
     </div>
     <div class="col-3 card topCategogriesCard">
-      <a href=""><img src="https://booktrib.com/wp-content/uploads/2020/07/Untitled-design-22.jpg" class="card-img"
+      <a href="/products/search?cate=5"><img src="https://booktrib.com/wp-content/uploads/2020/07/Untitled-design-22.jpg" class="card-img"
           style="height:45vh" alt="..."> </a>
       <h5 class="card-title fw-bold col-11" style="background-color: #75757575;">Detective Books</h5>
     </div>
@@ -117,7 +117,7 @@
           {{#each newPrds }}
           {{#if (in @index 0 3)}}
           <div class="card d-inline-block me-4 p-3 shadow border-0 text-center" style="width: 15rem; height: 30rem">
-            <a href="">
+            <a href="/book/{{ProductID}}">
               <img src={{Photo}} class="card-img-top m-4 img-thumbnail" style="width: 10rem; height: 12rem;" alt="...">
               <div class="card-body" style="height: 18rem">
                 <div style="height: 5rem">
@@ -145,7 +145,7 @@
           {{#each newPrds }}
           {{#if (in @index 4 7)}}
           <div class="card d-inline-block me-4 p-3 shadow border-0 text-center" style="width: 15rem; height: 30rem">
-            <a href="">
+            <a href="/book/{{ProductID}}">
               <img src={{Photo}} class="card-img-top m-4 img-thumbnail" style="width: 10rem; height: 12rem;" alt="...">
               <div class="card-body" style="height: 18rem">
                 <div style="height: 5rem">
@@ -173,7 +173,7 @@
           {{#each newPrds }}
           {{#if (in @index 8 11)}}
           <div class="card d-inline-block me-4 p-3 shadow border-0 text-center" style="width: 15rem; height: 30rem">
-            <a href="">
+            <a href="/book/{{ProductID}}">
               <img src={{Photo}} class="card-img-top m-4 img-thumbnail" style="width: 10rem; height: 12rem;" alt="...">
               <div class="card-body" style="height: 18rem">
                 <div style="height: 5rem">
@@ -222,8 +222,8 @@
               {{/each}}
             </p>
             <p class="card-text text-body-secondary">{{Descrip}}</p>
-            <button type="button" class="btn btn-lg btn-outline-success greenButton mt-4 "> <span
-                class="p-3 fw-light fs-6">VIEW MORE &nbsp; &rarr; </span></button>
+            <a class="btn btn-lg btn-outline-success greenButton" href="/book/{{ProductID}}" role="button"><span
+                        class="p-3 fw-light fs-6">VIEW MORE &nbsp; &rarr; </span></a>
           </div>
         </div>
       </div>
@@ -260,8 +260,6 @@
                       <h1 class="card-title fs-2 fw-bold text-capitalize">comming soon </h1>
                       <h5 class="mt-4">{{ProductName}} - {{Author}}</h5>
                       <p class="card-text mb-4">{{Descrip}}</p>
-                      <p class="card-text"><button type="button" class="btn btn-lg btn-outline-success greenButton">
-                          <span class="p-3 fw-light fs-6 text-uppercase">view more &nbsp; &rarr; </span></button></p>
                     </div>
                   </div>
                 </div>
@@ -275,69 +273,3 @@
         </div>
       </div>
     </div>
-
-  {{!-- Chat box --}}
-  <div class="CustomerChat">
-    <div id="CustomerFrameChat" class="d-flex align-items-center">
-      <img src="https://robohash.org/idlaudantiumdeserunt.png?size=50x50&set=set1" style="scale: 120%; border-radius: 50%; border: 1px solid black; background-color: green;">
-      <div style="margin-left: 15px;">
-        <div style="background-color: #f4fbf3; width: 290px; border-radius: 20px 20px 20px 0; padding: 20px; border: 1px solid gray;">
-          <p style="font-size: 18px; font-weight: 600;">Welcome to our website</p>
-          <p>Nice to meet you! If you have any question about our services, feel free to contact us.</p>
-        </div>
-        <button style="width: 290px;" class="ButtonCustomerChat" onclick="CustomerChat()">Chat with us</button>
-      </div>
-    </div>
-    <div id="CustomerChatBox" class="d-none">
-      <div class="row align-items-center" style="background-color: burlywood; width: 290px; border-radius: 10px 10px 0 0; border: 1px solid gray; border-bottom: 0;">
-        <div class="col-2">
-          <img src="https://robohash.org/idlaudantiumdeserunt.png?size=50x50&set=set1" style="scale: 80%; border-radius: 50%; border: 1px solid black; background-color: green;">
-        </div>
-        <div class="col-8">
-          <p style="margin-left: 10px; font-size: 20px; margin-top: 10px;">ADMIN</p>
-        </div>
-        <div class="col-1">
-          <button style="border: 0; background-color: burlywood" onclick="CustomerCloseChat()">X</button>
-        </div>
-        
-      </div>
-      <div id="CustomerBoxChat">
-        <span class="CustomerBoxChatMess AdminMess">Chào bạn</span>
-        <span class="CustomerBoxChatMess AdminMess">Bạn có phải là người đăng cái tus này không ạ?</span>
-        <p class="CustomerBoxChatMess CustomerMess">Bạn nói gì ạ?</p>
-        <p class="CustomerBoxChatMess CustomerMess">Cái đó là cái chuyện của người ta ha.</p>
-      </div>
-      <div class="input-group">
-        <input id="message" type="text" class="form-control" placeholder="What do you need?" aria-describedby="button-addon2" style="border-radius: 0 0 0 10px; border: 1px solid gray">
-        <button onclick="sendMess()" class="btn btn-outline-secondary" type="button" id="button-addon2" style="background-color: white; border-radius: 0 0 10px 0;"><i class="far fa-paper-plane"></i></button>
-      </div>
-    </div>
-  </div>
-
-<script>
-  function CustomerChat(){
-    let a = document.getElementById("CustomerFrameChat");
-      a.classList.add("d-none");
-    let b = document.getElementById("CustomerChatBox");
-      b.classList.remove("d-none");
-  }
-  function CustomerCloseChat(){
-    let a = document.getElementById("CustomerChatBox");
-      a.classList.add("d-none");
-    let b = document.getElementById("CustomerFrameChat");
-      b.classList.remove("d-none");
-  }
-  function sendMess(){
-    let a = document.getElementById("message");
-    let b = document.getElementById("CustomerBoxChat").innerHTML;
-    b += `<p class="CustomerBoxChatMess CustomerMess">`+ a.value +`</p>`;
-    document.getElementById("CustomerBoxChat").innerHTML = b;
-    a.value = "";
-  }
-  $('#message').keypress(function(event){
-    var keycode = (event.keyCode ? event.keyCode : event.which);
-    if (keycode == '13') {
-      sendMess();
-    }
-  });
-</script>

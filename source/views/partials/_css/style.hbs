@@ -216,7 +216,7 @@
 
     .account-profile {
         height: 75vh;
-        width: 883px;
+        width: 871px;
         border: 2px solid black;
         border-left: none;
     }
@@ -228,7 +228,7 @@
         align-items: center;
         justify-content: center;
         height: 10vh;
-        width: 882px;
+        width: 870px;
     }
 
     /*Dashboard*/
@@ -290,7 +290,7 @@
     .linechart {
         width: 90%;
         height: 500px;
-        border: 1px solid #C6C6C6;
+        border: 2px solid #C6C6C6;
         margin: 20px 0 0 70px;
         border-radius: 10px;
     }
@@ -831,40 +831,24 @@
         box-shadow: none;
     }
 
-    .CustomerChat{
-        position: fixed;
-        right: 10px;
-        bottom: 50px;
-        z-index: 2;
+    @keyframes my { 
+        0% { color: #F8CD0A; } 
+        50% { color: #fff; } 
+        100% { color: #F8CD0A; }
     }
-    .ButtonCustomerChat{
-        margin-top: 10px;
-        height: 45px;
-        border-radius: 52px;
-        background: linear-gradient(90deg, #DEDEDE -3.12%, #749473 48.22%, #3D5940 105.52%);
-        box-shadow: 0px 6px 18px 0px rgba(17, 30, 45, 0.14);
+    .discount-blink{
+        -webkit-animation: my 700ms infinite; 
+        -moz-animation: my 700ms infinite; 
+        -o-animation: my 700ms infinite; 
+        animation: my 700ms infinite; 
     }
-    #CustomerBoxChat{
-        height: 300px; 
-        background-color: white; 
-        border: 1px solid gray; 
-        border-top: 0; 
-        border-bottom: 0;
-        overflow: auto;
-    }
-    .CustomerBoxChatMess{
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
         padding: 10px;
-        border-radius: 10px;
-        margin-top: 10px;
-        max-width: 150px;
     }
-    .AdminMess{
-        background-color: green;     
-        margin-left: 10px;      
-        display: block;
-    }
-    .CustomerMess{
-        background-color: greenyellow;       
-        margin-left: 130px;
+    .grid-item {
+        padding: 0 40px;
+        font-size: 20px;
     }
 </style>

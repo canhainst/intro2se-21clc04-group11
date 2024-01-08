@@ -2,6 +2,7 @@
         .rateStars{
             font-size: 17px;
             font-weight: 600;
+            margin: 0px;
         }
         .checkedStar {
             color: orange;
@@ -14,8 +15,8 @@
             opacity: 0.3;
         }
         progress::-webkit-progress-value {
-        background-color: rgb(0, 0, 0); 
-        border-radius: 5px;
+        background-color: rgb(1, 116, 9); 
+        border-radius: 0px 100px 100px 0px;
         }
         progress::-moz-progress-bar {
         background-color: rgb(0, 0, 0); 
@@ -24,78 +25,36 @@
     </style>
 
 <body>
-    <!-- Header -->
-    <div class="header">
-        <div class="row">
-            <div class="headerInf">
-                <span class="float-start "><i class="fas fa-phone"></i> +84273737373</span>
-                <span class="float-end"><a href="#"><i class="fab fa-blogger-b"></i></a></span>
-                <span class="float-end"><a href="#"><i class="fab fa-twitter"></i></a></span>
-                <span class="float-end"><a href="#"><i class="fab fa-linkedin-in"></i></a></span>
-                <span class="float-end"><a href="#"><i class="fab fa-instagram"></i></a></span>
-                <span class="float-end"><a href="#"><i class="fab fa-facebook-f"></i></a></span>
-            </div>  
-        </div>
-        <div class="d-flex flex-row justify-content-center">
-            <hr color="black" width="95%" size="3px"/>
-        </div>
-        <div class="row">
-            <div class="col-1" style="margin-left: 45px;">
-                <img class="logo" style="float: right" src="./image/logo.png" alt="logo">
-            </div>
-            <div class="page col-6 d-flex align-items-center" style="padding: 0;">
-                <div class="line"></div>
-                <span>CHECKOUT</span>
-            </div>
-            <div class="col-4 d-flex align-items-center" style="flex-direction: column; margin-top: 20px;">
-                <span style="margin-left: 100px;">Xin chào <a href="#" style="text-decoration: underline;">Nguyễn Lê Tấn Thành</a></span>
-                <span class="LOG" style="margin-left: 170px;"><a href="#">LOG OUT <i class="fas fa-sign-out-alt"></i></a></span>
-                <div style="align-items: center;">
-                    <a href="#" class="account icon-group">
-                        <i class="far fa-user-circle"></i>
-                        <span>account</span>
-                    </a>
-                    <a href="#" class="cart icon-group">
-                        <i class="fas fa-cart-plus"></i>
-                        <span>cart</span>
-                    </a>
-                    <a href="#" class="wishlist icon-group">
-                        <i class="far fa-heart"></i>
-                        <span>wishlist</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Item -->
     <div class="d-flex">
         <div style="width: 40%; padding-top: 50px; padding-bottom: 100px; text-align: center;">
-            <img class="w-75" src="./image/HarryPotterVaHonDaPhuThuy.jpg">
+            <img class="w-75" src={{Book.Photo}}>
         </div>
         <div style="width: 60%; padding: 30px;">
             <div style="color: #173F5F;
             font-size: 60px;
             font-style: normal;
             font-weight: 600;">
-            Harry Potter Và Hòn Đá Phù Thủy
+            {{Book.ProductName}}
         </div>
             <div style="color: #000;
             font-size: 32px;
             font-style: normal;
-            font-weight: 600;">
-                <span>Author: J.K.Rowling</span>
+            font-weight: 600;
+            ">
+                <span>Author: {{Book.Author}}</span>
                 <br>
-                <span>Publisher: NXB Trẻ</span>
+                <span>Publisher: {{Book.PublishingCompany}}</span>
                 <br>
-                <span style="color: #EE4E4E;  font-size: 60px;">120.000VNĐ</span>
+                <span style="color: #EE4E4E;  font-size: 60px;">{{Book.PriceOut}} VNĐ</span>
                 <div class="rateStars" style="font-size: 32px;">
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star"></span>
+                    {{#each (generateArr Book.Rating)}}
+                    <i class="fas fa-star star"></i>
+                    {{/each}}
+                    {{#each (generateArr (sub 5 Book.Rating)) }}
+                    <i class="far fa-star star"></i>
+                    {{/each}}
                 </div>
-                <br>
                 <!-- quantity -->
                 <div class="d-flex">
                     <span style="margin-right: 30px;">Quantity</span>
@@ -105,27 +64,27 @@
                         <button type="button" id="item1-plus" class="btn border-dark" style="background-color: #D9D9D9;"><span class="fw-bold">+</span></button>
                     </div>
                 </div>
-                <div style="padding: 30px; padding-left: 0px;">
+                <div style="padding: 10px; padding-left: 0px;">
                     <button type="button" class="btn btn-success" style="color: #FFF;
                     text-align: center;
-                    font-size: 40px;
-                    border-radius: 30px;
+                    font-size: 20px;
+                    border-radius: 15px;
                     border: 3px solid #000;
                     background: #3D5940;
-                    width: 642px;
-                    height: 106px;">
+                    width: 300px;
+                    height: 50px;">
                     BUY NOW
                     </button>
                 </div>
                 <div>
                     <button type="button" class="btn btn-outline-secondary" style="color: #000;
                     text-align: center;
-                    font-size: 40px;
-                    border-radius: 30px;
+                    font-size: 20px;
+                    border-radius: 15px;
                     border: 3px solid #000;
                     background: #FFF;
-                    width: 642px;
-                    height: 106px;">
+                    width: 300px;
+                    height: 50px;">
                     ADD TO CART
                     </button>
                 </div>
@@ -149,7 +108,7 @@
         font-size: 32px;
         font-weight: 300;
         text-transform: capitalize;">
-            Khi một lá thư được gởi đến cho cậu bé Harry Potter bình thường và bất hạnh, cậu khám phá ra một bí mật đã được che giấu suốt cả một thập kỉ. Cha mẹ cậu chính là phù thủy và cả hai đã bị lời nguyền của Chúa tể Hắc ám giết hại khi Harry mới chỉ là một đứa trẻ, và bằng cách nào đó, cậu đã giữ được mạng sống của mình. Thoát khỏi những người giám hộ Muggle không thể chịu đựng nổi để nhập học vào trường Hogwarts, một trường đào tạo phù thủy với những bóng ma và phép thuật, Harry tình cờ dấn thân vào một cuộc phiêu lưu đầy gai góc khi cậu phát hiện ra một con chó ba đầu đang canh giữ một căn phòng trên tầng ba. Rồi Harry nghe nói đến một viên đá bị mất tích sở hữu những sức mạnh lạ kì, rất quí giá, vô cùng nguy hiểm, mà cũng có thể là mang cả hai đặc điểm trên.
+            {{Book.Descrip}}
         </div>
         
     </div>
@@ -170,14 +129,15 @@
         Tổng Quan
         </div>
         <div class="row"  style="align-items: end;">
-            <div class="col-1" style="font-size: 50px;">4.0</div>
+            <div class="col-1" style="font-size: 50px;">{{Book.Rating}}</div>
             <div class="col-3">
                 <div class="rateStars" style="font-size: 40px">
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star"></span>
+                    {{#each (generateArr Book.Rating)}}
+                    <i class="fas fa-star star"></i>
+                    {{/each}}
+                    {{#each (generateArr (sub 5 Book.Rating)) }}
+                    <i class="far fa-star star"></i>
+                    {{/each}}
                 </div>
             </div>
         </div>
@@ -185,121 +145,50 @@
         <!-- Feedback Counter -->
         <div class="row">
             <div class="col-1" 
-            style="color: rgba(0, 0, 0, 0.37);
-            font-size: 15px;">(3 đánh giá)</div>
+            style="color: rgba(0, 0, 0sfdsaf, 0.37);
+            font-size: 15px;">({{Book.Total}} đánh giá)</div>
         </div>
         
 
         <!-- Feedback Statistic -->
 
-        <!-- 5 star -->
+        {{#each Ratings}}
         <div class="row align-items-center" style="padding-top: 10px;">
             <div class="col-1">
                 <div class="rateStars"> 
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star checkedStar"></span>
+                    {{#each (generateArr Rating)}}
+                    <i class="fas fa-star star"></i>
+                    {{/each}}
+                    {{#each (generateArr (sub 5 Rating)) }}
+                    <i class="far fa-star star"></i>
+                    {{/each}}
                 </div>
             </div>
             <div class="col-3">
-                <progress value="25" max="100"></progress>
+                <progress value={{Num}} max={{TotalNum}}></progress>
             </div>
-            <div class="col-1">1</div>
+            <div class="col-1">{{Num}}</div>
         </div>
+        {{/each}}
 
-        <!-- 4 stars -->
-        <div class="row align-items-center" style="padding-top: 10px;">
-            <div class="col-1">
-                <div class="rateStars">
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star"></span>
-                </div>
-            </div>
-            <div class="col-3">
-                <progress value="50" max="100"></progress>
-            </div>
-            <div class="col-1">2</div>
-        </div>
-
-        <!-- 3 stars -->
-        <div class="row align-items-center" style="padding-top: 10px;">
-            <div class="col-1">
-                <div class="rateStars">
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
-            </div>
-            <div class="col-3">
-                <progress value="25" max="100"></progress>
-            </div>
-            <div class="col-1">1</div>
-        </div>
-
-        <!-- 2 stars -->
-        <div class="row align-items-center" style="padding-top: 10px;"> 
-            <div class="col-1">
-                <div class="rateStars">
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
-            </div>
-            <div class="col-3">
-                <progress value="0" max="100"></progress>
-            </div>
-            <div class="col-1">0</div>
-        </div>
-
-        <!-- 1 star -->
-        <div class="row align-items-center" style="padding-top: 10px;">
-            <div class="col-1">
-                <div class="rateStars">
-                    <span class="fa fa-star checkedStar"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                </div>
-            </div>
-            <div class="col-3">
-                <progress value="0" max="100"></progress>
-            </div>
-            <div class="col-1">0</div>
-        </div>
+        
     </div>
     <!-- Comment -->
+    {{#each Feedbacks}}
     <div class="d-flex" style="padding: 100px; padding-top: 0px;">
-        <div><img src="./image/HungDo.png" style="width: 70px; border-radius: 100px;"></div>
+        <div><img src={{Photo}} style="width: 70px; border-radius: 100px;"></div>
         <div style="width: 100%;">
             <div class="row">
-                <div class="col-1">Hung Do</div>
+                <div class="col-1">{{Name}}</div>
                 <div class="col-2">
                     <div class="rateStars">
-                        <span class="fa fa-star checkedStar"></span>
-                        <span class="fa fa-star checkedStar"></span>
-                        <span class="fa fa-star checkedStar"></span>
-                        <span class="fa fa-star checkedStar"></span>
-                        <span class="fa fa-star checkedStar"></span>
+                        {{#each (generateArr Rating)}}
+                        <i class="fas fa-star star"></i>
+                        {{/each}}
+                        {{#each (generateArr (sub 5 Rating)) }}
+                        <i class="far fa-star star"></i>
+                        {{/each}}
                     </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-1" 
-                style="color: rgba(0, 0, 0, 0.37);
-                font-size: 15px;
-                padding-top: 20px;">
-                2/10/2023
                 </div>
             </div>
 
@@ -309,50 +198,10 @@
                 font-size: 30px;
                 font-weight: 400;
                 padding-top: 20px;">
-                    Phải nói rằng mình là một fan cứng của Harry potter. Mê mẩn tất cả các series phim xong không thể bỏ lỡ các cuốn tiểu thuyết. Các bạn cứ bảo mình rằng xem phim rồi sao còn chi một đống tiền mua sách. Ừ thì cũng tại sách cũng quá hay đi. Cảm giác sở hữu một cuốn sách như nắm trong tay tất cả vậy. Mình giữ gìn sách sau này cho con cháu mình đọc có sao đâu. Cảm ơn nhà văn JK Rowling đã viết nên Harry potter để mình đắm mình vào thế giới phép thuật tại trường Hogwarts, để mình biết tình bạn trong hoạn nạn ra sao. Cảm ơn vì đã tạo nên nhân vật Harry potter để mình mê mẩn đến lạ lùng. Cuốn sách thật sự rất rất hay. Đáng mua, đáng đọc. Các bạn nhất định phải đọc nhé.</div>
+                {{Feedback}}
+                </div>
             </div>
         </div>
     </div>
-    <div class="footer" style="background-color: #5A715B;">
-        <div class="row">
-            <div class="col-4" style="margin-top: 30px; margin-left: 69px;">
-                <img class="logo" src="./image/logo.png" alt="logo">
-                <div style="color:white; margin-top: 10px;margin-bottom: 20px;"> Nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-                <a href="#" class="footer-icon-group">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="#" class="footer-icon-group">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="#" class="footer-icon-group">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#" class="footer-icon-group">
-                    <i class="fab fa-youtube"></i>
-                </a>
-            </div>
-            <div class="col-3" style="margin-top: 20px; margin-left: 69px;">
-                <a href="#" class="footerInf">HOME</a>
-                <br>
-                <a href="#" class="footerInf">ABOUT US</a>
-                <br>
-                <a href="#" class="footerInf">BOOKS</a>
-                <br>
-                <a href="#" class="footerInf">NEW RELASE</a>
-                <br>
-                <a href="#" class="footerInf">CONTACT US</a>
-                <br>
-                <a href="#" class="footerInf">BLOG</a>
-            </div>
-            <div class="col-3" style="margin-top: 30px;">
-                <span style="line-height: 72px; color: white;font-weight: bold;"> IMPORTANT LINKS</span>
-                <br>
-                <a href="#" class="footerInf">Privacy Policy</a>
-                <br>
-                <a href="#" class="footerInf">FAQs</a>
-                <br>
-                <a href="#" class="footerInf">Terms of Service</a>
-            </div>
-        </div>
-    </div>
+    {{/each}}
 </body>
