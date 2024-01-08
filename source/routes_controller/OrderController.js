@@ -5,6 +5,8 @@ const OrderModel = require('../models/OrderModel');
 router.get('/all', async (req, res, next) => {
   try {
     const { status, search } = req.query;
+    console.log('status:', status);
+    console.log('search:', search);
     const orders = await OrderModel.getAllOrders(status, search);
     res.json(orders);
   } catch (error) {
