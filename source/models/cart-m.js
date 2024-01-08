@@ -1,51 +1,98 @@
-const express = require("express");
-const router = express.Router();
-const productsM = require("../models/products-m");
-const cart = require("../models/cart-m");
+const sql = require("mssql");
+const config = require("../dbconfig");
+const tbName = "cartdetails";
 
-
-router.get('/', async (req, res, next) => {
-    let prds = await cart.getCart(req.user.UserID);
-    let CartQuantity = prds.map(item => item.Quantity);
-    for (let i = 0; i < prds.length; i++) {
-        prds[i] = await productsM.getBook(prds[i].ProductID);
-        prds[i].Instock = prds[i].Quantity;
-        prds[i].Rating = await productsM.getStars(prds[i].ProductID);
-        prds[i].Cate = (await cart.getCategory(prds[i].CateID)).CateName;
-        prds[i].CartQuantity = await CartQuantity[i];
-    }
-    res.render('customers/Cart' ,{
-        prds,
-        title: 'Shopping Cart',
-        text: 'Cart',
-        login: true,
-        UserID: req.user.UserID,
-        mainJs: () => 'empty',
-        navbar:()=>'empty',
-        header: () => 'header_text',
-    })
+sql.on("error", (err) => {
+    throw err;
 });
 
-router.post('/', async(req, res, next) => {
-    try{
-        let {CustomerID, ProductID, quantity} = req.body;
-        if(quantity == 0){
-            cart.Delete(CustomerID, ProductID);
+module.exports = class Cart{
+    constructor(
+        BuyerID,
+        ProductID,
+        Quantity
+    ){
+        this.BuyerID = BuyerID;
+        this.ProductID = ProductID;
+        this.Quantity = Quantity;
+    }
+
+    static async getCart(BuyerID){
+        try{
+            let pool = await sql.connect(config);
+            let rs = await pool.query(
+                `SELECT * FROM cartdetails WHERE BuyerID = ${BuyerID}`
+            );
+            await sql.close();
+            return rs.recordset;
+        } catch (err) {
+            console.error("Error:", err);
+            throw err;
         }
-        else
-            cart.UpdateData(CustomerID, ProductID, quantity);
-        res.send(req.body);
-    } catch(err){
-        next(err);
     }
-});
-router.post('/add', async(req, res, next) => {
-    try{
-        let {CustomerID, ProductID, quantity} = req.body;
-        cart.addProduct(CustomerID, ProductID, quantity);
-        res.send(req.body);
-    } catch(err){
-        next(err);
+
+    static async getCategory(CateID){
+        try{
+            let pool = await sql.connect(config);
+            let rs = await pool.query(
+                `SELECT c.CateName FROM category c WHERE CateID = ${CateID}`
+            );
+            await sql.close();
+            return rs.recordset[0];
+        } catch (err) {
+            console.error("Error:", 0);
+            throw err;
+        }
     }
-})
-module.exports = router;
+
+    static async UpdateData(CustomerID, ProductID, Quantity){
+        try{
+            let pool = await sql.connect(config);
+            await pool.query(
+                `UPDATE cartdetails SET Quantity = ${Quantity} WHERE BuyerID = ${CustomerID} AND ProductID = ${ProductID}`
+            );
+            await sql.close();
+        } catch (err) {
+            console.error("Error:", err);
+            throw err;
+        }
+    }
+    static async addProduct(CustomerID, ProductID, Quantity){
+        try{
+            let pool = await sql.connect(config);
+            let exist = await pool.query(
+                `SELECT * from cartdetails where BuyerID= ${CustomerID} AND ProductID = ${ProductID}`
+            )
+            if(exist.recordset.length === 0) {
+                await pool.query(
+                    `INSERT INTO cartdetails (BuyerID, ProductID, Quantity)
+                    VALUES (${CustomerID}, ${ProductID}, ${Quantity})
+                    `
+                );
+            }
+            else {
+                let newQuantity = parseInt(exist.recordset[0].Quantity) + parseInt(Quantity);
+                await pool.query(
+                    `UPDATE cartdetails SET Quantity = ${newQuantity} WHERE BuyerID = ${CustomerID} AND ProductID = ${ProductID}`
+                );
+                console.log(newQuantity)
+            }
+            await sql.close();
+        } catch (err) {
+            console.error("Error:", err);
+            throw err;
+        }
+    }
+    static async Delete(CustomerID, ProductID){
+        try{
+            let pool = await sql.connect(config);
+            await pool.query(
+                `DELETE FROM cartdetails WHERE BuyerID = ${CustomerID} AND ProductID = ${ProductID} `
+            );
+            await sql.close();
+        } catch (err) {
+            console.error("Error:", err);
+            throw err;
+        }
+    }
+}

@@ -99,8 +99,8 @@
             $('#usernameErr').html(regex.test($('#inputUserName').val()) ? '<i>username does not contain the following characters / \ [ ] ; | = , + * ? < ></i>' : '');
             
             // check Password
-            regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\@\!\#\$\%\*\?\&]).{8,}$/;
-            $('#PwErr').html(regex.test($('#inputPassword').val()) ? '' : '<i>password must be at least 8 characters long and include  at least one<br> lowercase letter, one uppercase letter, one number, and one special character.</i>');
+            regex = /^.{8,}$/;
+            $('#PwErr').html(regex.test($('#inputPassword').val()) ? '' : 'password must be at least 8 characters long');
             
             //check confirmPassword
             $('#confirmPwErr').html(($('#inputPassword').val() != $('#inputConfirmPassword').val()) ? '<i>confirm password is incorrect</i>' : '');
