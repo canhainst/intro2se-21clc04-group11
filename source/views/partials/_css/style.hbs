@@ -830,4 +830,25 @@
         border: 0;
         box-shadow: none;
     }
+
+    @keyframes my { 
+        0% { color: #F8CD0A; } 
+        50% { color: #fff; } 
+        100% { color: #F8CD0A; }
+    }
+    .discount-blink{
+        -webkit-animation: my 700ms infinite; 
+        -moz-animation: my 700ms infinite; 
+        -o-animation: my 700ms infinite; 
+        animation: my 700ms infinite; 
+    }
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        padding: 10px;
+    }
+    .grid-item {
+        padding: 0 40px;
+        font-size: 20px;
+    }
 </style>

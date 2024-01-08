@@ -42,7 +42,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
-router.get("/about", async (req, res, next) => {
+router.get("/aboutus", async (req, res, next) => {
   try {
     res.render("customers/AboutUs", {
       title: "About Us",
@@ -57,4 +57,17 @@ router.get("/about", async (req, res, next) => {
 });
 
 //get About Us page
+router.get("/Us", async (req, res, next) => {
+  try {
+    res.render("customers/Us", {
+      title: "Group 11",
+      login: true,
+      mainJs: () => "empty",
+      navbar: () => "navbar",
+      header: () => "header_search"
+    });
+  } catch (err) {
+    next(err);
+  }
+});
 module.exports = router;
