@@ -21,14 +21,14 @@
                 <div class="col-3">
                     <div>Name</div>
                 </div>
-                <div class="col-5" id="CustomerName">Doan Khoa</div>
+                <div class="col-5" id="CustomerName">{{User.UserName}}</div>
             </div>
             <div class="row" style="font-size: 20px;">
                 <div class="col-1"></div>
                 <div class="col-3">
                     <div>Phone Number</div>
                 </div>
-                <div class="col-4" id="CustomerNumber">0123456789</div>
+                <div class="col-4" id="CustomerNumber">{{User.Phone}}</div>
             </div>
             <div class="row" style="font-size: 20px;">
                 <div class="col-1"></div>
@@ -36,7 +36,7 @@
                     <div>Address</div>
                 </div>
 
-                <div class="col-5" id="CustomerAddress">123 Thai Tue, W4, D5, HCM city</div>
+                <div class="col-5" id="CustomerAddress">{{User.Address}}</div>
             </div>
             <div class="col-6 mx-auto mt-3">
                 <button type="button" onclick="TypeAddress()" class="btn btn-success rounded-0" id="ChooseAddress"
@@ -80,7 +80,7 @@
             <div class="row" style="font-size: 25px;">
                 <div class="col-5"></div>
                 <div class="col-4 row">
-                    <button type="button" class="btn btn-danger rounded-0 border" onclick="Purchase(5)"
+                    <button type="button" class="btn btn-danger rounded-0 border" onclick="Purchase({{User.UserID}})"
                         style="background-color: #EE440F;">PURCHASE</button>
                 </div>
             </div>
