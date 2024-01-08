@@ -152,7 +152,7 @@
                     <div class="button">
                         <button onclick="clickRate({{@index}}, {{OrderID}})" class="rate">RATE</button>
                         <button onclick="contact()" class="norbutton">CONTACT US</button>
-                        <button onclick="buyagain()" class="norbutton">BUY AGAIN</button>
+                        <button onclick="buyagain('{{toJSON proList}}')" class="norbutton">BUY AGAIN</button>
                     </div>
                 </div>
                 {{else}}
@@ -179,6 +179,37 @@
 </div>
 <script src="./_js/mainT.js"></script>
 <script>
+    function buyagain(items){
+        const selectedItems = [];
+        const parseditems = JSON.parse(items);
+        let TrueTotal = 0;
+        parseditems.forEach(item => {
+            let ProductName = item.ProductName;
+            ProductName = ProductName.trim();
+            let Category = item.CateName;
+            let ProductID = item.ProductID;
+            let img = item.Photo;
+            let PriceOut = item.PriceOut;
+            let quantity = item.Quantity;
+            let TotalPrice = parseInt(quantity) * parseInt(PriceOut);
+            TrueTotal += TotalPrice;
+            let Instock = item.Instock; 
+            selectedItems.push({ProductName: ProductName,
+                                            Category: Category,
+                                            ProductID: ProductID,
+                                            img: img,
+                                            UnitPrice: PriceOut,
+                                            Quantity: quantity,
+                                            TotalPrice: TotalPrice,
+                                            Instock: Instock
+                                        });
+        })
+        localStorage.setItem("selectedItems", JSON.stringify(selectedItems));
+        let MerchandiseSubtotal = TrueTotal;
+        localStorage.setItem("MerchandiseSubtotal", JSON.stringify(MerchandiseSubtotal));
+        window.location.href = "/checkout";
+    }
+
     function submitRating(event) {
         event.preventDefault(); 
         $.post('/mypurchase', $('#ratingForm').serialize())
