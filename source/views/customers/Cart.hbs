@@ -90,7 +90,7 @@
                 <span>VNĐ</span>
             </div>
             <div class="col-2 text-end">
-                <button onclick="checkout(14)" class="btn btn-primary" style="background-color: #ee440f; border: 0; border-radius: 0">CHECK OUT</button>
+                <button onclick="checkout({{UserID}})" class="btn btn-primary" style="background-color: #ee440f; border: 0; border-radius: 0">CHECK OUT</button>
             </div>
         </div>
     </div>
@@ -98,7 +98,6 @@
 <script>
     let Total = 0;
     let TotalEle = 0;
-
     // Attach an event listener to the checkbox
     function checkTicked(index){
         let a = document.querySelector(`#flexCheckDefault ._${index}`);
@@ -164,7 +163,7 @@
             }
 
             // Update database
-            UpdateCartData(5, ProductID, quantity);
+            UpdateCartData({{UserID}}, ProductID, quantity);
         }
         else{
             deletePrd(index);
@@ -188,7 +187,7 @@
             }
 
             // Update database
-            UpdateCartData(5, ProductID, quantity);
+            UpdateCartData({{UserID}}, ProductID, quantity);
         }
         else{
             alert("Out of stock?");
@@ -201,7 +200,7 @@
             let ProductID = parseInt(document.querySelector(`#ProductID ._${index}`).innerHTML);
 
             // Update database
-            $.post('/Cart', {CustomerID: 5, ProductID: ProductID, quantity: 0})
+            $.post('/Cart', {CustomerID: {{UserID}}, ProductID: ProductID, quantity: 0})
             .done((rs) => {
                 console.log(rs);
                 window.location.href = '/cart';
@@ -211,7 +210,7 @@
     }
 
     function checkout(CustomerID){
-        if(document.getElementById("TotalPrice").innerHTML == "0"){
+        if(document.getElementById("TotalPrice").innerHTML == "a"){
             alert("You have not selected a product yet!!");
         }
         else{

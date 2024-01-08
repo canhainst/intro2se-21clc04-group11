@@ -22,6 +22,9 @@ const hbs = create({
         in: (x, v1, v2) => (x >= v1 && x <= v2),
         generateArr: (v) => Array.from({ length: v }, (_, index) => index), //sinh mảng 0 -> v-1
         generateArr1: (v, v2) => Array.from({ length: v }, (_, index) => {index, v2}),
+        toJSON: function (object) {
+            return JSON.stringify(object);
+        },
     }
 })
 

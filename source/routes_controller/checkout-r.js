@@ -8,9 +8,8 @@ router.get('/', async (req, res, next) => {
     let day = today.getDate();
     let month = today.getMonth() + 1; // Tháng bắt đầu từ 0, nên cộng thêm 1
     let year = today.getFullYear();
-  
-    checkoutM.CreateNewOrder(5);
-  
+
+    checkoutM.CreateNewOrder(req.user.UserID);
     res.render('customers/Checkout',{
         day: day,
         month: month,
@@ -19,6 +18,7 @@ router.get('/', async (req, res, next) => {
         title: 'Checkout',
         text: 'Check Out',
         login: true,
+        User: req.user,
         mainJs: () => 'empty',
         navbar:()=>'empty',
         header: () => 'header_text',

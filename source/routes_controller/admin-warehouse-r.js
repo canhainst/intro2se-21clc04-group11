@@ -39,5 +39,35 @@ router.post('/addProduct', upload.single('img'), async (req, res, next) => {
     }
 });
 
+router.get("/postProduct", async (req, res, next) => {
+  try {
+    let BookID = req.query.ProductID || -1;
+    if(BookID == -1){
+      next(-1);
+    }
+    let Product = await productsM.getBook(BookID);
+    res.render("admin/PostProduct", {
+        Product,
+        layout: "admin",
+        title: "Post Product",
+        mainJs: () => "_js/mainT",
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+
+router.post('/postProduct', async(req, res, next) => {
+  try{
+    let ProductID = req.body.ProductID;
+    let SalePrice = req.body.SalePrice;
+    let Description = req.body.Description;
+    await productsM.postProduct(ProductID, SalePrice, Description);
+    res.send('done');
+} catch (err){
+    next(err);
+}
+})
 
 module.exports = router;

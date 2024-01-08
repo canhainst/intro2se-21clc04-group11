@@ -205,7 +205,10 @@ module.exports = class Product {
     try {
       let pool = await sql.connect(config);
       let rs = await pool.query(
-        `SELECT * FROM products WHERE ProductID = ${ID}`
+        `SELECT * 
+        FROM products p, category c 
+        WHERE ProductID = ${ID} AND
+        p.CateID = c.CateID`
       );
       // console.log(rs);
       await sql.close();
@@ -234,12 +237,29 @@ module.exports = class Product {
     try {
       let pool = await sql.connect(config);
       await pool.query(
-`INSERT INTO products (ProductName, Author, Descrip, CateID, PublishingCompany, PublishingYear, Quantity, PriceIn, Status, CreateTime, Photo) 
+        `INSERT INTO products (ProductName, Author, Descrip, CateID, PublishingCompany, PublishingYear, Quantity, PriceIn, Status, CreateTime, Photo) 
         VALUES ('${bookName}', '${author}', '${des}', ${category}, '${pubCompany}', ${pubYear}, ${quantity}, ${inPrice}, 'Deactive', GETDATE(), '${photo}')`
       );
       await sql.close();
     } catch (err) {
       console.error("Error:", err);
+      throw err;
+    }
+  }
+  static async postProduct(ProductID, SalePrice, Description) {
+    try {
+      let pool = await sql.connect(config);
+      await pool.query(
+        `UPDATE products
+          SET 
+          Status = 'Active', 
+          Descrip = '${Description}', 
+          PriceOut = '${SalePrice}'
+          WHERE ProductID = ${ProductID}
+          `);
+      await sql.close();
+    } catch (err) {
+      console.error("Error:", 0);
       throw err;
     }
   }

@@ -203,7 +203,20 @@ router.post('/profile', async (req, res, next) => {
             Address: req.body.inputAddress
         };
         await accountM.updateProfile(obj, req.session.passport.user);
-        res.redirect('/account/profile');
+
+        const profile = await accountM.get(req.session.passport.user);
+        formattedDate = profile.DateOfBirth.toISOString().split('T')[0];
+        res.render('customers/MyAccount', {
+            title: 'My Account',
+            text: 'account',
+            login: true,
+            profile,
+            dob: formattedDate,
+            mainJs: () => 'empty',
+            navbar: () => 'navbar',
+            header: () => 'header_text',
+        });
+
     } catch (error) {
         next(error);
     }

@@ -1,15 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const productsM = require("../models/products-m");
-const cart = require("../models/cart-m")
+const cart = require("../models/cart-m");
 
 
 router.get('/', async (req, res, next) => {
-    let prds = await cart.getCart(5);
+    let prds = await cart.getCart(req.user.UserID);
     let CartQuantity = prds.map(item => item.Quantity);
 
     for (let i = 0; i < prds.length; i++) {
         prds[i] = await productsM.getBook(prds[i].ProductID);
+        //console.log(prds[i]);
         prds[i].Rating = await productsM.getStars(prds[i].ProductID);
         prds[i].Cate = (await cart.getCategory(prds[i].CateID)).CateName;
         prds[i].CartQuantity = await CartQuantity[i];
@@ -19,6 +20,7 @@ router.get('/', async (req, res, next) => {
         title: 'Shopping Cart',
         text: 'Cart',
         login: true,
+        UserID: req.user.UserID,
         mainJs: () => 'empty',
         navbar:()=>'empty',
         header: () => 'header_text',

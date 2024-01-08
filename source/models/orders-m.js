@@ -24,7 +24,7 @@ module.exports = class Order {
         try {
             let pool = await sql.connect(config);
             let rs = await pool.query(`
-            SELECT  OrderID, Status, FORMAT(TotalPrice, '#,##0') as TotalPrice
+            SELECT  OrderID, Status, TotalPrice
             FROM    orders 
             WHERE   BuyerID = ${BuyerID}
             `);
@@ -39,13 +39,13 @@ module.exports = class Order {
         try {
             let pool = await sql.connect(config);
             let rs = await pool.query(`
-            SELECT  SUM(od.Quantity) as Quantity, c.CateName, p.ProductName, FORMAT(p.PriceOut, '#,##0') as PriceOut, p.Photo 
+            SELECT  SUM(od.Quantity) as Quantity, c.CateName, p.ProductName, p.PriceOut, p.Photo, p.ProductID, p.Quantity as Instock
             FROM    orderdetails od, products p, category c
             WHERE   od.OrderID = ${OrderID} AND
                     od.ProductID = p.ProductID AND
                     p.CateID = c.CateID
             GROUP BY
-                    od.OrderID, p.ProductID, c.CateName, p.ProductName, p.PriceOut, p.Photo 
+                    od.OrderID, p.ProductID, c.CateName, p.ProductName, p.PriceOut, p.Photo, p.Quantity
             `);
             await sql.close();
             return rs.recordset;
