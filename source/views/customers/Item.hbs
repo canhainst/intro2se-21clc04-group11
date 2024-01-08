@@ -1,6 +1,6 @@
     <style>
         .rateStars{
-            font-size: 17px;
+            font-size: 15px;
             font-weight: 600;
             margin: 0px;
         }
@@ -26,7 +26,7 @@
 
 <body>
     <!-- Item -->
-    <div class="d-flex">
+    <div class="d-flex" style="margin-left: 200px; margin-right: 200px">
         <div style="width: 40%; padding-top: 50px; padding-bottom: 100px; text-align: center;">
             <img class="w-75" src={{Book.Photo}}>
         </div>
@@ -98,9 +98,9 @@
     <div style="border: 1px solid #ABABAB;
     background: linear-gradient(146deg, #E6EDE5 74.5%, rgba(142, 189, 152, 0.00) 79.28%);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    padding: 100px;">
+    padding: 40px;">
         <div style="color: #000;
-        font-size: 48px;
+        font-size: 32px;
         font-weight: 600;
         text-transform: capitalize;">
             Tóm Tắt Sản Phẩm
@@ -108,7 +108,7 @@
         <br>
         <div style="color: #003C4A;
         text-align: justify;
-        font-size: 32px;
+        font-size: 20px;
         font-weight: 300;
         text-transform: capitalize;">
             {{Book.Descrip}}
@@ -119,9 +119,9 @@
     <br>
     <!-- Feedback -->
     <div style="color: #000;
-    font-size: 48px;
+    font-size: 30px;
     text-transform: capitalize;
-    padding: 100px;">
+    padding: 50px;">
         Khách Hàng Đánh Giá
     </div>
     <div style="padding: 100px; padding-top: 0px;">
@@ -132,9 +132,9 @@
         Tổng Quan
         </div>
         <div class="row"  style="align-items: end;">
-            <div class="col-1" style="font-size: 50px;">{{Book.Rating}}</div>
+            <div class="col-1" style="font-size: 40px;">{{Book.Rating}}</div>
             <div class="col-3">
-                <div class="rateStars" style="font-size: 40px">
+                <div class="rateStars" style="font-size: 33px">
                     {{#each (generateArr Book.Rating)}}
                     <i class="fas fa-star star"></i>
                     {{/each}}
@@ -198,7 +198,7 @@
             <div class="row">
                 <div class="col-12" 
                 style="color: #000;
-                font-size: 30px;
+                font-size: 20px;
                 font-weight: 400;
                 padding-top: 20px;">
                 {{Feedback}}
