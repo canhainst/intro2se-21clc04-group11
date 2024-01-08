@@ -28,6 +28,7 @@
                 <input class="form-check-input border-black FCI _{{@index}}" type="checkbox" value="" onclick="checkTicked({{@index}})">
             </div>
             <!-- product -->
+            <a href="/products/{{ProductID}}">
             <div id="img" class="col-1">
                 <img src={{Photo}} alt="{{ProductName}}" class="mt-1 _{{@index}}" style="width: 7rem; height: 10rem;">
             </div>
@@ -44,6 +45,7 @@
                 <p class="mt-0" id="ProductID">ProductID: <span class="_{{@index}}">{{ProductID}}</span></p>
 
             </div>
+            </a>
             <!-- unit price -->
             <div class="col-2 ms-2 text-center">
                 <p class="fw-bold fs-5 mt-3" id="PriceOut">

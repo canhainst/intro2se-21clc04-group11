@@ -25,7 +25,7 @@
                   <div>
                     <h5 class="card-title fs-2 fw-bold">{{ProductName}} </h5>
                     <p class="card-text mt-4 mb-4">{{Descrip}}</p>
-                    <a class="btn btn-lg btn-outline-success greenButton" href="/book/{{ProductID}}" role="button"><span
+                    <a class="btn btn-lg btn-outline-success greenButton" href="/products/{{ProductID}}" role="button"><span
                         class="p-3 fw-light fs-6">READ MORE &nbsp; &rarr; </span></a></a></a>
                   </div>
 
@@ -54,7 +54,7 @@
 
   <!-- top categories -->
   <div class="row m-0 mt-5 d-flex  align-items-center justify-content-center">
-    <div class="offset-1 col-3 card topCategogriesCard">
+    <div class="col-3 card topCategogriesCard">
       <a href="/products/search?cate=1"><img
           src="https://images.unsplash.com/photo-1599495054627-35ad07218a46?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxOTA3MDh8MHwxfHNlYXJjaHw0fHxub3ZlbHxlbnwwfHx8fDE2NTIwNzk3NjY&ixlib=rb-1.2.1&q=85"
           class="card-img" style="height:45vh" alt="..."> </a>
@@ -75,7 +75,7 @@
   </div>
 
   <div class="row m-0 mb-5 d-flex align-items-center justify-content-center">
-    <div class="offset-1 col-3 card topCategogriesCard">
+    <div class="col-3 card topCategogriesCard">
       <a href="/products/search?cate=3"><img
           src="https://image.slidesdocs.com/responsive-images/background/blackboard-with-chalk-drawn-science-drawing-using-glass-beakers-and-trays-isolated-photo-copy-space-powerpoint-background_0805baa708__960_540.jpg"
           class="card-img" style="height:45vh" alt="..."> </a>
@@ -117,7 +117,7 @@
           {{#each newPrds }}
           {{#if (in @index 0 3)}}
           <div class="card d-inline-block me-4 p-3 shadow border-0 text-center" style="width: 15rem; height: 30rem">
-            <a href="/book/{{ProductID}}">
+            <a href="/products/{{ProductID}}">
               <img src={{Photo}} class="card-img-top m-4 img-thumbnail" style="width: 10rem; height: 12rem;" alt="...">
               <div class="card-body" style="height: 18rem">
                 <div style="height: 5rem">
@@ -145,7 +145,7 @@
           {{#each newPrds }}
           {{#if (in @index 4 7)}}
           <div class="card d-inline-block me-4 p-3 shadow border-0 text-center" style="width: 15rem; height: 30rem">
-            <a href="/book/{{ProductID}}">
+            <a href="/products/{{ProductID}}">
               <img src={{Photo}} class="card-img-top m-4 img-thumbnail" style="width: 10rem; height: 12rem;" alt="...">
               <div class="card-body" style="height: 18rem">
                 <div style="height: 5rem">
@@ -173,7 +173,7 @@
           {{#each newPrds }}
           {{#if (in @index 8 11)}}
           <div class="card d-inline-block me-4 p-3 shadow border-0 text-center" style="width: 15rem; height: 30rem">
-            <a href="/book/{{ProductID}}">
+            <a href="/products/{{ProductID}}">
               <img src={{Photo}} class="card-img-top m-4 img-thumbnail" style="width: 10rem; height: 12rem;" alt="...">
               <div class="card-body" style="height: 18rem">
                 <div style="height: 5rem">
@@ -222,7 +222,7 @@
               {{/each}}
             </p>
             <p class="card-text text-body-secondary">{{Descrip}}</p>
-            <a class="btn btn-lg btn-outline-success greenButton" href="/book/{{ProductID}}" role="button"><span
+            <a class="btn btn-lg btn-outline-success greenButton" href="/products/{{ProductID}}" role="button"><span
                         class="p-3 fw-light fs-6">VIEW MORE &nbsp; &rarr; </span></a>
           </div>
         </div>
