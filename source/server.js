@@ -18,6 +18,9 @@ const hbs = create({
         in: (x, v1, v2) => (x >= v1 && x <= v2),
         generateArr: (v) => Array.from({ length: v }, (_, index) => index), //sinh mảng 0 -> v-1
         generateArr1: (v, v2) => Array.from({ length: v }, (_, index) => {index, v2}),
+        toJSON: function (object) {
+            return JSON.stringify(object);
+        },
     }
 })
 
@@ -34,7 +37,7 @@ app.use('/products', require('./routes_controller/products-r'));
 app.use('/Cart', require('./routes_controller/cart-r'));
 app.use('/book', require('./routes_controller/book-r'));
 app.use('/mypurchase', require('./routes_controller/mypurchase-r.js'));
-app.use('/post', require('./routes_controller/post-r.js'));
+app.use('/admin/warehouse', require('./routes_controller/admin-warehouse-r'));
 app.get('favorite.ico', (req, res) => {
     res.status(404).send();
 });

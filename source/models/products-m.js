@@ -196,4 +196,22 @@ module.exports = class Product {
         throw err;
     }
   }
+
+  static async postProduct(ProductID, SalePrice, Description) {
+    try{
+      let pool = await sql.connect(config);
+      await pool.query(
+          `UPDATE products
+          SET 
+          Status = 'Active', 
+          Descrip = '${Description}', 
+          PriceOut = '${SalePrice}'
+          WHERE ProductID = ${ProductID}
+          `);
+      await sql.close();
+  } catch (err) {
+      console.error("Error:", 0);
+      throw err;
+  }
+  }
 };
