@@ -49,7 +49,7 @@ module.exports = class Cart{
         try{
             let pool = await sql.connect(config);
             await pool.query(
-                `UPDATE cartdetails SET Quantity = ${Quantity} WHERE BuyerID = ${CustomerID} AND ProductID = ${ProductID} `
+                `UPDATE cartdetails SET Quantity = ${Quantity} WHERE BuyerID = ${CustomerID} AND ProductID = ${ProductID}`
             );
             await sql.close();
         } catch (err) {

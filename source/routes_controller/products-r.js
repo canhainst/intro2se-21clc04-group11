@@ -16,6 +16,7 @@ router.get('/:bookID', async (req, res) => {
     res.render('customers/Item.hbs', {
         title: Book.ProductName,
         login: true, Book, Ratings, Feedbacks,
+        UserID: req.user.UserID,
         mainJs: () => "empty",
         navbar: () => "navbar",
         header: () => "header_search",

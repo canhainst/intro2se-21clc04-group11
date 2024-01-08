@@ -4,8 +4,7 @@ const ordersM = require("../models/orders-m");
 const feedbacksM = require("../models/feedbacks-m"); 
 
 router.get('/', async (req, res) => {
-    let UserID = '3';
-    //'${UserID}'
+    let UserID = `${req.user.UserID}`;
 
     //Get Every Order
     let orders = await ordersM.getOrders(UserID);
@@ -28,7 +27,7 @@ router.post('/', async (req, res) => {
     let proList = await ordersM.getProductList(OrderID);
     let Rating = star;
     let Feedback = Description;
-    let UserID = '3';
+    let UserID = `${req.user.UserID}`;
     
     for(let i = 0; i < proList.length; i++){
         feedbacksM.addFeedback('1', proList[i].ProductID, UserID, Feedback, Rating);

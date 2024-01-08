@@ -252,10 +252,11 @@
         window.location.href = "/checkout";
     }
     function addToCart() {
+        alert('hahaaa');
         let ProductID = parseInt(document.getElementById("ProductID").innerHTML);
         let quantity = parseInt(document.getElementById("item1-quant").innerHTML);
         // Update database
-        $.post('/Cart', {CustomerID: 51, ProductID: ProductID, quantity: quantity})
+        $.post('/cart', {CustomerID: {{UserID}}, ProductID: ProductID, quantity: quantity})
         .done((rs) => {
             console.log(rs);
         })
