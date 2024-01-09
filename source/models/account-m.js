@@ -1,5 +1,7 @@
 const sql = require("mssql");
 const config = require("../dbconfig");
+const fs = require('fs');
+const { join } = require('path');
 
 sql.on("error", (err) => {
     throw err;
@@ -77,6 +79,27 @@ module.exports = class Account {
             );
             await sql.close();
             return 1;
+        } catch (err) {
+            console.error("Error:", err);
+            throw err;
+        }
+    }
+    static async changeAvatar(Photo, un) {
+        try {
+            let pool = await sql.connect(config);
+            let p =  await pool.query( 
+                `SELECT Photo FROM users WHERE UserName = '${un}'`
+            );
+            let dirPath = join(__dirname, `../${p.recordset[0].Photo}` );
+            fs.unlink(dirPath, function (err) {
+                if (err) console.log('delete file failed!');
+                else console.log('File deleted!');
+            });
+            
+            await pool.query( 
+                `UPDATE users SET Photo = '${Photo}' WHERE UserName = '${un}'`
+            );
+            await sql.close();
         } catch (err) {
             console.error("Error:", err);
             throw err;

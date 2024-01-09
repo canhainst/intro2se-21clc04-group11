@@ -4,6 +4,8 @@ const accountM = require("../models/account-m");
 const passport = require('passport');
 const bcrypt = require("bcrypt");
 const nodemailer = require('nodemailer');
+const multer = require("multer");
+const upload = multer({dest: 'image/Avatar'});
 const saltRounds = 10;
 
 // Register
@@ -202,6 +204,7 @@ router.post('/profile', async (req, res, next) => {
             DateOfBirth: DOB,
             Address: req.body.inputAddress
         };
+        console.log(obj.Name);
         await accountM.updateProfile(obj, req.session.passport.user);
         res.redirect('/account/profile');
     } catch (error) {
@@ -250,6 +253,18 @@ router.get('/logout', (req, res) => {
         }
     });
     res.redirect('/account/login');
+});
+
+//Change Avatar
+router.post('/changeAvatar', upload.single('photo'), async(req, res, next) => {
+    try{      
+        // console.log(req.file);
+        const Photo = `/image/Avatar/${req.file.filename}`;
+        await accountM.changeAvatar(Photo, req.session.passport.user); 
+        res.redirect('/account/profile');
+    } catch(err){
+        next(err);
+    }
 });
 
 module.exports = router;
