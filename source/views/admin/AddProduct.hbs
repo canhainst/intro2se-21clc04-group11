@@ -22,7 +22,7 @@
                     </li>
                     <li>
                         <i class="fas fa-warehouse"></i>
-                        <a href="/admin/warehouse">WAREHOUSE</a>
+                        <a href="/Warehouse">WAREHOUSE</a>
                     </li>
                     <li style="background-color: #ffb9a4;">
                         <i class="fas fa-cart-arrow-down"></i>
@@ -30,7 +30,11 @@
                     </li>
                     <li>
                         <i class="fas fa-store"></i>
-                        <a href="/admin/orders">ORDERS</a>
+                        <a href="/Order">ORDERS</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-comment-dots"></i>
+                        <a href="/chat/chatbox/list">CHAT</a>
                     </li>
                     <li>
                         <i class="fas fa-sign-out-alt"></i>
@@ -46,21 +50,22 @@
                 <span style="margin-left: 45px;">Add Product</span>
             </div>
             <div class="container-fluid text-end mt-5">
-                <form id="postForm" action="/admin/warehouse/addProduct" method="post" enctype="multipart/form-data"> 
+                <form id="postForm" action="/admin/warehouse/addProduct" method="post" enctype="multipart/form-data">
                     <div class="row">
-                         <small id="nameErr" class="text-danger col-sm-3 offset-2"></small> 
-                    </div>    
+                        <small id="nameErr" class="text-danger col-sm-3 offset-2"></small>
+                    </div>
                     <div class="mb-3 row offset-1">
                         <label for="inputBookName" class="col-sm-3 col-form-label ps-5">BOOK NAME</label>
                         <div class="col-sm-3">
-                            <input type="text" name="bookName" class="form-control" id="inputBookName" placeholder="Enter name"
-                                required> 
+                            <input type="text" name="bookName" class="form-control" id="inputBookName"
+                                placeholder="Enter name" required>
                         </div>
-                    </div>           
+                    </div>
                     <div class="mb-3 row offset-1">
                         <label for="inputAuthor" class="col-sm-3 col-form-label ps-5">AUTHORS</label>
                         <div class="col-sm-7">
-                            <input type="text" name="author" class="form-control" id="inputAuthor" placeholder="Enter name" require>
+                            <input type="text" name="author" class="form-control" id="inputAuthor"
+                                placeholder="Enter name" require>
                         </div>
                     </div>
                     <div class="mb-3 row offset-1">
@@ -72,42 +77,42 @@
                                 <option value="2">Economics</option>
                                 <option value="3">Science</option>
                                 <option value="5">History</option>
-                                <option value="7">Detective</option>                                
+                                <option value="7">Detective</option>
                             </select>
                         </div>
                     </div>
                     <div class="mb-3 row offset-1">
                         <label for="inputPubCompany" class="col-sm-3 col-form-label">PUBLISHING COMPANY</label>
                         <div class="col-sm-7">
-                            <input type="text" name="pubCompany" class="form-control" id="inputPubCompany" placeholder="Enter name"
-                                required>
+                            <input type="text" name="pubCompany" class="form-control" id="inputPubCompany"
+                                placeholder="Enter name" required>
                         </div>
                     </div>
                     <div class="row">
-                         <small id="pubYearErr" class="text-danger col-sm-6 offset-1" style="margin-left: 121px"></small> 
-                    </div> 
+                        <small id="pubYearErr" class="text-danger col-sm-6 offset-1" style="margin-left: 121px"></small>
+                    </div>
                     <div class="mb-3 row offset-1">
                         <label for="inputPubYear" class="col-sm-3 col-form-label">PUBLISHING YEAR</label>
                         <div class="col-sm-7">
-                            <input type="number" name="pubYear" class="form-control" id="inputPubYear" placeholder="Enter year"
-                                required>
+                            <input type="number" name="pubYear" class="form-control" id="inputPubYear"
+                                placeholder="Enter year" required>
                         </div>
                     </div>
                     <div class="mb-3 row offset-1">
                         <label for="inputImPrice" class="col-sm-3 col-form-label ps-5">IMPORT PRICE</label>
                         <div class="col-sm-7">
-                            <input type="number" name="inPrice" class="form-control" id="inputImPrice" placeholder="Enter price"
-                                required>
+                            <input type="number" name="inPrice" class="form-control" id="inputImPrice"
+                                placeholder="Enter price" required>
                         </div>
                     </div>
                     <div class="row ps-4">
-                         <small id="quantityErr" class="text-danger col-sm-4 offset-2"></small> 
-                    </div> 
+                        <small id="quantityErr" class="text-danger col-sm-4 offset-2"></small>
+                    </div>
                     <div class="mb-3 row offset-1">
                         <label for="inputQuant" class="col-sm-3 col-form-label ps-5">QUANTITIES</label>
                         <div class="col-sm-7">
-                            <input type="number" name="quantity" class="form-control" id="inputQuant" placeholder="Enter quantities"
-                                required>
+                            <input type="number" name="quantity" class="form-control" id="inputQuant"
+                                placeholder="Enter quantities" required>
                         </div>
                     </div>
                     <div class="mb-3 row offset-1">
@@ -120,7 +125,7 @@
                     <div class="mb-3 row offset-1">
                         <label for="inputImg" class="col-sm-3 col-form-label ps-5">IMAGE</label>
                         <div class="col-sm-7">
-                            <input name="img" class="form-control" type="file" id="inputImg" required> 
+                            <input name="img" class="form-control" type="file" id="inputImg" required>
                         </div>
                     </div>
                     <div class="col-12 text-center mt-4">
@@ -133,9 +138,9 @@
     </div>
 </div>
 <script>
-     $(()=>{
-        $("#inputImg").fileinput({theme: 'fa5', showUpload: false, previewFileType: 'any'});
-        if (`{{nofi}}`){
+    $(() => {
+        $("#inputImg").fileinput({ theme: 'fa5', showUpload: false, previewFileType: 'any' });
+        if (`{{nofi}}`) {
             alert(`{{nofi}}`);
         }
         $("#postForm").submit(e => {
@@ -143,10 +148,10 @@
             $("#nameErr").html(regex.test($("#inputBookName").val()) ? "Book name is invalid!" : "");
             $('#quantityErr').html($('#inputQuant').val() <= 0 ? "Book quantity must be greater than 0" : "");
             $('#pubYearErr').html($('#inputPubYear').val() > new Date().getFullYear() ? "Book publish year mustn't be greater than current year" : "");
-            if ($("#nameErr").html() == "" && $('#quantityErr').html() == "" && $('#pubYearErr').html() == ""){
+            if ($("#nameErr").html() == "" && $('#quantityErr').html() == "" && $('#pubYearErr').html() == "") {
                 $('#postForm').submit();
             }
-            else{
+            else {
                 e.preventDefault();
             }
         })

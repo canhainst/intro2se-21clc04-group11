@@ -109,7 +109,7 @@
             $('#emailErr').html(regex.test($('#inputEmail').val()) ? '' : '<i>you need to use gmail</i>');
 
             // check Phone
-            regex = /[^0-9]/;
+            regex = /^\d/;
             $('#phoneErr').html(regex.test($('#inputPhoneNumber').val())? '<i>the phone just contains the numbers</i>' : '');
             
             if ($('#nameErr').html() === '' && $('#usernameErr').html() === '' &&  $('#PwErr').html() === '' &&

@@ -1,9 +1,10 @@
 <div class="row">
     <div class="col-3" style="padding: 0;">
         <div class="sidebar">
-            {{!-- <div class="box_logo d-flex align-items-center">
+            <div class="box_logo d-flex align-items-center">
                 <div class="logo col-3">
-                    <i class="far fa-user" style="padding: 0 1em; scale: 300%; margin-left: 20px;"></i>
+                    <i class="far fa-user"
+                        style="padding: 0 1em; scale: 9%; margin-bottom: 45px; margin-left: 20px;"></i>
                 </div>
                 <div class="admin col-8">
                     <ul>
@@ -12,7 +13,7 @@
                         </li>
                     </ul>
                 </div>
-            </div> --}}
+            </div>
             <div class="nav">
                 <ul>
                     <li>
@@ -21,19 +22,23 @@
                     </li>
                     <li>
                         <i class="fas fa-warehouse"></i>
-                        <a href="/warehouse">WAREHOUSE</a>
+                        <a href="/Warehouse">WAREHOUSE</a>
                     </li>
                     <li>
                         <i class="fas fa-cart-arrow-down"></i>
-                        <a href="AddProduct.html">ADD PRODUCTS</a>
+                        <a href="/admin/warehouse/addProduct">ADD PRODUCTS</a>
                     </li>
                     <li>
                         <i class="fas fa-store"></i>
-                        <a href="/order">ORDERS</a>
+                        <a href="/Order">ORDERS</a>
                     </li>
                     <li style="background-color: #ffb9a4;">
                         <i class="fas fa-comment-dots"></i>
                         <a href="">CHAT</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-sign-out-alt"></i>
+                        <a href="/account/logout">LOGOUT</a>
                     </li>
                 </ul>
             </div>
@@ -78,18 +83,31 @@
                             {{/each}}
                         </div>
                     </div>
-                    <div class="TypeMess d-flex align-items-center" style="margin-top: 50px;">
-                        <button type="button" class="btn btn-outline-0" style="margin-right: 10px;"><i
-                                class="far fa-file"></i></button>
-                        <form>
-                            <input id="message" type="text"
-                                class="border border-dark border-end-0 rounded-end rounded-pill form-control"
-                                placeholder="Type a message" aria-describedby="button-addon2">
-                            <input type="hidden" id="username" value={{_id}}>
-                            <button class="btn btn-outline-0" type="submit" id="button-addon2"><i
-                                    class="far fa-paper-plane"></i>
-                            </button>
-                        </form>
+                    <div class="TypeMess row" style="margin-top: 50px;">
+                        <div class="col-1">
+
+                            <button type="button" class="btn btn-outline-0" style="margin-right: 10px;"><i
+                                    class="far fa-file"></i></button>
+                        </div>
+                        <div class="col-11">
+
+                            <form>
+                                <div class="row">
+                                    <div class="col-11">
+
+                                        <input id="message" type="text"
+                                            class="border border-dark rounded-end rounded-start rounded-pill form-control"
+                                            placeholder="Type a message" aria-describedby="button-addon2">
+                                        <input type="hidden" id="username" value={{_id}}>
+                                    </div>
+                                    <div class="col-1">
+                                        <button class="btn btn-outline-0" type="submit" id="button-addon2"><i
+                                                class="far fa-paper-plane"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
