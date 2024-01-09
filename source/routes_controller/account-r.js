@@ -86,7 +86,7 @@ router.get('/resetpassword', async (req, res) => {
         code += characters.charAt(randomIndex);
     }
     const user = await accountM.get(req.query.username);
-    
+
     // Thông tin tài khoản Gmail
     const transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -107,7 +107,7 @@ router.get('/resetpassword', async (req, res) => {
             <p>Thank you!</p>
             `
     };
-    transporter.sendMail(mailOptions,function(error,info) {
+    transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
             console.log(error);
         } else {
@@ -159,8 +159,11 @@ router.post('/login', passport.authenticate('myStrategy',
         failureRedirect: '/account/login',
         failureFlash: true
     }),
-    (req, res) => {
+    async (req, res) => {
+        // console.log(req.session.passport);
+        req.session.username = req.session.passport.user;
         if (req.body.inputUserName === "admin") {
+            // console.log(passport.user);
             res.redirect('/admin');
         }
         else {

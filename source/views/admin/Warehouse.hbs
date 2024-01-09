@@ -79,22 +79,26 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     fetchAndDisplayProducts();
+    const filterButton = document.getElementsByClassName('filterButton');
 
     const filterDropdown = document.getElementById('filterDropdown');
     const filterDropdownItems = filterDropdown.querySelectorAll('.dropdown-item');
     filterDropdownItems.forEach(item => {
         item.addEventListener('click', function () {
             const selectedCategory = this.textContent.trim();
+            filterButton[0].textContent = selectedCategory;
             fetchAndDisplayProducts({ filter: selectedCategory });
         });
     });
 
     const sortedDropdown = document.getElementById('sortedDropdown');
     const sortedDropdownItems = sortedDropdown.querySelectorAll('.dropdown-item');
+    const sortButton = document.getElementsByClassName('sortButton');
     sortedDropdownItems.forEach(item => {
         item.addEventListener('click', function (event) {
             event.preventDefault();
             const selectedSortOption = this.textContent.trim();
+            sortButton[0].textContent = selectedSortOption;
             let sortParameter = '';
 
             switch (selectedSortOption) {
@@ -206,7 +210,7 @@ function deleteProduct(productID) {
                 <ul>
                     <li>
                         <i class="fas fa-columns"></i>
-                        <a href="Dashboard.html">DASHBOARD</a>
+                        <a href="/admin">DASHBOARD</a>
                     </li>
                     <li style="background-color: #ffb9a4;">
                         <i class="fas fa-warehouse"></i>
@@ -222,7 +226,7 @@ function deleteProduct(productID) {
                     </li>
                     <li>
                         <i class="fas fa-comment-dots"></i>
-                        <a href="/Chat">CHAT</a>
+                        <a href="/chat/chatbox/list">CHAT</a>
                     </li>
                 </ul>
             </div>
@@ -245,7 +249,7 @@ function deleteProduct(productID) {
                 <div class="col-2 d-flex align-items-center">
                     <span>Filter: </span>
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle"
+                        <button class="btn btn-secondary dropdown-toggle filterButton"
                             style="background-color: white; color: black; border: 0;" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Option
@@ -263,7 +267,7 @@ function deleteProduct(productID) {
                 <div class="col-2 d-flex align-items-center">
                     <span>Sorted: </span>
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle"
+                        <button class="btn btn-secondary dropdown-toggle sortButton"
                             style="background-color: white; color: black; border: 0;" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Option

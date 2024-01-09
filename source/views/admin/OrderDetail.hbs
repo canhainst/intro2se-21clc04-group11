@@ -5,7 +5,7 @@
     const response = await fetch(`http://localhost:3000/order/${orderId}`);
     const orderData = await response.json();
 
-    // Cập nhật nội dung trang HTML với dữ liệu từ API
+    // fetch api and display order details
     updateOrderDetails(orderData);
 
     // Add event listener to dropdown items
@@ -132,7 +132,7 @@ orderData.forEach(product => {
         totalPriceElement.textContent = `${orderData[0].TotalPrice} VNĐ`;
 
         const priceof = document.querySelector('.orderTotal .row:nth-child(1) .col-5 span');
-        priceof.textContent = `Price: ${orderData[0].TotalPrice} VNĐ`;
+        priceof.textContent = `Price: ${orderData[0].TotalPrice-orderData[0].ShippingFee} VNĐ`;
         // Cập nhật phí vận chuyển
         const shippingFeeElement = document.querySelector('.orderTotal .row:nth-child(2) .col-6 span');
         shippingFeeElement.textContent = `Delivery Cost: ${orderData[0].ShippingFee} VNĐ`;
