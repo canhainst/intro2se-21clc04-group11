@@ -7,19 +7,24 @@ const dataChat = require('../db/chat.json');
 const fs = require('fs');
 
 router.get('/chatbox/:_id', async (req, res, next) => {
-    const _id = req.params._id;
-    let dataFilter = (dataChat.message).filter(e => e.username == _id)
     // console.log(dataFilter);
     try {
-        return res.render('admin/Chatbox', {
-            title: 'Chat Management',
-            mainJs: () => "empty",
-            layout: 'admin',
-            data: dataChat,
-            uniChat: dataFilter,
-            _id: _id
-            // conversation: conversation
-        });
+        if (req.isAuthenticated()) {
+            const _id = req.params._id;
+            let dataFilter = (dataChat.message).filter(e => e.username == _id)
+            return res.render('admin/Chatbox', {
+                title: 'Chat Management',
+                mainJs: () => "empty",
+                layout: 'admin',
+                data: dataChat,
+                uniChat: dataFilter,
+                _id: _id
+                // conversation: conversation
+            });
+        }
+        else {
+          res.redirect("/account/login");
+        }
     } catch (err) {
         next(err);
         console(err);

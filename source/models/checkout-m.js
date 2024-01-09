@@ -76,10 +76,11 @@ module.exports = class orders {
                     `UPDATE products SET Quantity = ${bookArrayJSON[i].Instock} - ${bookArrayJSON[i].Quantity} WHERE ProductID = ${bookArrayJSON[i].ProductID}`
                 );
             }
+
             await sql.close();
         } catch (err) {
             console.error("Error:", err);
-            throw err;
+            next(err)
         }
     }
     static async getMonthlyOrders(selectedYear) {

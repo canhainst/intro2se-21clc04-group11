@@ -4,21 +4,26 @@ const ordersM = require("../models/orders-m");
 const feedbacksM = require("../models/feedbacks-m"); 
 
 router.get('/', async (req, res) => {
-    let UserID = `${req.user.UserID}`;
-
-    //Get Every Order
-    let orders = await ordersM.getOrders(UserID);
-    for(let i = 0; i < orders.length; i++) {
-        orders[i].proList = await ordersM.getProductList(orders[i].OrderID);
-    }
+    if (req.isAuthenticated()) {
+        let UserID = `${req.user.UserID}`;
     
-    res.render('customers/MyPurchase.hbs', {
-        title: "My Purchase",
-        login: true, orders,
-        mainJs: () => "_js/mainT",
-        navbar: () => "empty",
-        header: () => "header_text",
-    });
+        //Get Every Order
+        let orders = await ordersM.getOrders(UserID);
+        for(let i = 0; i < orders.length; i++) {
+            orders[i].proList = await ordersM.getProductList(orders[i].OrderID);
+        }
+        
+        res.render('customers/MyPurchase.hbs', {
+            title: "My Purchase",
+            login: true, orders,
+            mainJs: () => "_js/mainT",
+            navbar: () => "empty",
+            header: () => "header_text",
+        });
+    }
+    else {
+      res.redirect("/account/login");
+    }
 })
 
 router.post('/', async (req, res) => {
