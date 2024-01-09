@@ -1,43 +1,44 @@
   <div class="container">
-        <h2>Edit Product</h2>
-        <form id="editProductForm">
-            <!-- Thêm các trường nhập liệu để chỉnh sửa thông tin sản phẩm -->
-            <label for="productName">Product Name:</label>
-            <input type="text" id="productName" name="productName" required>
+    <h2>Edit Product</h2>
+    <form id="editProductForm" class="edit-product-form">
+        
+        <label for="productName" class="form-label">Product Name:</label>
+        <input type="text" id="productName" name="productName" class="form-input" required>
 
-            <label for="author">Author:</label>
-            <input type="text" id="author" name="author">
+        <label for="author" class="form-label">Author:</label>
+        <input type="text" id="author" name="author" class="form-input">
 
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" rows="4"></textarea>
+        <label for="description" class="form-label">Description:</label>
+        <textarea id="description" name="description" class="form-textarea" rows="4"></textarea>
 
-            <label for="photo">Photo URL:</label>
-            <input type="text" id="photo" name="photo">
+        <label for="photo" class="form-label">Photo URL:</label>
+        <input type="text" id="photo" name="photo" class="form-input">
 
-            <label for="quantity">Quantity:</label>
-            <input type="number" id="quantity" name="quantity" min="0" required>
+        <label for="quantity" class="form-label">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" class="form-input" min="0" required>
 
-            <label for="priceIn">Import Price (VND):</label>
-            <input type="number" id="priceIn" name="priceIn" min="0" required>
+        <label for="priceIn" class="form-label">Import Price (VND):</label>
+        <input type="number" id="priceIn" name="priceIn" class="form-input" min="0" required>
 
-            <label for="priceOut">Selling Price (VND):</label>
-            <input type="number" id="priceOut" name="priceOut" min="0" required>
+        <label for="priceOut" class="form-label">Selling Price (VND):</label>
+        <input type="number" id="priceOut" name="priceOut" class="form-input" min="0" required>
 
-            <label for="publishingCompany">Publishing Company:</label>
-            <input type="text" id="publishingCompany" name="publishingCompany">
+        <label for="publishingCompany" class="form-label">Publishing Company:</label>
+        <input type="text" id="publishingCompany" name="publishingCompany" class="form-input">
 
-            <label for="publishingYear">Publishing Year:</label>
-            <input type="number" id="publishingYear" name="publishingYear" min="0">
+        <label for="publishingYear" class="form-label">Publishing Year:</label>
+        <input type="number" id="publishingYear" name="publishingYear" class="form-input" min="0">
 
-            <label for="status">Status:</label>
-            <select id="status" name="status">
-                <option value="Active">Active</option>
-                <option value="Deactive" selected>Deactive</option>
-            </select>
-            
-            <button type="submit">Save Changes</button>
-        </form>
-    </div>
+        <label for="status" class="form-label">Status:</label>
+        <select id="status" name="status" class="form-select">
+            <option value="Active">Active</option>
+            <option value="Deactive" selected>Deactive</option>
+        </select>
+        
+        <button type="submit" class="form-button">Save Changes</button>
+    </form>
+</div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
