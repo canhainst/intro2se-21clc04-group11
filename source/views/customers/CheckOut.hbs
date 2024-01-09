@@ -15,7 +15,7 @@
     </tr>
     <tr>
         <td style="width: 50%;">
-            <div style="color: #AA0808; padding-left: 10%; font-size: 30px;">Delivery Address</div>
+            <div style=" padding-left: 10%; font-size: 30px; color: #314733">Delivery Address</div>
             <div class="row" style="font-size: 20px;">
                 <div class="col-1"></div>
                 <div class="col-3">
@@ -49,12 +49,12 @@
         </td>
         <td style="vertical-align: top; font-size: 30px;">
             <div style="margin-bottom: 30px;">
-                <span style="color: #AA0808;">ORDER ID:</span>
+                <span style="color: #314733">ORDER ID:</span>
                 <span>{{year}}{{month}}{{day}}A</span>
                 <span id="OrderID">{{OrderID}}</span>
             </div>
 
-            <span style="color: #AA0808; font-size: 30px;">Total Payment</span>
+            <span style="color: #314733; font-size: 30px;">Total Payment</span>
             <div class="row" style="font-size: 20px;">
                 <div class="col-5">Merchandise Subtotal:</div>
                 <div class="col-3" id="MerchandiseSubtotal"></div>
@@ -73,9 +73,9 @@
             <div class="row" style="font-size: 25px;">
                 <div class="col-5" style="vertical-align: bottom; line-height: 38px"><span
                         class="align-middle" id="TotalQuantity"></span></div>
-                <div class="col-3" style="color: #AA0808; vertical-align: bottom; line-height: 38px; font-weight: 600;"><span
+                <div class="col-3" style="color: #314733; vertical-align: bottom; line-height: 38px; font-weight: 600;"><span
                         class="align-middle" id="TotalPayment"></span></div>
-                <div class="col-1" style="color: #AA0808; font-weight: 600;">VNĐ</div>
+                <div class="col-1" style="color: #314733; font-weight: 600;">VNĐ</div>
             </div>
             <div class="row" style="font-size: 25px;">
                 <div class="col-5"></div>
@@ -110,14 +110,14 @@
                                         <div class="d-flex align-items-center">
                                             <img src="`+ product.img +`" style="width: 110px; padding: 20px;">
                                             <div style="text-align: start;">
-                                                <div style="color: #173F5F; font-size: 20px; color: black;">`+ product.ProductName +`</div>
+                                                <div style=" font-size: 20px; color: black;">`+ product.ProductName +`</div>
                                                 <div>Category: `+ product.Category +` </div>
                                             </div>
                                         </div>
                                     </td>
                                     <td style="font-size: 20px;">`+ product.UnitPrice +`VNĐ</td>
                                     <td style="font-size: 20px;">`+ product.Quantity +`</td>
-                                    <td style="color: #D91010; font-size: 25px; font-weight: 600;">`+ product.TotalPrice + ` VNĐ</td>`;
+                                    <td style="color: #314733; font-size: 25px; font-weight: 600;">`+ product.TotalPrice + ` VNĐ</td>`;
             productListHTML += `</tr>`
             index += 1;
         });

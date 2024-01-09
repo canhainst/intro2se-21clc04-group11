@@ -133,7 +133,7 @@
         </div>
         <div class="row"  style="align-items: end;">
             <div class="col-1" style="font-size: 40px;">{{Book.Rating}}</div>
-            <div class="col-3">
+            <div class="col-4">
                 <div class="rateStars" style="font-size: 33px">
                     {{#each (generateArr Book.Rating)}}
                     <i class="fas fa-star star"></i>
@@ -147,7 +147,7 @@
 
         <!-- Feedback Counter -->
         <div class="row">
-            <div class="col-1" 
+            <div class="col-2" 
             style="color: rgba(0, 0, 0sfdsaf, 0.37);
             font-size: 15px;">({{Book.Total}} đánh giá)</div>
         </div>
@@ -157,7 +157,7 @@
 
         {{#each Ratings}}
         <div class="row align-items-center" style="padding-top: 10px;">
-            <div class="col-1">
+            <div class="col-2">
                 <div class="rateStars"> 
                     {{#each (generateArr Rating)}}
                     <i class="fas fa-star star"></i>
@@ -167,7 +167,7 @@
                     {{/each}}
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-4">
                 <progress value={{Num}} max={{TotalNum}}></progress>
             </div>
             <div class="col-1">{{Num}}</div>
@@ -222,9 +222,15 @@
     }
     function plus() {
         let quantity = parseInt(document.querySelector(`#item1-quant`).innerHTML) + 1;
+        let AInstock = parseInt(document.getElementById("Instock").innerHTML);
+        if(quantity > AInstock) {
+            alert('Quantity is larger than the whole reserve');
+        }
+        else {
         if (quantity > 0) {
             document.querySelector(`#item1-quant`).innerHTML = quantity;
         } 
+        }
     }
     function buyNow() {
         const selectedItems = [];
@@ -237,6 +243,11 @@
         let quantity = document.getElementById("item1-quant").innerHTML;
         let TotalPrice = parseInt(quantity) * parseInt(PriceOut) + 10000;
         let Instock = document.getElementById("Instock").innerHTML;
+        let AInstock = parseInt(document.getElementById("Instock").innerHTML);
+        if(quantity > AInstock) {
+            alert('Quantity is larger than the whole reserve');
+        }
+        else {
         selectedItems.push({ProductName: ProductName,
                                         Category: Category,
                                         ProductID: ProductID,
@@ -250,15 +261,23 @@
         let MerchandiseSubtotal = TotalPrice;
         localStorage.setItem("MerchandiseSubtotal", JSON.stringify(MerchandiseSubtotal));
         window.location.href = "/checkout";
+        }
     }
     function addToCart() {
         let ProductID = parseInt(document.getElementById("ProductID").innerHTML);
         let quantity = parseInt(document.getElementById("item1-quant").innerHTML);
         // Update database
-        $.post('/cart/add', {CustomerID: {{UserID}}, ProductID: ProductID, quantity: quantity})
-        .done((rs) => {
-            console.log(rs);
-        })
-        .fail((rs) => console.log(rs));
+        let Instock = parseInt(document.getElementById("Instock").innerHTML);
+        if(quantity > Instock) {
+            alert('Quantity is larger than the whole reserve');
+        }
+        else {
+            alert('Item is added to cart!');
+            $.post('/cart/add', {CustomerID: {{UserID}}, ProductID: ProductID, quantity: quantity})
+            .done((rs) => {
+                console.log(rs);
+            })
+            .fail((rs) => console.log(rs));
+        }
     }
 </script>

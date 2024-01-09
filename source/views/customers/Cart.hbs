@@ -67,7 +67,7 @@
             </div>
             <!-- total price -->
             <div id="thidi" class="col-2 text-start">
-                <p class="fw-bold fs-4 text-danger mt-3 _{{@index}}"> <span>{{multi CartQuantity PriceOut}}</span> VNĐ</p>
+                <p class="fw-bold fs-4 mt-3 _{{@index}}"> <span>{{multi CartQuantity PriceOut}}</span> VNĐ</p>
             </div>
             <!-- action -->
             <div class="col-1">
@@ -86,12 +86,12 @@
             </div>
             <div id="TotalEle" class="col-2">Select All (0)</div>
             <div class="col-2 fs-5 fw-bolder offset-2 text-end">Total Price: </div>
-            <div class="col-2 text-danger fs-4 fw-bold">
+            <div class="col-2 fs-4 fw-bold" style="color: #3D592C;">
                 <span id="TotalPrice">0</span>
                 <span>VNĐ</span>
             </div>
             <div class="col-2 text-end">
-                <button onclick="checkout({{UserID}})" class="btn btn-primary" style="background-color: #ee440f; border: 0; border-radius: 0">CHECK OUT</button>
+                <button onclick="checkout({{UserID}})" class="btn btn-primary" style="background-color: #ee860f; border: 0; border-radius: 0">CHECK OUT</button>
             </div>
         </div>
     </div>
@@ -211,7 +211,7 @@
     }
 
     function checkout(CustomerID){
-        if(document.getElementById("TotalPrice").innerHTML == "a"){
+        if(document.getElementById("TotalPrice").innerHTML == "0"){
             alert("You have not selected a product yet!!");
         }
         else{
