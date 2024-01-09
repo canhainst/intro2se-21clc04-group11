@@ -6,10 +6,9 @@ const OrderController = require('./OrderController');
 router.get('/', async (req, res) => {
     console.log('Route /management is called');
     res.render('admin/OrderManagement', {
-        title: 'Order Management',
-        mainCss: () => '_css/styleT',
+        layout: 'admin',
         mainJs: () => '_js/mainT',
-        footer: () => 'empty'
+        title: 'Order Management'
     });
 });
 
@@ -19,13 +18,14 @@ router.get('/', async (req, res) => {
 router.get('/detail/:OrderID', async (req, res) => {
     console.log('Route /detail is called');
     res.render('admin/OrderDetail', {
-        title: 'Order Detail',
-        mainCss: () => '_css/styleT',
+        layout: 'admin',
         mainJs: () => '_js/mainT',
-        footer: () => 'empty',
+        title: 'Order Detail',
        
     });
 });
+
+
 
 
 

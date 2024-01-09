@@ -10,6 +10,8 @@ const app = express();
 const port = process.env.PORT || 3000;
 const CustomError = require('./modules/customerr');
 const secret = 'mysecretkey';
+const http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 const hbs = create({
     extname: '.hbs',
@@ -55,11 +57,19 @@ app.use('/mypurchase', require('./routes_controller/mypurchase-r.js'));
 app.use('/checkout', require('./routes_controller/checkout-r'));
 app.use('/admin/warehouse', require('./routes_controller/admin-warehouse-r'));
 app.use('/admin',require('./routes_controller/admin-r'));
+app.use('/book', require('./routes_controller/book-r'));
+app.use('/order', require('./routes_controller/order-r'));
+app.use('/warehouse', require('./routes_controller/warehouse-r'));
+app.use('/chat', require('./routes_controller/chatbox-r'));
 
 app.get('favorite.ico', (req, res) => {
     res.status(404).send();
 });
-
+io.on('connection', function (socket) {
+    socket.on('chat message', function (msg, flag, username) {
+        io.emit('chat message', msg, flag, username);
+    });
+});
 app.use(function ( req, res, next) {
     res.status(404).render('error', {
         code: 404,
@@ -78,4 +88,5 @@ app.use(function (err, req, res, next) {
     });
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+//app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+http.listen(port, () => console.log(`Example app listening on port ${port}!`));

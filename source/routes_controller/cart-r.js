@@ -5,7 +5,9 @@ const cart = require("../models/cart-m");
 
 
 router.get('/', async (req, res, next) => {
+    // console.log(1);
     let prds = await cart.getCart(req.user.UserID);
+    
     let CartQuantity = prds.map(item => item.Quantity);
     for (let i = 0; i < prds.length; i++) {
         prds[i] = await productsM.getBook(prds[i].ProductID);
@@ -14,7 +16,7 @@ router.get('/', async (req, res, next) => {
         prds[i].Cate = (await cart.getCategory(prds[i].CateID)).CateName;
         prds[i].CartQuantity = await CartQuantity[i];
     }
-    res.render('customers/Cart' ,{
+    res.render('customers/Cart', {
         prds,
         title: 'Shopping Cart',
         text: 'Cart',

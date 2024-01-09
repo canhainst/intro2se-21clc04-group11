@@ -25,7 +25,7 @@
                   <div>
                     <h5 class="card-title fs-2 fw-bold">{{ProductName}} </h5>
                     <p class="card-text mt-4 mb-4">{{Descrip}}</p>
-                    <a class="btn btn-lg btn-outline-success greenButton" href="/products/{{ProductID}}" role="button"><span
+                    <a class="btn btn-lg btn-outline-success greenButton" href="/book/{{ProductID}}" role="button"><span
                         class="p-3 fw-light fs-6">READ MORE &nbsp; &rarr; </span></a></a></a>
                   </div>
 
@@ -88,7 +88,8 @@
       <h5 class="card-title fw-bold col-11" style="background-color: #75757575;">History Book</h5>
     </div>
     <div class="col-3 card topCategogriesCard">
-      <a href="/products/search?cate=5"><img src="https://booktrib.com/wp-content/uploads/2020/07/Untitled-design-22.jpg" class="card-img"
+      <a href="/products/search?cate=5"><img
+          src="https://booktrib.com/wp-content/uploads/2020/07/Untitled-design-22.jpg" class="card-img"
           style="height:45vh" alt="..."> </a>
       <h5 class="card-title fw-bold col-11" style="background-color: #75757575;">Detective Books</h5>
     </div>
@@ -117,7 +118,7 @@
           {{#each newPrds }}
           {{#if (in @index 0 3)}}
           <div class="card d-inline-block me-4 p-3 shadow border-0 text-center" style="width: 15rem; height: 30rem">
-            <a href="/products/{{ProductID}}">
+            <a href="/book/{{ProductID}}">
               <img src={{Photo}} class="card-img-top m-4 img-thumbnail" style="width: 10rem; height: 12rem;" alt="...">
               <div class="card-body" style="height: 18rem">
                 <div style="height: 5rem">
@@ -145,7 +146,7 @@
           {{#each newPrds }}
           {{#if (in @index 4 7)}}
           <div class="card d-inline-block me-4 p-3 shadow border-0 text-center" style="width: 15rem; height: 30rem">
-            <a href="/products/{{ProductID}}">
+            <a href="/book/{{ProductID}}">
               <img src={{Photo}} class="card-img-top m-4 img-thumbnail" style="width: 10rem; height: 12rem;" alt="...">
               <div class="card-body" style="height: 18rem">
                 <div style="height: 5rem">
@@ -173,7 +174,7 @@
           {{#each newPrds }}
           {{#if (in @index 8 11)}}
           <div class="card d-inline-block me-4 p-3 shadow border-0 text-center" style="width: 15rem; height: 30rem">
-            <a href="/products/{{ProductID}}">
+            <a href="/book/{{ProductID}}">
               <img src={{Photo}} class="card-img-top m-4 img-thumbnail" style="width: 10rem; height: 12rem;" alt="...">
               <div class="card-body" style="height: 18rem">
                 <div style="height: 5rem">
@@ -222,8 +223,8 @@
               {{/each}}
             </p>
             <p class="card-text text-body-secondary">{{Descrip}}</p>
-            <a class="btn btn-lg btn-outline-success greenButton" href="/products/{{ProductID}}" role="button"><span
-                        class="p-3 fw-light fs-6">VIEW MORE &nbsp; &rarr; </span></a>
+            <a class="btn btn-lg btn-outline-success greenButton" href="/book/{{ProductID}}" role="button"><span
+                class="p-3 fw-light fs-6">VIEW MORE &nbsp; &rarr; </span></a>
           </div>
         </div>
       </div>
@@ -273,3 +274,104 @@
         </div>
       </div>
     </div>
+  </div>
+  {{!-- Chat box --}}
+  <div class="CustomerChat">
+    <div id="CustomerFrameChat" class="d-flex align-items-center d-none">
+      <img src="https://robohash.org/idlaudantiumdeserunt.png?size=50x50&set=set1"
+        style="scale: 120%; border-radius: 50%; border: 1px solid black; background-color: green;">
+      <div style="margin-left: 15px;">
+        <div
+          style="background-color: #f4fbf3; width: 290px; border-radius: 20px 20px 20px 0; padding: 20px; border: 1px solid gray;">
+          <p style="font-size: 18px; font-weight: 600;">Welcome to our website</p>
+          <p>Nice to meet you! If you have any question about our services, feel free to contact us.</p>
+        </div>
+        <button style="width: 290px;" class="ButtonCustomerChat" onclick="CustomerChat()">Chat with us</button>
+      </div>
+    </div>
+    <div id="CustomerChatBox" class="">
+      <div class="row align-items-center"
+        style="background-color: burlywood; width: 290px; border-radius: 10px 10px 0 0; border: 1px solid gray; border-bottom: 0;">
+        <div class="col-2">
+          <img src="https://robohash.org/idlaudantiumdeserunt.png?size=50x50&set=set1"
+            style="scale: 80%; border-radius: 50%; border: 1px solid black; background-color: green;">
+        </div>
+        <div class="col-8">
+          <p style="margin-left: 10px; font-size: 20px; margin-top: 10px;">ADMIN</p>
+        </div>
+        <div class="col-1">
+          <button style="border: 0; background-color: burlywood" onclick="CustomerCloseChat()">X</button>
+        </div>
+
+      </div>
+      <div class="CustomerBoxChat" id="chatboxShow">
+        <span class="CustomerBoxChatMess AdminMess">Chào bạn! Bạn Cần Hỗ Trợ Gì ?</span>
+      </div>
+      <div class="input-group">
+        <form id="chatForm">
+          <input id="message" type="text" name="userChat" class="form-control" placeholder="What do you need?"
+            aria-describedby="button-addon2" style="border-radius: 0 0 0 10px; border: 1px solid gray">
+
+          <input type="hidden" value={{data}} id="username">
+          <button class="btn btn-outline-secondary" type="submit" id="button-addon2"
+            style="background-color: white; border-radius: 0 0 10px 0;"><i class="far fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+  integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  function CustomerChat() {
+    let a = document.getElementById("CustomerFrameChat");
+    a.classList.add("d-none");
+    let b = document.getElementById("CustomerChatBox");
+    b.classList.remove("d-none");
+  }
+  function CustomerCloseChat() {
+    let a = document.getElementById("CustomerChatBox");
+    a.classList.add("d-none");
+    let b = document.getElementById("CustomerFrameChat");
+    b.classList.remove("d-none");
+  }
+  $(function () {
+    var socket = io();
+    $('#chatForm').submit(function () {
+      socket.emit('chat message', $('#message').val(), '1', $('#username').val());
+      $('#message').val('');
+      return false;
+    });
+    socket.on('chat message', function (msg, flag) {
+      if (flag == '1') {
+        let b = document.getElementById("chatboxShow").innerHTML;
+        b += `<p class="CustomerBoxChatMess CustomerMess">` + msg + `</p>`
+        document.getElementById("chatboxShow").innerHTML = b;
+        $('#chatShow').scrollTop()
+      } else {
+        let b = document.getElementById("chatboxShow").innerHTML;
+        b += `<p class="CustomerBoxChatMess AdminMess">` + msg + `</p>`
+        document.getElementById("chatboxShow").innerHTML = b;
+      }
+    })
+
+  });
+  $(document).ready(function () {
+    $('#button-addon2').click(function (e) {
+      var username = $('#username').val();
+      var msg = $('#message').val();
+      $.ajax({
+        method: 'post',
+        url: '/chat/user-chat',
+        data: {
+          username: username,
+          msg: msg,
+          isAdmin: false
+        }
+      });
+    })
+  })
+</script>

@@ -1,7 +1,7 @@
 <div class="container-fluid" style="margin-top: 1%;">
     <form action="/account/register" method="post" id="signupForm">
         <p style="margin-left: 20%; margin-bottom: 20px; font-size: larger;font-weight:bolder;"> ACCOUNT INFORMATION </p>
-        <div class="mb-3 row offset-1 text-end" style="margin-left: 15%;">
+        <div class="row offset-1 text-end" style="margin-left: 15%;">
             <label for="inputUserName" class="col-sm-3 col-form-label ps-5">USERNAME<span
                     style="color: red;">*</span></label>
             <div class="col-sm-5">
@@ -10,7 +10,7 @@
             </div>
         </div>
         <small id="usernameErr" class="text-danger d-flex justify-content-center"></small>
-        <div class="mb-3 row offset-1 text-end" style="margin-left: 15%;">
+        <div class="mt-3 row offset-1 text-end" style="margin-left: 15%;">
             <label for="inputPassword" class="col-sm-3 col-form-label ps-5">PASSWORD<span
                     style="color: red;">*</span></label>
             <div class="col-sm-5">
@@ -18,8 +18,8 @@
                     placeholder="Enter password" required>
             </div>
         </div>
-        <small id="PwErr" class="text-danger d-flex justify-content-center" style="margin-left: 11%;"></small>
-        <div class="mb-3 row offset-1 text-end" style="margin-left: 15%;">
+        <small id="PwErr" class="text-danger d-flex justify-content-center"></small>
+        <div class="mt-3 row offset-1 text-end" style="margin-left: 15%;">
             <label for="inputConfirmPassword" class="col-sm-3 col-form-label">CONFIRM PASSWORD<span
                     style="color: red;">*</span></label>
             <div class="col-sm-5">
@@ -29,7 +29,7 @@
         </div>
         <small id="confirmPwErr" class="text-danger d-flex justify-content-center"></small>
         <p style="margin-left: 20%; margin-bottom: 20px; font-size: larger;font-weight:bolder;"> CUSTOMER INFORMATION </p>
-        <div class="mb-3 row offset-1 text-end" style="margin-left: 15%;">
+        <div class="mt-3 row offset-1 text-end" style="margin-left: 15%;">
             <label for="inputName" class="col-sm-3 col-form-label ps-5">NAME<span style="color: red;">*</span></label>
             <div class="col-sm-5">
                 <input type="text" class="form-control" name="inputName" id="inputName" placeholder="Enter name"
@@ -37,7 +37,7 @@
             </div>
         </div>
         <small id="nameErr" class="text-danger d-flex justify-content-center"></small>
-        <div class="mb-3 row offset-1 text-end" style="margin-left: 15%;">
+        <div class="mt-3 row offset-1 text-end" style="margin-left: 15%;">
             <label for="inputEmail" class="col-sm-3 col-form-label ps-5">EMAIL<span style="color: red;">*</span></label>
             <div class="col-sm-5">
                 <input type="text" class="form-control" name="inputEmail" id="inputEmail" placeholder="Enter email"
@@ -45,7 +45,7 @@
             </div>
         </div>
         <small id="emailErr" class="text-danger d-flex justify-content-center"></small>
-        <div class="mb-3 row offset-1 text-end" style="margin-left: 15%;">
+        <div class="mt-3 row offset-1 text-end" style="margin-left: 15%;">
             <label for="inputNumberPhone" class="col-sm-3 col-form-label ps-5">PHONE<span
                     style="color: red;">*</span></label>
             <div class="col-sm-5">
@@ -54,7 +54,7 @@
             </div>
         </div>
         <small id="phoneErr" class="text-danger d-flex justify-content-center"></small>
-        <div class="mb-3 row offset-1 text-end" style="margin-left: 15%;">
+        <div class="mt-3 row offset-1 text-end" style="margin-left: 15%;">
             <span class="col-sm-3 col-form-label ps-5">GENDER</span>
             <div class="col" style="text-align: start;margin-top: 6px;">
                 <div class="form-check form-check-inline" style="margin-right: 50px;">
@@ -67,13 +67,13 @@
                 </div>
             </div>
         </div>
-        <div class="mb-3 row offset-1 text-end" style="margin-left: 15%;">
+        <div class="mt-3 row offset-1 text-end" style="margin-left: 15%;">
             <label for="dob" class="col-sm-3 col-form-label ps-5">BIRTHDAY</label>
             <div class="col-sm-5">
                 <input type="date" class="form-control" id="dob" name="dob">
             </div>
         </div>
-        <div class="mb-3 row offset-1 text-end" style="margin-left: 15%;">
+        <div class="mt-3 row offset-1 text-end" style="margin-left: 15%;">
             <label for="inputAddress" class="col-sm-3 col-form-label ps-5">ADDRESS<span
                     style="color: red;">*</span></label>
             <div class="col-sm-5">
@@ -99,18 +99,17 @@
             $('#usernameErr').html(regex.test($('#inputUserName').val()) ? '<i>username does not contain the following characters / \ [ ] ; | = , + * ? < ></i>' : '');
             
             // check Password
-            regex = /^.{8,}$/;
-            $('#PwErr').html(regex.test($('#inputPassword').val()) ? '' : 'password must be at least 8 characters long');
+            $('#PwErr').html(($('#inputPassword').val().length >= 8) ? '' : '<i>password must be at least 8 characters long</i>');
             
             //check confirmPassword
             $('#confirmPwErr').html(($('#inputPassword').val() != $('#inputConfirmPassword').val()) ? '<i>confirm password is incorrect</i>' : '');
 
             // check Email
             regex = /@gmail\.com/;
-            $('#emailErr').html(regex.test($('#inputEmail').val()) ? '' : 'email must be gmail');
+            $('#emailErr').html(regex.test($('#inputEmail').val()) ? '' : '<i>you need to use gmail</i>');
 
             // check Phone
-            regex = /^\d/;
+            regex = /[^0-9]/;
             $('#phoneErr').html(regex.test($('#inputPhoneNumber').val())? '<i>the phone just contains the numbers</i>' : '');
             
             if ($('#nameErr').html() === '' && $('#usernameErr').html() === '' &&  $('#PwErr').html() === '' &&

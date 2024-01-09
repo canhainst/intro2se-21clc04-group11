@@ -9,7 +9,7 @@
       </div>
     </div>
     <small id="usernameErr" class="text-danger d-flex justify-content-center"></small>
-    <div class="mb-3 row offset-1" style="margin-left: 20%;">
+    <div class="row offset-1" style="margin-left: 20%;">
       <label for="inputPassword" class="col-sm-3 col-form-label ps-5">PASSWORD</label>
       <div class="col-sm-5">
         <input type="password" class="form-control" name="inputPassword" id="inputPassword" placeholder="Enter password"
@@ -17,7 +17,7 @@
       </div>
     </div>
     {{#if failure}}
-      <small id="Err" class="text-danger d-flex justify-content-center" style="margin-left:-100px">Wrong Password!!!</small>
+      <small id="Err" class="text-danger d-flex justify-content-center mb-3 mt-1" style="margin-left:-100px">Wrong Password!!!</small>
     {{/if}}
     <div class="col-12 text-center mt-4">
       <button class="btn fw-bold ps-5 pe-5" type="submit" style="background-color: #3D5940;color: #fff;">LOG IN</button>
@@ -47,5 +47,4 @@
       }
     });
   })
-  // 1 kí tự số - 1 kí tự thường - 1 kí tự hoa - 1 đặc biệt - trên 8 dưới 16
 </script>

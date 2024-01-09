@@ -4,6 +4,8 @@ const accountM = require("../models/account-m");
 const passport = require('passport');
 const bcrypt = require("bcrypt");
 const nodemailer = require('nodemailer');
+const multer = require("multer");
+const upload = multer({dest: 'image/Avatar'});
 const saltRounds = 10;
 
 // Register
@@ -66,10 +68,18 @@ router.post('/forgotpassword', async (req, res) => {
             throw (new Error("Can not change password"));
         }
         else {
-            if (valid_user.length === 0) {
-                throw (new Error("Username has not already existed"));
-            } else {
+            if (valid_user !== undefined ) {
                 res.redirect(`/account/resetpassword?username=${encodeURIComponent(valid_user.UserName)}`);
+            } else {
+                res.render('customers/ForgotPassword', {
+                    title: 'Forgot Password',
+                    text: 'account',
+                    enterUserName: true,
+                    failure: true,
+                    mainJs: () => 'empty',
+                    navbar: () => 'empty',
+                    header: () => 'header_text',
+                })
             }
         }
     } catch (err) {
@@ -211,6 +221,7 @@ router.post('/profile', async (req, res, next) => {
             text: 'account',
             login: true,
             profile,
+            successfulMessage: true,
             dob: formattedDate,
             mainJs: () => 'empty',
             navbar: () => 'navbar',
@@ -249,6 +260,26 @@ router.post('/password', async (req, res, next) => {
                 await accountM.updatePass(hash, req.session.passport.user);
                 res.redirect('/account/password');
             });
+            res.render('customers/ChangePassword', {
+                title: 'My Account',
+                text: 'account',
+                login: true,
+                successfulMessage: true,
+                mainJs: () => 'empty',
+                navbar: () => 'navbar',
+                header: () => 'header_text',
+            })
+        }
+        else {
+            res.render('customers/ChangePassword', {
+                title: 'My Account',
+                text: 'account',
+                login: true,
+                failureMessage: true,
+                mainJs: () => 'empty',
+                navbar: () => 'navbar',
+                header: () => 'header_text',
+            })
         }
     } catch (error) {
         throw error;
@@ -264,5 +295,15 @@ router.get('/logout', (req, res) => {
     });
     res.redirect('/account/login');
 });
-
+//Change Avatar
+router.post('/changeAvatar', upload.single('photo'), async(req, res, next) => {
+    try{      
+        // console.log(req.file);
+        const Photo = `/image/Avatar/${req.file.filename}`;
+        await accountM.changeAvatar(Photo, req.session.passport.user); 
+        res.redirect('/account/profile');
+    } catch(err){
+        next(err);
+    }
+});
 module.exports = router;

@@ -29,12 +29,12 @@
             </div>
             <!-- product -->
             <div id="img" class="col-1">
-            <a href="/products/{{ProductID}}" style="display:inline">
+            <a href="/book/{{ProductID}}" style="display:inline">
                 <img src={{Photo}} alt="{{ProductName}}" class="mt-1 _{{@index}}" style="width: 7rem; height: 10rem;">
             </a>
             </div>
             <div class="col-2 ms-5">
-                <div id="ProductName"><a href="/products/{{ProductID}}"><span class="text-uppercase fw-bold greenTitle ls-wide _{{@index}}" >{{ProductName}}</span></a></div>
+                <div id="ProductName"><a href="/book/{{ProductID}}"><span class="text-uppercase fw-bold greenTitle ls-wide _{{@index}}" >{{ProductName}}</span></a></div>
                 <br>
                 {{#each (generateArr Rating)}}
                     <i class="fas fa-star star"></i>
