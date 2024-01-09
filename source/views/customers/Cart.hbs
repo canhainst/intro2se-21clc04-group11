@@ -28,12 +28,13 @@
                 <input class="form-check-input border-black FCI _{{@index}}" type="checkbox" value="" onclick="checkTicked({{@index}})">
             </div>
             <!-- product -->
-            <a href="/products/{{ProductID}}">
             <div id="img" class="col-1">
+            <a href="/products/{{ProductID}}" style="display:inline">
                 <img src={{Photo}} alt="{{ProductName}}" class="mt-1 _{{@index}}" style="width: 7rem; height: 10rem;">
+            </a>
             </div>
             <div class="col-2 ms-5">
-                <div id="ProductName"><span class="text-uppercase fw-bold greenTitle ls-wide _{{@index}}" >{{ProductName}}</span></div>
+                <div id="ProductName"><a href="/products/{{ProductID}}"><span class="text-uppercase fw-bold greenTitle ls-wide _{{@index}}" >{{ProductName}}</span></a></div>
                 <br>
                 {{#each (generateArr Rating)}}
                     <i class="fas fa-star star"></i>
@@ -43,9 +44,7 @@
                 {{/each}}
                 <p class="mb-0" id="Category">Category: <span class="_{{@index}}">{{Cate}}</span></p>
                 <p class="mt-0" id="ProductID">ProductID: <span class="_{{@index}}">{{ProductID}}</span></p>
-
             </div>
-            </a>
             <!-- unit price -->
             <div class="col-2 ms-2 text-center">
                 <p class="fw-bold fs-5 mt-3" id="PriceOut">
