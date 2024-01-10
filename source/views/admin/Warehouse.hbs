@@ -148,20 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
 
     function exportProduct(productID) {
-        fetch(`http://localhost:3000/warehouse/exportProduct?productID=${productID}`, {
-            method: 'PUT'
-        })
-            .then(response => response.json())
-            .then(result => {
-                console.log('Export result:', result);
-                alert('Export successful');
-                fetchAndDisplayProducts();
-
-            })
-            .catch(error => {
-                console.error('Error exporting product:', error);
-                alert('Export failed');
-                 });
+        window.location.href = `admin/warehouse/postProduct?ProductID=${productID}`;
     }
 
 function deleteProduct(productID) {

@@ -27,6 +27,7 @@ module.exports = class Order {
             SELECT  OrderID, Status, TotalPrice
             FROM    orders 
             WHERE   BuyerID = ${BuyerID}
+            and CreateTime is not null
             ORDER BY OrderID DESC;
             `);
             await sql.close();

@@ -80,7 +80,7 @@ module.exports = class orders {
             await sql.close();
         } catch (err) {
             console.error("Error:", err);
-            next(err)
+            throw err;
         }
     }
     static async getMonthlyOrders(selectedYear) {
@@ -91,7 +91,7 @@ module.exports = class orders {
                 FROM orders o, orderdetails od, products pd
                 WHERE o.OrderID = od.OrderID
                     and od.ProductID = pd.ProductID
-                    and o.Status = 'Shipped'
+                    and o.Status = 'Completed'
                     and YEAR(O.CreateTime) = ${selectedYear}
                 GROUP BY MONTH(O.CreateTime)`
             );
@@ -109,7 +109,7 @@ module.exports = class orders {
                 FROM orders o, orderdetails od, products pd
                 WHERE o.OrderID = od.OrderID
                     and od.ProductID = pd.ProductID
-                    and o.Status = 'Shipped'
+                    and o.Status = 'Completed'
                     and YEAR(O.CreateTime) = ${selectedYear}
                     and MONTH(O.CreateTime) = ${seletectedMonth}
                 GROUP BY DAY(O.CreateTime)`
